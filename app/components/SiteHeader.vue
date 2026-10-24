@@ -4,9 +4,9 @@ const localePath = useLocalePath()
 
 // Geen menu achter een knop: op een smal scherm staat de navigatie als tweede rij onder de balk.
 const links = computed(() => [
-  { href: '#how', label: c.value.nav.how },
-  { href: '#rounds', label: c.value.nav.features },
+  { href: '#rounds', label: c.value.nav.rounds },
   { href: '#show', label: c.value.nav.show },
+  { href: '#print', label: c.value.nav.print },
   { href: '#download', label: c.value.nav.download }
 ])
 </script>

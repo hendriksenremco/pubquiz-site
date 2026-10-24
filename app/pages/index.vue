@@ -32,11 +32,10 @@ const roomIcons = [
         <p class="lead">{{ c.hero.lead }}</p>
         <div class="hero-actions">
           <a class="button primary" href="#download">{{ c.cta.download }}</a>
-          <a class="button" href="#how">{{ c.cta.how }}</a>
+          <ul class="facts">
+            <li v-for="f in c.hero.facts" :key="f" class="chip">{{ f }}</li>
+          </ul>
         </div>
-        <ul class="facts">
-          <li v-for="f in c.hero.facts" :key="f" class="chip">{{ f }}</li>
-        </ul>
       </div>
       <div class="hero-shots">
         <AppShot :src="c.hero.laptop.src" :alt="c.hero.laptop.alt" eager />
@@ -74,26 +73,18 @@ const roomIcons = [
       </div>
     </section>
 
-    <!-- Zo werkt het: drie stappen, in deze volgorde -->
-    <section id="how" class="how wrap" aria-labelledby="how-title">
-      <p class="eyebrow">{{ c.how.eyebrow }}</p>
-      <h2 id="how-title">{{ c.how.title }}</h2>
-      <ol class="steps">
-        <li v-for="step in c.how.items" :key="step.title">
-          <h3>{{ step.title }}</h3>
-          <p>{{ step.text }}</p>
-        </li>
-      </ol>
-    </section>
-
     <!-- Rondes -->
     <section id="rounds" class="rounds wrap" aria-labelledby="rounds-title">
       <div class="section-head">
         <p class="eyebrow">{{ c.rounds.eyebrow }}</p>
         <h2 id="rounds-title">{{ c.rounds.title }}</h2>
-        <p class="lead">{{ c.rounds.lead }}</p>
       </div>
-      <article v-for="(round, i) in c.rounds.items" :key="round.title" class="feature" :class="{ flip: i % 2 === 1 }">
+      <article
+        v-for="(round, i) in c.rounds.items"
+        :key="round.title"
+        class="feature"
+        :class="{ flip: i % 2 === 1 }"
+      >
         <div class="feature-text">
           <h3>{{ round.title }}</h3>
           <p>{{ round.text }}</p>
@@ -119,7 +110,6 @@ const roomIcons = [
           <p class="eyebrow">{{ c.show.eyebrow }}</p>
           <h2 id="show-title">{{ c.show.title }}</h2>
           <p class="lead">{{ c.show.lead }}</p>
-          <p class="show-extra">{{ c.show.extra }}</p>
         </div>
         <dl class="keys">
           <div v-for="k in c.show.keys" :key="k.label" class="key-row">
@@ -132,25 +122,12 @@ const roomIcons = [
       </div>
     </section>
 
-    <!-- Voorbereiden -->
-    <section class="prepare wrap" aria-labelledby="prepare-title">
-      <p class="eyebrow">{{ c.prepare.eyebrow }}</p>
-      <h2 id="prepare-title">{{ c.prepare.title }}</h2>
-      <div class="prepare-grid">
-        <article v-for="item in c.prepare.items" :key="item.title" class="card">
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.text }}</p>
-        </article>
-      </div>
-    </section>
-
     <!-- Afdrukken -->
-    <section class="print wrap" aria-labelledby="print-title">
+    <section id="print" class="print wrap" aria-labelledby="print-title">
       <div class="feature">
         <div class="feature-text">
           <p class="eyebrow">{{ c.print.eyebrow }}</p>
           <h2 id="print-title">{{ c.print.title }}</h2>
-          <p class="lead">{{ c.print.lead }}</p>
           <dl class="forms">
             <div v-for="item in c.print.items" :key="item.title">
               <dt>{{ item.title }}</dt>
@@ -179,7 +156,11 @@ const roomIcons = [
           <p class="eyebrow">{{ c.download.eyebrow }}</p>
           <h2 id="download-title">{{ c.download.title }}</h2>
           <p class="lead">{{ c.download.lead }}</p>
-          <a v-if="config.public.downloadUrl" class="button primary" :href="config.public.downloadUrl">
+          <a
+            v-if="config.public.downloadUrl"
+            class="button primary"
+            :href="config.public.downloadUrl"
+          >
             {{ c.download.button }}
           </a>
           <p v-else class="pending">{{ c.download.pending }}</p>
@@ -192,17 +173,6 @@ const roomIcons = [
         </div>
       </div>
     </section>
-
-    <!-- Vragen: open in beeld, niet achter uitklapknoppen -->
-    <section class="faq wrap" aria-labelledby="faq-title">
-      <h2 id="faq-title">{{ c.faq.title }}</h2>
-      <dl class="faq-grid">
-        <div v-for="item in c.faq.items" :key="item.q">
-          <dt>{{ item.q }}</dt>
-          <dd>{{ item.a }}</dd>
-        </div>
-      </dl>
-    </section>
   </div>
 </template>
 
@@ -211,9 +181,7 @@ section {
   padding-block: clamp(56px, 9vw, 112px) 0;
 }
 
-.section-head,
-.how,
-.prepare {
+.section-head {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -237,7 +205,8 @@ section {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  gap: 12px 20px;
   margin-top: 6px;
 }
 
@@ -279,22 +248,16 @@ section {
   gap: 28px;
 }
 
-.room-grid,
-.prepare-grid {
+.room-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
-.prepare-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 14px;
-}
-
 .card {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   padding: 26px;
   border-radius: var(--radius-xl);
   background: var(--surface-1);
@@ -309,40 +272,6 @@ section {
   height: 34px;
   color: var(--accent);
   margin-bottom: 6px;
-}
-
-/* Zo werkt het */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin: 14px 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-}
-
-.steps li {
-  counter-increment: step;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 26px;
-  border-radius: var(--radius-xl);
-  background: var(--surface-1);
-}
-
-.steps li::before {
-  content: counter(step);
-  font-family: var(--display);
-  font-size: 2.6rem;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--accent);
-}
-
-.steps p {
-  color: var(--muted);
 }
 
 /* Rondes en afdrukken: tekst naast een screenshot */
@@ -366,12 +295,12 @@ section {
 .feature-text {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .feature-text > p {
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 1.15rem;
 }
 
 .feature-text h3 {
@@ -421,13 +350,6 @@ section {
   gap: 16px;
 }
 
-.show-extra {
-  color: var(--text);
-  padding-left: 16px;
-  border-left: 3px solid var(--accent);
-  max-width: 34rem;
-}
-
 .keys {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -472,10 +394,14 @@ section {
 }
 
 /* Afdrukken */
+.print {
+  padding-bottom: 0;
+}
+
 .forms {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   margin: 8px 0 0;
 }
 
@@ -484,11 +410,15 @@ section {
 }
 
 .forms dd {
-  margin: 2px 0 0;
+  margin: 0;
   color: var(--muted);
 }
 
 /* Download */
+.download {
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
 .download-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -516,7 +446,6 @@ section {
   border-radius: var(--radius-lg);
   background: var(--accent-soft);
   color: var(--text);
-  max-width: 30rem;
 }
 
 .install {
@@ -540,40 +469,10 @@ section {
   font-weight: 800;
 }
 
-/* Vragen */
-.faq {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding-bottom: clamp(56px, 8vw, 96px);
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px 40px;
-  margin: 0;
-}
-
-.faq-grid dt {
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 750;
-}
-
-.faq-grid dd {
-  margin: 6px 0 0;
-  color: var(--muted);
-}
-
 @media (max-width: 900px) {
   .room-grid,
-  .steps,
   .show-inner,
-  .download-panel {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
+  .download-panel,
   .feature {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -584,9 +483,7 @@ section {
 }
 
 @media (max-width: 640px) {
-  .prepare-grid,
-  .keys,
-  .faq-grid {
+  .keys {
     grid-template-columns: minmax(0, 1fr);
   }
 

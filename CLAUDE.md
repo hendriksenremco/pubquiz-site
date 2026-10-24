@@ -9,6 +9,7 @@ Stand op 25 oktober 2026: de site is opgezet met Nuxt (zie Techniek), met een Ne
 ## Werkafspraken
 
 - **Taal:** Remco schrijft meestal Nederlands; antwoord in zijn taal. Schrijf de site-teksten in het Nederlands, met "je", korte zinnen, gewone werkwoorden en hoofdletters alleen aan het begin van een zin.
+- **Kort en bondig:** de site laat zien wat de app is, met zo min mogelijk tekst: per onderdeel één korte zin, en laat de screenshots het werk doen. Uitgebreide uitleg komt later in een handleiding (25 oktober: "het mag qua teksten een stuk minder en bondiger").
 - **Commit:** na elke afgeronde wijziging een eigen commit, met een Engelse commit-message. Er is nog geen remote: een GitHub-repo koppelen we pas als hij wil publiceren, en pushen alleen als hij erom vraagt.
 - **Zichtbaar:** geen acties achter een ⋯-menu of knoppen die pas bij hover verschijnen. Dat geldt in de app en ook hier: navigatie en de downloadknop staan gewoon in beeld.
 - **App-repo alleen lezen:** `../pubquiz` is je bron voor feiten, teksten en screenshots. Wijzig daar niets zonder dat hij erom vraagt; app-werk hoort in een sessie in die map.
