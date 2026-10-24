@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="la-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#232b3f"/>
+      <stop offset="1" stop-color="#0d121c"/>
+    </linearGradient>
+    <radialGradient id="la-glow" cx="512" cy="742" r="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffa53d" stop-opacity=".62"/>
+      <stop offset=".3" stop-color="#ffa53d" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#ffa53d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="la-bulb" cx=".42" cy=".38" r=".66">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset=".38" stop-color="#ffd596"/>
+      <stop offset="1" stop-color="#ff9b2c"/>
+    </radialGradient>
+    <linearGradient id="la-cord" x1="0" y1="240" x2="0" y2="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e9edf6"/>
+      <stop offset=".55" stop-color="#f1e8da"/>
+      <stop offset="1" stop-color="#ffc47e"/>
+    </linearGradient>
+    <filter id="la-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="26"/></filter>
+    <clipPath id="la-clip"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+    <filter id="la-shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#la-bg)" filter="url(#la-shadow)"/>
+  <g clip-path="url(#la-clip)">
+    <circle cx="512" cy="742" r="440" fill="url(#la-glow)"/>
+    <path d="M384 404 C384 304 446 246 516 246 C590 246 644 296 644 366 C644 430 602 458 566 482 C530 506 512 532 512 582 L512 604" fill="none" stroke="url(#la-cord)" stroke-width="96" stroke-linecap="round"/>
+    <circle cx="512" cy="742" r="120" fill="#ffb24f" fill-opacity=".35" filter="url(#la-soft)"/>
+    <circle cx="512" cy="742" r="70" fill="url(#la-bulb)"/>
+    <path d="M472 718 A44 44 0 0 1 500 696" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <rect x="100.5" y="100.5" width="823" height="823" rx="184.5" fill="none" stroke="#fff" stroke-opacity=".07"/>
+</svg>

@@ -1,0 +1,17 @@
+# Nuxt
+.nuxt
+.output
+.data
+.nitro
+.cache
+dist
+
+# Afhankelijkheden
+node_modules
+
+# Logs en lokale bestanden
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example

@@ -1,0 +1,190 @@
+/*
+ * Dezelfde beeldtaal als de app: nachtblauw met één amber accent (bierlicht, podiumlamp).
+ * Vlakken onderscheiden zich door toon, niet door lijnen. Kleuren uit pubquiz/src/renderer/src/styles/base.css.
+ */
+:root {
+  --night: #0f1420;
+  --surface-1: #141a27;
+  --surface-2: #1a2131;
+  --surface-3: #232b3e;
+  --surface-4: #2c3550;
+  --line: rgba(160, 180, 220, 0.08);
+  --line-strong: rgba(160, 180, 220, 0.16);
+
+  --text: #e8ecf5;
+  --muted: #8b94aa;
+  --faint: #5c6579;
+  --cream: #fff3df;
+
+  --accent: #ffa53d;
+  --accent-ink: #231300;
+  --accent-soft: rgba(255, 165, 61, 0.14);
+  --live: #ff4d6a;
+  --ok: #4fd69c;
+
+  --radius-sm: 6px;
+  --radius: 9px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  --display: 'Bricolage Grotesque Variable', var(--font);
+
+  --page: 1160px;
+  --gutter: max(20px, env(safe-area-inset-left, 0px));
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--text);
+  font: 17px/1.6 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6.2vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+h2 {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+}
+
+kbd {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--page) + 2 * 24px);
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.lead {
+  font-size: clamp(1.08rem, 1.6vw, 1.25rem);
+  color: var(--muted);
+  max-width: 38rem;
+}
+
+/* Knoppen en chips als pillen, zoals in de app. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 650;
+  font-size: 1rem;
+  text-decoration: none;
+  background: var(--surface-3);
+  color: var(--text);
+  transition: background 0.15s ease;
+}
+
+.button:hover {
+  background: var(--surface-4);
+}
+
+.button.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.button.primary:hover {
+  background: #ffb35a;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 12px;
+  z-index: 100;
+}
+
+.skip:focus {
+  left: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}

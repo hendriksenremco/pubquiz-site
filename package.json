@@ -1,0 +1,27 @@
+{
+  "name": "quizmeister-site",
+  "private": true,
+  "type": "module",
+  "description": "Promotiesite voor Quizmeister, de Mac-app om een pubquiz in elkaar te klikken en live te draaien.",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "brand": "cd brand/quizmeister/bron && python3 -P maak.py",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "5.3.0",
+    "@nuxtjs/i18n": "10.6.0",
+    "nuxt": "4.6.2",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.3.13"
+  }
+}
