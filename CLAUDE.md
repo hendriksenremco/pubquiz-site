@@ -4,13 +4,13 @@ Promotiesite voor **Quizmeister**, een macOS-app van Remco Hendriksen om een pub
 
 **Naam:** de app heet Quizmeister. "Pubquiz" was de werknaam: die staat nog in de repo en de code, en op een paar plekken in de app zelf (titelbalk, dashboard, de rondleiding), dus ook in screenshots. Op de site heet de app altijd Quizmeister; "pubquiz" is gewoon het woord voor de quiz zelf ("maak je pubquiz met Quizmeister").
 
-Stand op 25 oktober 2026: de site is opgezet met Nuxt (zie Techniek), met een Nederlandse en een Engelse versie. Er is een lokale git-repo (branch `main`) zonder remote. Hosting en domein zijn nog niet gekozen; de wens is `quizmeister.app` (was vrij op 24 oktober, nog niet geregistreerd). Waar de download komt te staan is ook nog open.
+Stand op 25 oktober 2026: de site is opgezet met Nuxt (zie Techniek), met een Nederlandse en een Engelse versie. De repo staat op GitHub: `git@github.com:hendriksenremco/pubquiz-site.git` (branch `main`). Hosting en domein zijn nog niet gekozen; de wens is `quizmeister.app` (was vrij op 24 oktober, nog niet geregistreerd). Waar de download komt te staan is ook nog open.
 
 ## Werkafspraken
 
 - **Taal:** Remco schrijft meestal Nederlands; antwoord in zijn taal. Schrijf de site-teksten in het Nederlands, met "je", korte zinnen, gewone werkwoorden en hoofdletters alleen aan het begin van een zin.
 - **Kort en bondig:** de site laat zien wat de app is, met zo min mogelijk tekst: per onderdeel één korte zin, en laat de screenshots het werk doen. Uitgebreide uitleg komt later in een handleiding (25 oktober: "het mag qua teksten een stuk minder en bondiger").
-- **Commit:** na elke afgeronde wijziging een eigen commit, met een Engelse commit-message. Er is nog geen remote: een GitHub-repo koppelen we pas als hij wil publiceren, en pushen alleen als hij erom vraagt.
+- **Commit:** na elke afgeronde wijziging een eigen commit, met een Engelse commit-message. Push naar `origin` (GitHub) alleen als hij erom vraagt.
 - **Zichtbaar:** geen acties achter een ⋯-menu of knoppen die pas bij hover verschijnen. Dat geldt in de app en ook hier: navigatie en de downloadknop staan gewoon in beeld.
 - **App-repo alleen lezen:** `../pubquiz` is je bron voor feiten, teksten en screenshots. Wijzig daar niets zonder dat hij erom vraagt; app-werk hoort in een sessie in die map.
 - **App niet zichtbaar starten:** start `pnpm dev` of `pnpm start` van de app niet om iets te bekijken. Remco heeft de app vaak zelf open, en opspringende vensters storen hem. Screenshots maak je headless (zie hieronder).
