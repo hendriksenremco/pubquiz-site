@@ -12,7 +12,7 @@ export interface Shot {
 export interface SiteContent {
   meta: { title: string; description: string }
   skip: string
-  nav: { rounds: string; show: string; print: string; download: string; language: string }
+  nav: { ai: string; rounds: string; show: string; print: string; download: string; language: string }
   cta: { download: string; downloadShort: string }
   hero: {
     eyebrow: string
@@ -24,6 +24,7 @@ export interface SiteContent {
     beamerLabel: string
   }
   room: { title: string; items: { title: string; text: string }[] }
+  ai: { eyebrow: string; title: string; prompt: string; text: string; shot: Shot }
   rounds: { eyebrow: string; title: string; items: { title: string; text: string; shot: Shot; beamer?: Shot }[] }
   show: { eyebrow: string; title: string; lead: string; keys: { keys: string[]; label: string }[] }
   print: { eyebrow: string; title: string; shot: Shot; items: { title: string; text: string }[] }
@@ -47,6 +48,7 @@ export const site: Record<Locale, SiteContent> = {
     },
     skip: 'Naar de inhoud',
     nav: {
+      ai: 'Met je AI',
       rounds: 'Rondes',
       show: 'Tijdens de show',
       print: 'Afdrukken',
@@ -76,6 +78,16 @@ export const site: Record<Locale, SiteContent> = {
         { title: 'Geluid', text: 'Muziek voor de zaal, fragmenten op een eigen speaker.' },
         { title: 'Jij', text: 'Alles in één overzicht, met een paar toetsen.' }
       ]
+    },
+    ai: {
+      eyebrow: 'Met je AI',
+      title: 'Laat je AI de quiz maken',
+      prompt: 'Maak een pubquiz over Italië, met een muziekronde en een vlaggenronde.',
+      text: "De quiz staat daarna in Quizmeister, met vragen en antwoorden. Werkt met Claude Desktop en andere AI-apps met MCP. Liedjes en foto's komen uit je eigen mappen.",
+      shot: {
+        src: '/screens/ai-quiz.webp',
+        alt: 'Een quiz over Italië die een AI heeft gemaakt, in de editor van Quizmeister: vijf rondes, waaronder muziek en vlaggen.'
+      }
     },
     rounds: {
       eyebrow: 'Rondes',
@@ -175,6 +187,7 @@ export const site: Record<Locale, SiteContent> = {
     },
     skip: 'Skip to content',
     nav: {
+      ai: 'With your AI',
       rounds: 'Rounds',
       show: 'During the show',
       print: 'Printing',
@@ -204,6 +217,16 @@ export const site: Record<Locale, SiteContent> = {
         { title: 'Sound', text: 'Music for the room, clips on their own speaker.' },
         { title: 'You', text: 'Everything in one view, with a few keys.' }
       ]
+    },
+    ai: {
+      eyebrow: 'With your AI',
+      title: 'Let your AI make the quiz',
+      prompt: 'Make a pub quiz about Italy, with a music round and a flags round.',
+      text: 'The quiz then appears in Quizmeister, with questions and answers. Works with Claude Desktop and other AI apps that support MCP. Songs and photos come from your own folders.',
+      shot: {
+        src: '/screens/ai-quiz.webp',
+        alt: 'A quiz about Italy made by an AI, in the Quizmeister editor: five rounds, including music and flags.'
+      }
     },
     rounds: {
       eyebrow: 'Rounds',

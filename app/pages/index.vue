@@ -73,6 +73,21 @@ const roomIcons = [
       </div>
     </section>
 
+    <!-- Met je AI -->
+    <section id="ai" class="ai wrap" aria-labelledby="ai-title">
+      <div class="feature">
+        <div class="feature-text">
+          <p class="eyebrow">{{ c.ai.eyebrow }}</p>
+          <h2 id="ai-title">{{ c.ai.title }}</h2>
+          <p class="prompt">{{ c.ai.prompt }}</p>
+          <p>{{ c.ai.text }}</p>
+        </div>
+        <div class="feature-shots">
+          <AppShot :src="c.ai.shot.src" :alt="c.ai.shot.alt" />
+        </div>
+      </div>
+    </section>
+
     <!-- Rondes -->
     <section id="rounds" class="rounds wrap" aria-labelledby="rounds-title">
       <div class="section-head">
@@ -274,6 +289,21 @@ section {
   margin-bottom: 6px;
 }
 
+/* Met je AI: de vraag aan de AI als tekstballon */
+.feature-text > .prompt {
+  align-self: flex-start;
+  color: var(--text);
+  margin: 6px 0;
+  padding: 16px 20px;
+  border-radius: 20px 20px 20px 6px;
+  background: var(--surface-3);
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
 /* Rondes en afdrukken: tekst naast een screenshot */
 .rounds {
   display: flex;
@@ -298,7 +328,7 @@ section {
   gap: 12px;
 }
 
-.feature-text > p {
+.feature-text > p:not(.eyebrow, .prompt) {
   color: var(--muted);
   font-size: 1.15rem;
 }
