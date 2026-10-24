@@ -79,7 +79,7 @@ export const site: Record<Locale, SiteContent> = {
     },
     rounds: {
       eyebrow: 'Rondes',
-      title: 'Elke ronde die je kent',
+      title: 'Vragen, muziek, plaatjes en antwoorden',
       items: [
         {
           title: 'Vragen en slides',
@@ -207,7 +207,7 @@ export const site: Record<Locale, SiteContent> = {
     },
     rounds: {
       eyebrow: 'Rounds',
-      title: 'Every round you know',
+      title: 'Questions, music, pictures and answers',
       items: [
         {
           title: 'Questions and slides',
