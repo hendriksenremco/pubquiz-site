@@ -62,17 +62,12 @@ Dit is wat er nu echt in de app zit. De namen tussen aanhalingstekens zijn de wo
 - "Nieuwe quiz op basis van deze": de schermen, de sfeer en eventueel de rondes van vorige keer hergebruiken.
 - Slaat automatisch op; ongedaan maken met ⌘Z.
 
-**Met je AI** (MCP, sinds 25 oktober)
-- Je laat je eigen AI-assistent een quiz maken, bijvoorbeeld: "Maak een pubquiz in Quizmeister met zes rondes over Italië." De quiz verschijnt in de app, met vragen, antwoorden en een antwoordenronde. De AI kan quizzen ook opzoeken en per ronde aanpassen.
-- Koppelen via "Nieuwe quiz → Met je AI…": voor Claude Desktop met één knop; voor andere AI-apps staan de MCP-instellingen erbij om te kopiëren.
-- Liedjes en foto's maakt een AI niet zelf: die komen uit mappen op de Mac. Tijdens een show past de AI de lopende quiz nooit aan.
-- Screenshots: `ai-music-round.png` (de quiz die de AI maakte) staat als `public/screens/ai-quiz.webp` op de site. Gebruik `ai-dialog.png` niet: daarin staan in de MCP-instellingen de lokale paden van Remco's Mac.
-
-**Quiz maken met je AI** (sinds 25 oktober)
-- Je vraagt je eigen AI-assistent bijvoorbeeld: "Maak een pubquiz in Quizmeister met zes rondes over Italië." De quiz verschijnt dan in de app, met vragen, antwoorden en een antwoordenronde, en je kunt de AI rondes laten aanpassen ("maak ronde 3 moeilijker").
-- Werkt via MCP. Claude Desktop koppel je met één knop ("Nieuwe quiz → Met je AI…"); voor andere AI-apps die MCP ondersteunen staan de instellingen erbij. ChatGPT ondersteunt voor zover bekend alleen MCP-servers op internet, dus noem ChatGPT niet als werkend.
+**Quiz maken met je AI** (MCP, sinds 25 oktober)
+- Je vraagt je eigen AI-assistent bijvoorbeeld: "Maak een pubquiz in Quizmeister met zes rondes over Italië." De quiz verschijnt dan in de app, met vragen, antwoorden en een antwoordenronde. De AI kan quizzen ook opzoeken en rondes aanpassen ("maak ronde 3 moeilijker").
+- Werkt via MCP. Claude Desktop koppel je met één knop ("Nieuwe quiz → Met je AI…"); voor andere AI-apps die MCP ondersteunen staan de instellingen erbij om te kopiëren. ChatGPT ondersteunt voor zover bekend alleen MCP-servers op internet, dus noem ChatGPT niet als werkend.
 - Eerlijk zijn: liedjes en foto's maakt de AI niet zelf, die moeten als bestanden op de Mac staan. De AI doet het denkwerk (vragen, antwoorden, opbouw), de quizmaster houdt de controle. Tijdens een show past de AI niets aan.
 - De gebruiker gebruikt zijn eigen AI-abonnement; Quizmeister stuurt zelf niets naar internet.
+- Screenshots: `ai-music-round.png` (de quiz die de AI maakte) staat als `public/screens/ai-quiz.webp` op de site. Gebruik `ai-dialog.png` niet: daarin staan in de MCP-instellingen de lokale paden van Remco's Mac.
 
 ### Niet beloven
 
