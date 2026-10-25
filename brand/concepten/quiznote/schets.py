@@ -2,7 +2,7 @@
 """Schetsen voor het QuizNote-icoon en -woordmerk (ronde 1).
 
 Draaien vanuit deze map:  python3 -P schets.py
-Nodig: fontTools, hb-shape en rsvg-convert. Het font komt uit ../../quizmeister/bron.
+Nodig: fontTools, hb-shape en rsvg-convert. Het font komt uit ../../quiznote/bron.
 
 Alles is plat: effen kleuren, geen gloed, verlopen of schaduwen. Elk teken staat ook in één kleur op 64, 32 en 16 px.
 """
@@ -18,7 +18,7 @@ from fontTools.pens.recordingPen import RecordingPen
 from fontTools.ttLib import TTFont
 
 HIER = os.path.dirname(os.path.abspath(__file__))
-FONT = os.path.join(HIER, '..', '..', 'quizmeister', 'bron', 'BricolageGrotesque.woff2')
+FONT = os.path.join(HIER, '..', '..', 'quiznote', 'bron', 'BricolageGrotesque.woff2')
 
 NACHT = '#0f1420'
 CREME = '#fff3df'

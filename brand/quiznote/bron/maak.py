@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Maakt het Quizmeister-icoon, het woordmerk en alle afgeleide bestanden.
+"""Maakt het QuizNote-icoon, het woordmerk en alle afgeleide bestanden, en zet die van de site in public/.
 
 Draaien vanuit deze map:  python3 -P maak.py
 Nodig: fontTools (user site-packages), hb-shape (HarfBuzz) en rsvg-convert, magick en iconutil voor de pixelbestanden.
 
-Het teken: een q en een m die één stam delen; de laatste boog van de m krult om tot een vraagteken.
-In één kleur: amber op nachtblauw.
+Het teken: de Q uit het woordmerk (Bricolage Grotesque), in amber op nachtblauw.
 Alles is plat: effen kleuren, geen gloed, verlopen of schaduwen.
 """
 import json
@@ -14,7 +13,6 @@ import os
 import re
 import shutil
 import subprocess
-import sys
 import tempfile
 
 from fontTools.pens.boundsPen import BoundsPen
@@ -24,40 +22,48 @@ from fontTools.ttLib import TTFont
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 UIT = os.path.dirname(HIER)
+PUBLIC = os.path.join(UIT, '..', '..', 'public')
 
 NACHT = '#0f1420'
 CREME = '#fff3df'
 AMBER = '#ffa53d'
 AMBER_OP_LICHT = '#e07b0c'  # donkerder amber, leesbaar op crème en wit
-TEKEN_KLEUR = AMBER  # het teken in het icoon heeft één kleur; meerdere kleuren werkten niet
+
+font = TTFont(os.path.join(HIER, 'BricolageGrotesque.woff2'))
+font.flavor = None
+tmp = tempfile.mkdtemp()
+ttf = os.path.join(tmp, 'BricolageGrotesque.ttf')
+font.save(ttf)  # standaardstand van het variabele font: wght 800, wdth 100, opsz 96
+gs = font.getGlyphSet()
+upm = font['head'].unitsPerEm
+XH = font['OS/2'].sxHeight
+getal = lambda v: f'{v:.1f}'.rstrip('0').rstrip('.')
 
 # --- Het teken -------------------------------------------------------------------------------------------------
 
-# Basis: qm in Bricolage Grotesque (smal en zwaar), uit de schetsen. De laatste poot van de m vervangen we door een
-# vraagteken met dezelfde dikte als de poten: de boog krult terug naar een korte steel, de punt staat op de basislijn.
-HAAK_OUD = ('Q700.8 315.4 726.2 315.4C764.8 315.4 812 352.6 812 423.5C812 474.2 786.7 469.1 786.7 507.1L786.7 513.4'
-            'L712.1 513.4L712.1 475.9Q712.1 452.3 709.7 436.9Q707.3 421.5 701.7 414.2Q696.2 406.8 686.5 406.8')
-HAAK_NIEUW = ('Q700.8 315.4 726.2 315.4C776 315.4 828 352 828 424C828 486 782 498 772 522L772 540L688 540L688 528'
-              'C688 488 742 478 742 446C742 420 716 406.8 686.5 406.8')
-basis = open(os.path.join(HIER, 'qm-basis.txt')).read().strip()
-assert HAAK_OUD in basis, 'haakje niet gevonden in qm-basis.txt'
-QM = basis.replace(HAAK_OUD, HAAK_NIEUW)
-PUNT = (730, 613.7, 44)  # midden onder de steel, onderkant op de basislijn (657,7)
-SPLITS = 488.1  # rechterkant van de gedeelde stam: links crème (q), rechts amber (m)
-VERSCHUIF = (-8, -12)  # optisch midden in het icoonvlak
+# De Q staat midden in het icoonvlak (824 px in een canvas van 1024) en vult 72% ervan, gemeten over de hoogte
+# van de Q inclusief zijn staart.
+pen = BoundsPen(gs)
+gs['Q'].draw(pen)
+QX0, QY0, QX1, QY1 = pen.bounds
+VULLING = 0.72
+K = 824 * VULLING / max(QX1 - QX0, QY1 - QY0)
+TX = 512 - (QX0 + QX1) / 2 * K
+TY = 512 + (QY0 + QY1) / 2 * K
+pen = SVGPathPen(gs, getal)
+gs['Q'].draw(TransformPen(pen, (K, 0, 0, -K, TX, TY)))
+Q = pen.getCommands()
 
 
-def teken(q, m, punt, ids='t'):
-    """Het teken in icoon-coördinaten (1024-raster). q, m en punt zijn kleuren."""
-    dx, dy = VERSCHUIF
-    cx, cy, r = PUNT
-    return f'''<g transform="translate({dx} {dy})">
-    <clipPath id="{ids}l"><rect x="0" y="0" width="{SPLITS}" height="1024"/></clipPath>
-    <clipPath id="{ids}r"><rect x="{SPLITS}" y="0" width="{1024 - SPLITS}" height="1024"/></clipPath>
-    <path clip-path="url(#{ids}r)" fill="{m}" d="{QM}"/>
-    <path clip-path="url(#{ids}l)" fill="{q}" d="{QM}"/>
-    <circle cx="{cx}" cy="{cy}" r="{r}" fill="{punt}"/>
-  </g>'''
+def teken(kleur):
+    """Het teken in icoon-coördinaten (1024-raster)."""
+    return f'<path fill="{kleur}" d="{Q}"/>'
+
+
+# Het teken alleen, met wat lucht: de omtrek van de Q in icoon-coördinaten.
+LUCHT = 24
+TEKEN_VAK = (f'{TX + QX0 * K - LUCHT:.1f} {TY - QY1 * K - LUCHT:.1f} '
+             f'{(QX1 - QX0) * K + 2 * LUCHT:.1f} {(QY1 - QY0) * K + 2 * LUCHT:.1f}')
 
 
 def squircle(x, y, w, h, r, s=0.6):
@@ -92,31 +98,21 @@ def squircle(x, y, w, h, r, s=0.6):
 
 
 VORM = squircle(100, 100, 824, 824, 185.4)  # het macOS-raster: 824 px vlak in een canvas van 1024
-TEKEN_VAK = '190 280 650 470'  # het teken alleen, met wat lucht
 
 
 def svg(viewbox, body):
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{viewbox}">\n  {body}\n</svg>\n'
 
 
-icoon = svg('0 0 1024 1024', f'<path fill="{NACHT}" d="{VORM}"/>\n  {teken(TEKEN_KLEUR, TEKEN_KLEUR, TEKEN_KLEUR)}')
+icoon = svg('0 0 1024 1024', f'<path fill="{NACHT}" d="{VORM}"/>\n  {teken(AMBER)}')
 icoon_vlak = icoon.replace('viewBox="0 0 1024 1024"', 'viewBox="100 100 824 824"')  # zonder marge: favicon, lockup
-icoon_vierkant = svg('100 100 824 824', f'<rect x="100" y="100" width="824" height="824" fill="{NACHT}"/>\n  {teken(TEKEN_KLEUR, TEKEN_KLEUR, TEKEN_KLEUR)}')
+icoon_vierkant = svg('100 100 824 824', f'<rect x="100" y="100" width="824" height="824" fill="{NACHT}"/>\n  {teken(AMBER)}')
 
 # --- Het woordmerk ---------------------------------------------------------------------------------------------
 
-font = TTFont(os.path.join(HIER, 'BricolageGrotesque.woff2'))
-font.flavor = None
-tmp = tempfile.mkdtemp()
-ttf = os.path.join(tmp, 'BricolageGrotesque.ttf')
-font.save(ttf)  # standaardstand van het variabele font: wght 800, wdth 100, opsz 96
-gs = font.getGlyphSet()
-upm = font['head'].unitsPerEm
-XH = font['OS/2'].sxHeight
-
 
 def vorm(naam, x, basislijn, k):
-    pen = SVGPathPen(gs, lambda v: f'{v:.1f}'.rstrip('0').rstrip('.'))
+    pen = SVGPathPen(gs, getal)
     gs[naam].draw(TransformPen(pen, (k, 0, 0, -k, x, basislijn)))
     return pen.getCommands()
 
@@ -127,24 +123,24 @@ def grenzen(naam, x, basislijn, k):
     return pen.bounds
 
 
-def woordmerk(kleur_quiz, kleur_meister, punt_quiz, punt_meister, maat=200, spatie=-0.035):
-    """quizmeister met kerning (HarfBuzz) en -0,035 em letterafstand; de puntjes op de i wisselen van kleur."""
-    tekst = 'quizmeister'
+def woordmerk(kleur_quiz, kleur_note, maat=200, spatie=-0.02):
+    """QuizNote met kerning (HarfBuzz) en -0,02 em letterafstand: Quiz en Note in twee kleuren, het puntje op de i in
+    de kleur van Note."""
+    tekst = 'QuizNote'
     uit = subprocess.run(['hb-shape', '--output-format=json', ttf, tekst], capture_output=True, text=True, check=True).stdout
     glyphs = json.loads(uit)
     k = maat / upm
     x, b = 0.0, 0.0
-    delen = {'quiz': [], 'meister': [], 'punt_quiz': [], 'punt_meister': []}
+    delen = {'quiz': [], 'note': [], 'punt': []}
     vakken = []
     for i, g in enumerate(glyphs):
         naam = g['g']
         gx = x + g.get('dx', 0) * k
-        groep = 'quiz' if g['cl'] < 4 else 'meister'
         lichaam = 'dotlessi' if naam == 'i' else naam
-        delen[groep].append(vorm(lichaam, gx, b, k))
+        delen['quiz' if g['cl'] < 4 else 'note'].append(vorm(lichaam, gx, b, k))
         vakken.append(grenzen(naam, gx, b, k))
         if naam == 'i':
-            delen['punt_' + groep].append(vorm('i', gx, b, k))
+            delen['punt'].append(vorm('i', gx, b, k))
         x += g['ax'] * k + (spatie * maat if i < len(glyphs) - 1 else 0)
     x0 = min(v[0] for v in vakken); y0 = min(v[1] for v in vakken)
     x1 = max(v[2] for v in vakken); y1 = max(v[3] for v in vakken)
@@ -152,14 +148,13 @@ def woordmerk(kleur_quiz, kleur_meister, punt_quiz, punt_meister, maat=200, spat
     vb = f'{x0:.1f} {y0:.1f} {x1 - x0:.1f} {y1 - y0:.1f}'
     body = (f'<defs><clipPath id="punt"><rect x="{x0 - 10:.1f}" y="{y0 - 10:.1f}" width="{x1 - x0 + 20:.1f}" height="{boven - y0 + 10:.1f}"/></clipPath></defs>\n'
             f'  <path fill="{kleur_quiz}" d="{" ".join(delen["quiz"])}"/>\n'
-            f'  <path fill="{kleur_meister}" d="{" ".join(delen["meister"])}"/>\n'
-            f'  <g clip-path="url(#punt)"><path fill="{punt_quiz}" d="{" ".join(delen["punt_quiz"])}"/>'
-            f'<path fill="{punt_meister}" d="{" ".join(delen["punt_meister"])}"/></g>')
+            f'  <path fill="{kleur_note}" d="{" ".join(delen["note"])}"/>\n'
+            f'  <g clip-path="url(#punt)"><path fill="{kleur_note}" d="{" ".join(delen["punt"])}"/></g>')
     return svg(vb, body), (x0, y0, x1, y1), b, k
 
 
-woord_donker, wvak, _, wk = woordmerk(CREME, AMBER, AMBER, CREME)
-woord_licht, _, _, _ = woordmerk(NACHT, AMBER_OP_LICHT, AMBER_OP_LICHT, NACHT)
+woord_donker, wvak, _, wk = woordmerk(CREME, AMBER)
+woord_licht, _, _, _ = woordmerk(NACHT, AMBER_OP_LICHT)
 
 
 def lockup(woord, hoogte=300, tussen=72, rand=12):
@@ -180,20 +175,21 @@ def lockup(woord, hoogte=300, tussen=72, rand=12):
 
 def schrijf(pad, inhoud):
     pad = os.path.join(UIT, pad)
+    os.makedirs(os.path.dirname(pad), exist_ok=True)
     with open(pad, 'w') as f:
         f.write(inhoud)
     return pad
 
 
-schrijf('icoon/quizmeister-icoon.svg', icoon)
-schrijf('icoon/quizmeister-icoon-vlak.svg', icoon_vlak)
-schrijf('logo/quizmeister-teken.svg', svg(TEKEN_VAK, teken(TEKEN_KLEUR, TEKEN_KLEUR, TEKEN_KLEUR)))
-schrijf('logo/quizmeister-teken-zwart.svg', svg(TEKEN_VAK, teken('#000', '#000', '#000')))
-schrijf('logo/quizmeister-teken-wit.svg', svg(TEKEN_VAK, teken('#fff', '#fff', '#fff')))
-schrijf('logo/quizmeister-woordmerk-donker.svg', woord_donker)
-schrijf('logo/quizmeister-woordmerk-licht.svg', woord_licht)
-schrijf('logo/quizmeister-lockup-donker.svg', lockup(woord_donker))
-schrijf('logo/quizmeister-lockup-licht.svg', lockup(woord_licht))
+schrijf('icoon/quiznote-icoon.svg', icoon)
+schrijf('icoon/quiznote-icoon-vlak.svg', icoon_vlak)
+schrijf('logo/quiznote-teken.svg', svg(TEKEN_VAK, teken(AMBER)))
+schrijf('logo/quiznote-teken-zwart.svg', svg(TEKEN_VAK, teken('#000')))
+schrijf('logo/quiznote-teken-wit.svg', svg(TEKEN_VAK, teken('#fff')))
+schrijf('logo/quiznote-woordmerk-donker.svg', woord_donker)
+schrijf('logo/quiznote-woordmerk-licht.svg', woord_licht)
+schrijf('logo/quiznote-lockup-donker.svg', lockup(woord_donker))
+schrijf('logo/quiznote-lockup-licht.svg', lockup(woord_licht))
 schrijf('site/favicon.svg', icoon_vlak)
 
 
@@ -208,16 +204,17 @@ i = lambda p: os.path.join(UIT, p)
 # App: icns uit een iconset (16 t/m 1024, met @2x), plus icon.png en een ico voor de volledigheid.
 iconset = os.path.join(tmp, 'icon.iconset')
 os.makedirs(iconset)
+os.makedirs(i('app'), exist_ok=True)
 for maat in (16, 32, 128, 256, 512):
-    png(i('icoon/quizmeister-icoon.svg'), os.path.join(iconset, f'icon_{maat}x{maat}.png'), maat)
-    png(i('icoon/quizmeister-icoon.svg'), os.path.join(iconset, f'icon_{maat}x{maat}@2x.png'), maat * 2)
+    png(i('icoon/quiznote-icoon.svg'), os.path.join(iconset, f'icon_{maat}x{maat}.png'), maat)
+    png(i('icoon/quiznote-icoon.svg'), os.path.join(iconset, f'icon_{maat}x{maat}@2x.png'), maat * 2)
 subprocess.run(['iconutil', '-c', 'icns', iconset, '-o', i('app/icon.icns')], check=True)
-png(i('icoon/quizmeister-icoon.svg'), i('app/icon.png'), 1024)
-png(i('icoon/quizmeister-icoon.svg'), i('icoon/quizmeister-icoon-1024.png'), 1024)
+png(i('icoon/quiznote-icoon.svg'), i('app/icon.png'), 1024)
+png(i('icoon/quiznote-icoon.svg'), i('icoon/quiznote-icoon-1024.png'), 1024)
 ico_delen = []
 for maat in (16, 24, 32, 48, 64, 128, 256):
     doel = os.path.join(tmp, f'ico-{maat}.png')
-    png(i('icoon/quizmeister-icoon-vlak.svg'), doel, maat)
+    png(i('icoon/quiznote-icoon-vlak.svg'), doel, maat)
     ico_delen.append(doel)
 subprocess.run(['magick', *ico_delen, i('app/icon.ico')], check=True)
 # Site: favicons, Apple-touch (iOS rondt zelf af, dus vierkant) en een afbeelding voor gedeelde links.
@@ -230,11 +227,19 @@ png(apple, i('site/apple-touch-icon.png'), 180)
 og = os.path.join(tmp, 'og.svg')
 lock = re.sub(r'^<svg[^>]*viewBox="([^"]+)"[^>]*>', '', lockup(woord_donker).strip())
 vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', lockup(woord_donker)).group(1).split()]
-w = 980
+w = 900
 h = w * vb[3] / vb[2]
 open(og, 'w').write(svg('0 0 1200 630', f'<rect width="1200" height="630" fill="#1a2131"/>\n  '
                                          f'<svg x="{(1200 - w) / 2:.1f}" y="{(630 - h) / 2:.1f}" width="{w}" height="{h:.1f}" '
                                          f'viewBox="{" ".join(f"{v:.1f}" for v in vb)}">{lock}'))
 png(og, i('site/og-image.png'), 1200)
 shutil.rmtree(tmp)
+
+# De site gebruikt kopieën in public/: de favicons en de afbeelding voor gedeelde links in de root, en het icoon, de
+# lockup en het woordmerk in public/brand.
+for naam in ('favicon.svg', 'favicon-16.png', 'favicon-32.png', 'apple-touch-icon.png', 'og-image.png'):
+    shutil.copyfile(i(f'site/{naam}'), os.path.join(PUBLIC, naam))
+os.makedirs(os.path.join(PUBLIC, 'brand'), exist_ok=True)
+for pad in ('icoon/quiznote-icoon-vlak.svg', 'logo/quiznote-lockup-donker.svg', 'logo/quiznote-woordmerk-donker.svg'):
+    shutil.copyfile(i(pad), os.path.join(PUBLIC, 'brand', os.path.basename(pad)))
 print('klaar:', UIT)
