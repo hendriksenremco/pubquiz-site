@@ -8,6 +8,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "deploy:site": "nuxt generate && firebase deploy --only hosting",
     "postinstall": "nuxt prepare",
     "brand": "cd brand/quiznote/bron && python3 -P maak.py",
     "typecheck": "nuxt typecheck"
