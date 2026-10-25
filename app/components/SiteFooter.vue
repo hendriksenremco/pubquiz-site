@@ -6,9 +6,9 @@ const c = useSiteContent()
   <footer class="site-footer">
     <div class="wrap row">
       <img
-        src="/brand/quizmeister-lockup-donker.svg"
-        alt="Quizmeister"
-        width="1377"
+        src="/brand/quiznote-lockup-donker.svg"
+        alt="QuizNote"
+        width="1175"
         height="324"
         loading="lazy"
       />

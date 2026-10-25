@@ -162,7 +162,7 @@ const roomIcons = [
         <div class="download-main">
           <img
             class="download-icon"
-            src="/brand/quizmeister-icoon-vlak.svg"
+            src="/brand/quiznote-icoon-vlak.svg"
             alt=""
             width="96"
             height="96"

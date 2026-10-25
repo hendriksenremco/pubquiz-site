@@ -1,10 +1,10 @@
-# Quizmeister-site
+# QuizNote-site
 
-Promotiesite voor **Quizmeister**, een macOS-app van Remco Hendriksen om een pubquiz in elkaar te klikken en live te draaien. Deze map is alleen voor de site; de app zelf staat in `../pubquiz` (GitHub: `hendriksenremco/pubquiz`).
+Promotiesite voor **QuizNote**, een macOS-app van Remco Hendriksen om een pubquiz in elkaar te klikken en live te draaien. Deze map is alleen voor de site; de app zelf staat in `../pubquiz` (GitHub: `hendriksenremco/pubquiz`).
 
-**Naam:** de app heet Quizmeister. "Pubquiz" was de werknaam: die staat nog in de repo en de code, en op een paar plekken in de app zelf (titelbalk, dashboard, de rondleiding), dus ook in screenshots. Op de site heet de app altijd Quizmeister; "pubquiz" is gewoon het woord voor de quiz zelf ("maak je pubquiz met Quizmeister").
+**Naam:** de app heet QuizNote, met een hoofdletter N (sinds 25 oktober 2026). Daarvoor heette hij even Quizmeister; die naam viel af omdat quizmeister.nl een Nederlands pubquizbedrijf is. "Pubquiz" was de werknaam: die staat nog in de repo en de code. Op de site heet de app altijd QuizNote; "pubquiz" is gewoon het woord voor de quiz zelf ("maak je pubquiz met QuizNote"). Gebruik "Keynote" niet in teksten op de site: dat is een merk van Apple.
 
-Stand op 25 oktober 2026: de site is opgezet met Nuxt (zie Techniek), met een Nederlandse en een Engelse versie. De repo staat op GitHub: `git@github.com:hendriksenremco/pubquiz-site.git`, met de branches `master` en `develop`. Hosting en domein zijn nog niet gekozen; de wens is `quizmeister.app` (was vrij op 24 oktober, nog niet geregistreerd). Waar de download komt te staan is ook nog open.
+Stand op 25 oktober 2026: de site is opgezet met Nuxt (zie Techniek), met een Nederlandse en een Engelse versie. De repo staat op GitHub: `git@github.com:hendriksenremco/pubquiz-site.git`, met de branches `master` en `develop`. Het domein wordt `quiznote.app` (en `quiznote.nl`). Gekozen maar nog niet ingericht: Firebase Hosting voor de site, PostHog (EU) voor analytics van site en app, Google Workspace voor mail. Waar de download komt te staan is nog open (het advies is GitHub Releases).
 
 ## Werkafspraken
 
@@ -63,10 +63,10 @@ Dit is wat er nu echt in de app zit. De namen tussen aanhalingstekens zijn de wo
 - Slaat automatisch op; ongedaan maken met ⌘Z.
 
 **Quiz maken met je AI** (MCP, sinds 25 oktober)
-- Je vraagt je eigen AI-assistent bijvoorbeeld: "Maak een pubquiz in Quizmeister met zes rondes over Italië." De quiz verschijnt dan in de app, met vragen, antwoorden en een antwoordenronde. De AI kan quizzen ook opzoeken en rondes aanpassen ("maak ronde 3 moeilijker").
+- Je vraagt je eigen AI-assistent bijvoorbeeld: "Maak een pubquiz in QuizNote met zes rondes over Italië." De quiz verschijnt dan in de app, met vragen, antwoorden en een antwoordenronde. De AI kan quizzen ook opzoeken en rondes aanpassen ("maak ronde 3 moeilijker").
 - Werkt via MCP. Claude Desktop koppel je met één knop ("Nieuwe quiz → Met je AI…"); voor andere AI-apps die MCP ondersteunen staan de instellingen erbij om te kopiëren. ChatGPT ondersteunt voor zover bekend alleen MCP-servers op internet, dus noem ChatGPT niet als werkend.
 - Eerlijk zijn: liedjes en foto's maakt de AI niet zelf, die moeten als bestanden op de Mac staan. De AI doet het denkwerk (vragen, antwoorden, opbouw), de quizmaster houdt de controle. Tijdens een show past de AI niets aan.
-- De gebruiker gebruikt zijn eigen AI-abonnement; Quizmeister stuurt zelf niets naar internet.
+- De gebruiker gebruikt zijn eigen AI-abonnement; QuizNote stuurt zelf niets naar internet.
 - Screenshots: `ai-music-round.png` (de quiz die de AI maakte) staat als `public/screens/ai-quiz.webp` op de site. Gebruik `ai-dialog.png` niet: daarin staan in de MCP-instellingen de lokale paden van Remco's Mac.
 
 ### Niet beloven
@@ -80,7 +80,7 @@ Wees voorzichtig met AirPlay en met videogeluid via de speakers van een tv: alle
 
 ### Download en installatie
 
-- Versie 0.1.0. Er is een build voor Macs met Apple Silicon (`pnpm build:mac` in `../pubquiz` maakt nu nog `dist/pubquiz-0.1.0.dmg`; die naam verandert mee als de app hernoemd wordt); een build voor Intel-Macs kan ook.
+- Versie 0.1.0. Er is een build voor Macs met Apple Silicon (`pnpm build:mac` in `../pubquiz` maakt `dist/QuizNote-0.1.0.dmg`); een build voor Intel-Macs kan ook.
 - Bij de eerste start staat er een **rondleiding** op het dashboard: een korte quiz die laat zien wat de app kan. Goed om op de site te noemen ("start de app en volg de rondleiding").
 - De app is (nog) niet ondertekend door Apple. Bij de eerste keer openen blokkeert macOS hem; de gebruiker gaat dan naar Systeeminstellingen › Privacy en beveiliging en klikt op "Open toch". Zet dat duidelijk bij de download.
 - Waar de download komt te staan (GitHub Releases, eigen hosting) is nog niet besloten. Of de repo openbaar is, is ook niet bekend; vraag het.
@@ -103,7 +103,7 @@ De site hoort bij de app. Neem de beeldtaal over in plaats van iets nieuws te ve
 
 - **Letters:** koppen in Bricolage Grotesque (variabel, ook via Google Fonts), lopende tekst in de systeemletter (SF Pro). Grote koppen zijn vet (700–800) met iets krappere letterafstand.
 - **Vormen:** afgeronde hoeken (9, 14 en 20 px), knoppen en "chips" als pillen.
-- **Logo en icoon:** staan in `brand/quizmeister/`. Het icoon is een qm-monogram in één kleur, amber op nachtblauw: de laatste boog van de m krult om tot een vraagteken. Het woordmerk is "quizmeister" in Bricolage Grotesque, "quiz" in crème en "meister" in amber; het puntje op de i wisselt van kleur. `brand/quizmeister/bron/maak.py` (of `pnpm brand`) maakt alle bestanden opnieuw: icoon, woordmerk, lockups, de app-iconen en de favicons en deelafbeelding voor de site. Remco wil vlakke vormen zonder gloed, verloop of schaduw in het logo, en het icoon in één kleur. Sinds 25 oktober zit het icoon ook in de app (`../pubquiz/build/`).
+- **Logo en icoon:** staan in `brand/quiznote/`. Het icoon is de Q uit het woordmerk, in amber op nachtblauw. Het woordmerk is "QuizNote" in Bricolage Grotesque, "Quiz" in crème en "Note" in amber, met het puntje op de i in amber. `brand/quiznote/bron/maak.py` (of `pnpm brand`) maakt alle bestanden opnieuw (icoon, woordmerk, lockups, de app-iconen en de favicons en deelafbeelding) en zet de kopieën voor de site in `public/`. De schetsrondes staan in `brand/concepten/quiznote/`. Remco wil vlakke vormen zonder gloed, verloop of schaduw in het logo, en het icoon in één kleur. Het icoon zit ook in de app (`../pubquiz/build/` en `../pubquiz/resources/`).
 
 ## Screenshots
 
@@ -117,7 +117,7 @@ De site hoort bij de app. Neem de beeldtaal over in plaats van iets nieuws te ve
 - **Nuxt 4** met `@nuxtjs/i18n`, gebouwd als statische site: `pnpm generate` zet alles in `.output/public`, klaar voor elke host. Verder: `pnpm dev`, `pnpm typecheck` (vue-tsc; TypeScript staat op 5.9, want vue-tsc kan nog niet met 7).
 - **Talen:** Nederlands op `/`, Engels op `/en` (`prefix_except_default`). De teksten staan per taal in `app/content/site.ts`, niet in losse i18n-bestanden. De app zelf is alleen Nederlands: de Engelse teksten noemen daarom geen knoppen bij naam, en de Engelse FAQ zegt dat de app Nederlands is.
 - **Opbouw:** één pagina (`app/pages/index.vue`) met de secties, `SiteHeader` en `SiteFooter` in `app/layouts/default.vue`, screenshots via `AppShot`. Kleuren en letters staan als tokens in `app/assets/css/main.css`, overgenomen uit de app. De letter komt uit `@fontsource-variable/bricolage-grotesque` (zelf gehost, geen Google).
-- **Instellingen** (`nuxt.config.ts`, ook via env): `NUXT_PUBLIC_SITE_URL` (standaard `https://quizmeister.app`, voor canonical, hreflang en de deelafbeelding) en `NUXT_PUBLIC_DOWNLOAD_URL`. Is de download-URL leeg, dan toont de site een melding in plaats van de downloadknop.
+- **Instellingen** (`nuxt.config.ts`, ook via env): `NUXT_PUBLIC_SITE_URL` (standaard `https://quiznote.app`, voor canonical, hreflang en de deelafbeelding) en `NUXT_PUBLIC_DOWNLOAD_URL`. Is de download-URL leeg, dan toont de site een melding in plaats van de downloadknop.
 - **Screenshots** staan als WebP in `public/screens/` (1600 px breed, beamerbeelden 1200 px), omgezet uit `../pubquiz/test-results/tour-*.png` met `magick … -resize 1600x -quality 82`.
 - **Bekijken zonder vensters:** bouw met `pnpm generate`, serveer `.output/public` en maak screenshots met headless Chromium (Playwright). Scroll eerst door de pagina, anders laden de afbeeldingen met `loading="lazy"` niet.
 

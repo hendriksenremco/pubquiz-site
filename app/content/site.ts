@@ -43,8 +43,8 @@ export interface SiteContent {
 export const site: Record<Locale, SiteContent> = {
   nl: {
     meta: {
-      title: 'Quizmeister · de hele quizavond vanaf één Mac',
-      description: "Quizmeister is een Mac-app voor quizmasters: beamer, tv's en speakers vanuit één laptop."
+      title: 'QuizNote · de hele quizavond vanaf één Mac',
+      description: "QuizNote is een Mac-app voor quizmasters: beamer, tv's en speakers vanuit één laptop."
     },
     skip: 'Naar de inhoud',
     nav: {
@@ -63,7 +63,7 @@ export const site: Record<Locale, SiteContent> = {
       facts: ['Voor macOS', 'Werkt offline', 'Eén map per quiz'],
       laptop: {
         src: '/screens/muziek.webp',
-        alt: 'Quizmeister tijdens de show: de muziekronde loopt, met previews van de beamer en de tv, de fragmenten en de mixer.'
+        alt: 'QuizNote tijdens de show: de muziekronde loopt, met previews van de beamer en de tv, de fragmenten en de mixer.'
       },
       beamer: {
         src: '/screens/muziek-beamer.webp',
@@ -83,10 +83,10 @@ export const site: Record<Locale, SiteContent> = {
       eyebrow: 'Met je AI',
       title: 'Laat je AI de quiz maken',
       prompt: 'Maak een pubquiz over Italië, met een muziekronde en een vlaggenronde.',
-      text: "De quiz staat daarna in Quizmeister, met vragen en antwoorden. Werkt met Claude Desktop en andere AI-apps met MCP. Liedjes en foto's komen uit je eigen mappen.",
+      text: "De quiz staat daarna in QuizNote, met vragen en antwoorden. Werkt met Claude Desktop en andere AI-apps met MCP. Liedjes en foto's komen uit je eigen mappen.",
       shot: {
         src: '/screens/ai-quiz.webp',
-        alt: 'Een quiz over Italië die een AI heeft gemaakt, in de editor van Quizmeister: vijf rondes, waaronder muziek en vlaggen.'
+        alt: 'Een quiz over Italië die een AI heeft gemaakt, in de editor van QuizNote: vijf rondes, waaronder muziek en vlaggen.'
       }
     },
     rounds: {
@@ -165,25 +165,25 @@ export const site: Record<Locale, SiteContent> = {
     },
     download: {
       eyebrow: 'Download',
-      title: 'Quizmeister voor je Mac',
+      title: 'QuizNote voor je Mac',
       lead: 'Versie 0.1.0, voor Macs met Apple Silicon.',
       button: 'Download voor Mac',
       pending: 'De downloadlink volgt.',
       installTitle: 'De eerste keer openen',
       install: [
-        "Sleep Quizmeister naar Programma's.",
+        "Sleep QuizNote naar Programma's.",
         'macOS blokkeert de app de eerste keer: hij is nog niet door Apple ondertekend.',
         'Klik in Systeeminstellingen › Privacy en beveiliging op "Open toch".',
         'Begin met de rondleiding op het dashboard.'
       ]
     },
-    footer: { madeBy: 'Quizmeister is gemaakt door Remco Hendriksen.' }
+    footer: { madeBy: 'QuizNote is gemaakt door Remco Hendriksen.' }
   },
 
   en: {
     meta: {
-      title: 'Quizmeister · run the whole quiz night from one Mac',
-      description: 'Quizmeister is a Mac app for quizmasters: projector, TVs and speakers from one laptop.'
+      title: 'QuizNote · run the whole quiz night from one Mac',
+      description: 'QuizNote is a Mac app for quizmasters: projector, TVs and speakers from one laptop.'
     },
     skip: 'Skip to content',
     nav: {
@@ -202,7 +202,7 @@ export const site: Record<Locale, SiteContent> = {
       facts: ['For macOS', 'Works offline', 'One folder per quiz'],
       laptop: {
         src: '/screens/muziek.webp',
-        alt: 'Quizmeister during the show: the music round is on, with previews of the projector and the TV, the clips and the mixer.'
+        alt: 'QuizNote during the show: the music round is on, with previews of the projector and the TV, the clips and the mixer.'
       },
       beamer: {
         src: '/screens/muziek-beamer.webp',
@@ -222,10 +222,10 @@ export const site: Record<Locale, SiteContent> = {
       eyebrow: 'With your AI',
       title: 'Let your AI make the quiz',
       prompt: 'Make a pub quiz about Italy, with a music round and a flags round.',
-      text: 'The quiz then appears in Quizmeister, with questions and answers. Works with Claude Desktop and other AI apps that support MCP. Songs and photos come from your own folders.',
+      text: 'The quiz then appears in QuizNote, with questions and answers. Works with Claude Desktop and other AI apps that support MCP. Songs and photos come from your own folders.',
       shot: {
         src: '/screens/ai-quiz.webp',
-        alt: 'A quiz about Italy made by an AI, in the Quizmeister editor: five rounds, including music and flags.'
+        alt: 'A quiz about Italy made by an AI, in the QuizNote editor: five rounds, including music and flags.'
       }
     },
     rounds: {
@@ -304,18 +304,18 @@ export const site: Record<Locale, SiteContent> = {
     },
     download: {
       eyebrow: 'Download',
-      title: 'Quizmeister for your Mac',
+      title: 'QuizNote for your Mac',
       lead: 'Version 0.1.0, for Macs with Apple Silicon. The app is in Dutch.',
       button: 'Download for Mac',
       pending: 'The download link is coming.',
       installTitle: 'Opening it the first time',
       install: [
-        'Drag Quizmeister to Applications.',
+        'Drag QuizNote to Applications.',
         "macOS blocks it the first time: it isn't signed by Apple yet.",
         'In System Settings › Privacy & Security, click "Open Anyway".',
         'Start with the tour on the dashboard.'
       ]
     },
-    footer: { madeBy: 'Quizmeister is made by Remco Hendriksen.' }
+    footer: { madeBy: 'QuizNote is made by Remco Hendriksen.' }
   }
 }

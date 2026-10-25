@@ -17,13 +17,13 @@ const links = computed(() => [
     <div class="wrap bar">
       <NuxtLink :to="localePath('/')" class="brand">
         <img
-          src="/brand/quizmeister-lockup-donker.svg"
-          alt="Quizmeister"
-          width="1377"
+          src="/brand/quiznote-lockup-donker.svg"
+          alt="QuizNote"
+          width="1175"
           height="324"
         />
       </NuxtLink>
-      <nav class="links" aria-label="Quizmeister">
+      <nav class="links" aria-label="QuizNote">
         <a v-for="l in links" :key="l.href" :href="l.href">{{ l.label }}</a>
       </nav>
       <div class="actions">

@@ -1,5 +1,5 @@
 // De site wordt statisch gebouwd (`pnpm generate`), zodat hij op elke host kan; die keuze komt later.
-const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://quizmeister.app'
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://quiznote.app'
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-10-01',
