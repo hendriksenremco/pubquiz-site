@@ -26,7 +26,11 @@ export default defineNuxtConfig({
     public: {
       siteUrl,
       // Waar de download komt te staan is nog niet besloten. Leeg = de site toont een melding in plaats van de knop.
-      downloadUrl: ''
+      downloadUrl: '',
+      // PostHog (EU). De sleutel is niet geheim: hij komt toch in de JavaScript van de site.
+      // Leeg = geen analytics.
+      posthogKey: '',
+      posthogHost: 'https://eu.i.posthog.com'
     }
   },
 
