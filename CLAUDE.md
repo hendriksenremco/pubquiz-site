@@ -9,7 +9,9 @@ Stand op 31 oktober 2026:
 - **Site:** gemaakt met Nuxt (zie Techniek), met een Nederlandse en een Engelse versie.
 - **Repo:** op GitHub, `git@github.com:hendriksenremco/pubquiz-site.git`, met de branches `master` en `develop`.
 - **Hosting:** Firebase Hosting, project `quiznote-4c3e8`. De site staat live op https://quiznote.app.
-  - Deployen gaat met `pnpm deploy:site`. Dat doet Remco zelf, of hij geeft er eerst toestemming voor.
+  - Deployen gaat automatisch: elke push naar `master` zet de site live (`.github/workflows/deploy-site.yml`).
+  - Claude mag op `develop` werken en pushen, en `develop` naar `master` mergen als er iets live moet.
+  - `pnpm deploy:site` vanaf de Mac kan nog steeds, als noodweg.
 - **quiznote.nl:** staat nog op de parkeerpagina van TransIP.
 - **Mail:** Google Workspace, ingericht voor quiznote.app. DMARC moet nog strenger; zie `HERINNERINGEN.md`.
 - **Nog niet ingericht:** PostHog (EU), voor analytics van de site en de app.
@@ -20,7 +22,7 @@ Stand op 31 oktober 2026:
 
 - **Taal:** Remco schrijft meestal Nederlands; antwoord in zijn taal. Schrijf de site-teksten in het Nederlands, met "je", korte zinnen, gewone werkwoorden en hoofdletters alleen aan het begin van een zin.
 - **Kort en bondig:** de site laat zien wat de app is, met zo min mogelijk tekst: per onderdeel één korte zin, en laat de screenshots het werk doen. Uitgebreide uitleg komt later in een handleiding (25 oktober: "het mag qua teksten een stuk minder en bondiger").
-- **Commit:** na elke afgeronde wijziging een eigen commit, met een Engelse commit-message. Werk op `develop`; `master` is de standaardbranch. Remco gebruikt altijd `master` en `develop`, nooit `main`. Push naar `origin` (GitHub) alleen als hij erom vraagt.
+- **Commit:** na elke afgeronde wijziging een eigen commit, met een Engelse commit-message. Werk op `develop`; `master` is de standaardbranch. Remco gebruikt altijd `master` en `develop`, nooit `main`. Pushen naar `develop` mag altijd; zie Hosting voor `master`.
 - **Zichtbaar:** geen acties achter een ⋯-menu of knoppen die pas bij hover verschijnen. Dat geldt in de app en ook hier: navigatie en de downloadknop staan gewoon in beeld.
 - **App-repo alleen lezen:** `../pubquiz` is je bron voor feiten, teksten en screenshots. Wijzig daar niets zonder dat hij erom vraagt; app-werk hoort in een sessie in die map.
 - **App niet zichtbaar starten:** start `pnpm dev` of `pnpm start` van de app niet om iets te bekijken. Remco heeft de app vaak zelf open, en opspringende vensters storen hem. Screenshots maak je headless (zie hieronder).
