@@ -14,6 +14,26 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
+// Gestructureerde gegevens voor Google: wat QuizNote is. Geen prijs: die is nog niet besloten.
+useHead(() => ({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'QuizNote',
+        applicationCategory: 'EntertainmentApplication',
+        operatingSystem: 'macOS',
+        description: c.value.meta.description,
+        url: config.public.siteUrl,
+        image: `${config.public.siteUrl}/og-image.png`,
+        author: { '@type': 'Person', name: 'Remco Hendriksen' }
+      })
+    }
+  ]
+}))
+
 // Eenvoudige lijn-iconen voor "Eén laptop, de hele zaal": scherm, speaker, laptop.
 const roomIcons = [
   'M4 5h16v11H4zM9 20h6M12 16v4',

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Met de hand bijgehouden: de site heeft twee pagina's. Komt er een pagina bij, zet hem er dan ook hier bij. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://quiznote.app/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/"/>
+  </url>
+  <url>
+    <loc>https://quiznote.app/en</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/"/>
+  </url>
+</urlset>
