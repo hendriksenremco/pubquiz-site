@@ -28,8 +28,8 @@ export default defineNuxtConfig({
       // Waar de download komt te staan is nog niet besloten. Leeg = de site toont een melding in plaats van de knop.
       downloadUrl: '',
       // PostHog (EU). De sleutel is niet geheim: hij komt toch in de JavaScript van de site.
-      // Leeg = geen analytics.
-      posthogKey: '',
+      // Leeg (NUXT_PUBLIC_POSTHOG_KEY='') = geen analytics.
+      posthogKey: 'phc_rGB9TQNdexJ5szAgvnfGbFJkH5CDxNWHA8H3JLoUrYfL',
       posthogHost: 'https://eu.i.posthog.com'
     }
   },
