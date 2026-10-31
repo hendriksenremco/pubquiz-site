@@ -18,7 +18,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
       {
         title: 'Wie we zijn',
         paragraphs: [
-          'QuizNote is gemaakt door Remco Hendriksen. Vragen over privacy stuur je naar support@quiznote.app.'
+          'QuizNote is gemaakt door Remco Hendriksen. Vragen over privacy stuur je naar remco@quiznote.app.'
         ]
       },
       {
@@ -48,7 +48,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
       {
         title: 'Je rechten',
         paragraphs: [
-          'Je mag vragen welke gegevens we van je hebben, en die laten verbeteren of verwijderen. Mail daarvoor naar support@quiznote.app.',
+          'Je mag vragen welke gegevens we van je hebben, en die laten verbeteren of verwijderen. Mail daarvoor naar remco@quiznote.app.',
           'Ben je het niet eens met hoe we met je gegevens omgaan, dan kun je een klacht indienen bij de Autoriteit Persoonsgegevens.'
         ]
       }
@@ -63,7 +63,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
       {
         title: 'Who we are',
         paragraphs: [
-          'QuizNote is made by Remco Hendriksen. Send questions about privacy to support@quiznote.app.'
+          'QuizNote is made by Remco Hendriksen. Send questions about privacy to remco@quiznote.app.'
         ]
       },
       {
@@ -93,7 +93,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
       {
         title: 'Your rights',
         paragraphs: [
-          'You can ask which data we hold about you, and have it corrected or deleted. Email support@quiznote.app.',
+          'You can ask which data we hold about you, and have it corrected or deleted. Email remco@quiznote.app.',
           'If you disagree with how we handle your data, you can complain to your data protection authority; in the Netherlands that is the Autoriteit Persoonsgegevens.'
         ]
       }
