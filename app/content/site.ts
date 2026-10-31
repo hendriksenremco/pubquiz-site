@@ -166,15 +166,13 @@ export const site: Record<Locale, SiteContent> = {
     download: {
       eyebrow: 'Download',
       title: 'QuizNote voor je Mac',
-      lead: 'Versie 0.1.0, voor Macs met Apple Silicon.',
+      lead: 'Versie 0.1.0, voor Macs met Apple Silicon en Intel.',
       button: 'Download voor Mac',
       pending: 'De downloadlink volgt.',
       installTitle: 'De eerste keer openen',
       install: [
         "Sleep QuizNote naar Programma's.",
-        'macOS blokkeert de app de eerste keer: hij is nog niet door Apple ondertekend.',
-        'Klik in Systeeminstellingen › Privacy en beveiliging op "Open toch".',
-        'Begin met de rondleiding op het dashboard.'
+        'Open de app en begin met de rondleiding op het dashboard.'
       ]
     },
     footer: { madeBy: 'QuizNote is gemaakt door Remco Hendriksen.', privacy: 'Privacy' }
@@ -305,15 +303,13 @@ export const site: Record<Locale, SiteContent> = {
     download: {
       eyebrow: 'Download',
       title: 'QuizNote for your Mac',
-      lead: 'Version 0.1.0, for Macs with Apple Silicon. The app is in Dutch.',
+      lead: 'Version 0.1.0, for Macs with Apple Silicon and Intel. The app is in Dutch.',
       button: 'Download for Mac',
       pending: 'The download link is coming.',
       installTitle: 'Opening it the first time',
       install: [
         'Drag QuizNote to Applications.',
-        "macOS blocks it the first time: it isn't signed by Apple yet.",
-        'In System Settings › Privacy & Security, click "Open Anyway".',
-        'Start with the tour on the dashboard.'
+        'Open the app and start with the tour on the dashboard.'
       ]
     },
     footer: { madeBy: 'QuizNote is made by Remco Hendriksen.', privacy: 'Privacy' }

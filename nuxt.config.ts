@@ -25,8 +25,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl,
-      // Waar de download komt te staan is nog niet besloten. Leeg = de site toont een melding in plaats van de knop.
-      downloadUrl: '',
+      // Altijd de nieuwste release op GitHub (gesigneerd en genotariseerd). Leeg = de site toont een melding in plaats van de knop.
+      downloadUrl: 'https://github.com/hendriksenremco/pubquiz/releases/latest/download/QuizNote.dmg',
       // PostHog (EU). De sleutel is niet geheim: hij komt toch in de JavaScript van de site.
       // Leeg (NUXT_PUBLIC_POSTHOG_KEY='') = geen analytics.
       posthogKey: 'phc_rGB9TQNdexJ5szAgvnfGbFJkH5CDxNWHA8H3JLoUrYfL',
