@@ -4,7 +4,17 @@ Promotiesite voor **QuizNote**, een macOS-app van Remco Hendriksen om een pubqui
 
 **Naam:** de app heet QuizNote, met een hoofdletter N (sinds 25 oktober 2026). Daarvoor heette hij even Quizmeister; die naam viel af omdat quizmeister.nl een Nederlands pubquizbedrijf is. "Pubquiz" was de werknaam: die staat nog in de repo en de code. Op de site heet de app altijd QuizNote; "pubquiz" is gewoon het woord voor de quiz zelf ("maak je pubquiz met QuizNote"). Gebruik "Keynote" niet in teksten op de site: dat is een merk van Apple.
 
-Stand op 25 oktober 2026: de site is opgezet met Nuxt (zie Techniek), met een Nederlandse en een Engelse versie. De repo staat op GitHub: `git@github.com:hendriksenremco/pubquiz-site.git`, met de branches `master` en `develop`. Het domein wordt `quiznote.app` (en `quiznote.nl`). Gekozen maar nog niet ingericht: Firebase Hosting voor de site, PostHog (EU) voor analytics van site en app, Google Workspace voor mail. Waar de download komt te staan is nog open (het advies is GitHub Releases).
+Stand op 31 oktober 2026:
+
+- **Site:** gemaakt met Nuxt (zie Techniek), met een Nederlandse en een Engelse versie.
+- **Repo:** op GitHub, `git@github.com:hendriksenremco/pubquiz-site.git`, met de branches `master` en `develop`.
+- **Hosting:** Firebase Hosting, project `quiznote-4c3e8`. De site staat live op https://quiznote.app.
+  - Deployen gaat met `pnpm deploy:site`. Dat doet Remco zelf, of hij geeft er eerst toestemming voor.
+- **quiznote.nl:** staat nog op de parkeerpagina van TransIP.
+- **Mail:** Google Workspace, ingericht voor quiznote.app. DMARC moet nog strenger; zie `HERINNERINGEN.md`.
+- **Nog niet ingericht:** PostHog (EU), voor analytics van de site en de app.
+- **Download:** waar die komt te staan is nog open. Het advies is GitHub Releases.
+- **Wat er nog moet gebeuren voor de release** staat in `../pubquiz/TODO.md`.
 
 ## Werkafspraken
 
@@ -47,14 +57,15 @@ Dit is wat er nu echt in de app zit. De namen tussen aanhalingstekens zijn de wo
 
 **Tijdens de show**
 - De laptop is het bedieningsscherm: previews van elk scherm, de rondes, de fragmenten, de mixer en notities.
-- Sneltoetsen, en een presenter-clicker werkt ook. ← → gaan door de slides, in een muziekronde door de fragmenten en in een antwoordenronde door de antwoorden. Verder: Enter = volgende ronde, E = einde ronde, 1–9 = fragment, spatie = stop fragment, A = reeks starten of pauzeren, B = beeld op zwart, M = geluid uit, L = loop pauzeren.
+- Sneltoetsen, en een presenter-clicker werkt ook. ← → gaan door de slides, in een muziekronde door de fragmenten en in een antwoordenronde door de antwoorden. Verder: Enter = volgende ronde, R = ronde opnieuw, E = einde ronde, 1–9 = fragment, spatie = stop fragment, A = reeks starten of pauzeren, B = beeld op zwart, M = geluid uit, L = loop pauzeren.
+- "Ronde opnieuw": de ronde vanaf het begin, met de fragmenten weer ongespeeld. Bijvoorbeeld om een muziekronde twee keer te laten horen.
 - Loopt de app vast of valt hij uit, dan kun je bij het opnieuw openen de show hervatten waar hij was.
-- "Show voorbereiden": schermen en speakers koppelen, een testtoon afspelen en vooraf zien of er bestanden ontbreken. De app onthoudt de koppeling voor de volgende keer.
+- "Show starten": schermen en speakers koppelen, een testtoon afspelen en vooraf zien of er bestanden ontbreken. De app onthoudt de koppeling voor de volgende keer.
 
 **Afdrukken** (pdf, daarna klaar om te printen)
 - "Antwoordformulier" voor de teams: tot vier rondes per A4, elke ronde in een eigen vak om los te knippen, één regel voor de teamnaam.
 - "Nakijkformulier": precies dezelfde opmaak met de antwoorden op de regels, om naast een ingevuld formulier te leggen.
-- "Vragenkaarten" voor de quizmaster: per ronde een kaart op ansichtkaartformaat met de vragen en antwoorden.
+- "Vragenkaarten" voor de quizmaster: kaarten op ansichtkaartformaat met de vragen en antwoorden, vier per liggende A4, met snijlijnen.
 
 **Voorbereiden**
 - Media importeren door te slepen, ordenen in mappen, video's en geluid vooraf beluisteren.
@@ -74,7 +85,14 @@ Dit is wat er nu echt in de app zit. De namen tussen aanhalingstekens zijn de wo
 Dit zit er (nog) niet in. Noem het niet op de site, ook niet als "binnenkort", tenzij Remco dat zegt:
 - Windows of Linux: alleen macOS.
 - YouTube of Spotify: staat gepland voor later, maar is niet gebouwd.
-- Scorebord of tussenstand, bediening vanaf de telefoon, teams die antwoorden via hun telefoon.
+- Scorebord of tussenstand, en teams die antwoorden via hun telefoon.
+
+Sinds 29 en 30 oktober zitten er twee plug-ins in de app. Ze staan standaard uit en de gebruiker zet ze aan bij Instellingen:
+
+- **Afstandsbediening:** de show bedienen met een telefoon of tablet via een QR-code.
+- **MagicHome-licht:** een kleur of effect op een ledstrip per ronde of slide.
+
+Beide zijn nog niet getest met echte telefoons of op een andere locatie. Vraag Remco of ze op de site mogen voordat je ze noemt.
 
 Wees voorzichtig met AirPlay en met videogeluid via de speakers van een tv: allebei gebouwd en getest met nep-apparaten, maar nog niet met echte hardware. Noem ze gerust, maar maak ze niet tot hoofdpunt zonder het eerst aan Remco te vragen.
 
@@ -125,4 +143,4 @@ De site hoort bij de app. Neem de beeldtaal over in plaats van iets nieuws te ve
 
 - `../pubquiz/README.md`: gebruik, ontwikkelen en de opbouw van de app. Hij loopt achter: de nieuwste functies hierboven (antwoordenrondes, afbeeldingenrondes, afdrukken, videogeluid) staan er nog niet in.
 - `../pubquiz/src/shared/quiz-schema.ts`: hoe een quiz in elkaar zit, als je wilt nagaan wat de app precies kan.
-- De laatste functies staan op de branch `answer-and-picture-rounds` en zijn nog niet in `master` samengevoegd.
+- `../pubquiz/CLAUDE.md`: hoe de app in elkaar zit en de werkafspraken daar.
