@@ -13,4 +13,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/"/>
   </url>
+  <url>
+    <loc>https://quiznote.app/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en/privacy"/>
+  </url>
+  <url>
+    <loc>https://quiznote.app/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en/privacy"/>
+  </url>
 </urlset>

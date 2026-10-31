@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const c = useSiteContent()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -13,6 +14,7 @@ const c = useSiteContent()
         loading="lazy"
       />
       <p>{{ c.footer.madeBy }}</p>
+      <NuxtLink class="privacy" :to="localePath('/privacy')">{{ c.footer.privacy }}</NuxtLink>
       <LangSwitch />
     </div>
   </footer>
@@ -30,6 +32,15 @@ const c = useSiteContent()
   flex-wrap: wrap;
   align-items: center;
   gap: 16px 28px;
+}
+
+.privacy {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.privacy:hover {
+  color: var(--text);
 }
 
 img {

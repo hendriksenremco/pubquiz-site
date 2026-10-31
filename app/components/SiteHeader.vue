@@ -24,11 +24,11 @@ const links = computed(() => [
         />
       </NuxtLink>
       <nav class="links" aria-label="QuizNote">
-        <a v-for="l in links" :key="l.href" :href="l.href">{{ l.label }}</a>
+        <a v-for="l in links" :key="l.href" :href="localePath('/') + l.href">{{ l.label }}</a>
       </nav>
       <div class="actions">
         <LangSwitch />
-        <a class="button primary" href="#download">
+        <a class="button primary" :href="localePath('/') + '#download'">
           <span class="long">{{ c.cta.download }}</span>
           <span class="short">{{ c.cta.downloadShort }}</span>
         </a>

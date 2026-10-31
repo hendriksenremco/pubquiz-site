@@ -37,7 +37,7 @@ export interface SiteContent {
     installTitle: string
     install: string[]
   }
-  footer: { madeBy: string }
+  footer: { madeBy: string; privacy: string }
 }
 
 export const site: Record<Locale, SiteContent> = {
@@ -177,7 +177,7 @@ export const site: Record<Locale, SiteContent> = {
         'Begin met de rondleiding op het dashboard.'
       ]
     },
-    footer: { madeBy: 'QuizNote is gemaakt door Remco Hendriksen.' }
+    footer: { madeBy: 'QuizNote is gemaakt door Remco Hendriksen.', privacy: 'Privacy' }
   },
 
   en: {
@@ -316,6 +316,6 @@ export const site: Record<Locale, SiteContent> = {
         'Start with the tour on the dashboard.'
       ]
     },
-    footer: { madeBy: 'QuizNote is made by Remco Hendriksen.' }
+    footer: { madeBy: 'QuizNote is made by Remco Hendriksen.', privacy: 'Privacy' }
   }
 }
