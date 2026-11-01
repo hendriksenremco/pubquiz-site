@@ -43,8 +43,8 @@ export interface SiteContent {
 export const site: Record<Locale, SiteContent> = {
   nl: {
     meta: {
-      title: 'QuizNote · de hele quizavond vanaf één Mac',
-      description: "QuizNote is een Mac-app voor quizmasters: beamer, tv's en speakers vanuit één laptop."
+      title: 'QuizNote · pubquiz maken en presenteren op je Mac',
+      description: "Maak je pubquiz met QuizNote en speel hem af vanaf één Mac: vragen, muziekfragmenten en antwoorden op beamer, tv's en speakers."
     },
     skip: 'Naar de inhoud',
     nav: {
@@ -180,8 +180,8 @@ export const site: Record<Locale, SiteContent> = {
 
   en: {
     meta: {
-      title: 'QuizNote · run the whole quiz night from one Mac',
-      description: 'QuizNote is a Mac app for quizmasters: projector, TVs and speakers from one laptop.'
+      title: 'QuizNote · make and run your pub quiz on a Mac',
+      description: 'Make your pub quiz with QuizNote and run it from one Mac: questions, music clips and answers on projector, TVs and speakers.'
     },
     skip: 'Skip to content',
     nav: {
