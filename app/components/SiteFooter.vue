@@ -14,7 +14,11 @@ const localePath = useLocalePath()
         loading="lazy"
       />
       <p>{{ c.footer.madeBy }}</p>
-      <NuxtLink class="privacy" :to="localePath('/privacy')">{{ c.footer.privacy }}</NuxtLink>
+      <nav class="links">
+        <a href="mailto:remco@quiznote.app">{{ c.footer.contact }}</a>
+        <NuxtLink :to="localePath('/voorwaarden')">{{ c.footer.terms }}</NuxtLink>
+        <NuxtLink :to="localePath('/privacy')">{{ c.footer.privacy }}</NuxtLink>
+      </nav>
       <LangSwitch />
     </div>
   </footer>
@@ -34,12 +38,17 @@ const localePath = useLocalePath()
   gap: 16px 28px;
 }
 
-.privacy {
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+.links a {
   color: var(--muted);
   font-size: 0.95rem;
 }
 
-.privacy:hover {
+.links a:hover {
   color: var(--text);
 }
 

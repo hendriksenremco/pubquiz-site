@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const c = useSiteContent()
 const config = useRuntimeConfig()
+const localePath = useLocalePath()
 
 useSeoMeta({
   title: () => c.value.meta.title,
@@ -199,6 +200,10 @@ const roomIcons = [
             {{ c.download.button }}
           </a>
           <p v-else class="pending">{{ c.download.pending }}</p>
+          <p class="terms">
+            {{ c.download.terms }}
+            <NuxtLink :to="localePath('/voorwaarden')">{{ c.download.termsLink }}</NuxtLink>.
+          </p>
         </div>
         <div class="install">
           <h3>{{ c.download.installTitle }}</h3>
@@ -489,6 +494,16 @@ section {
   width: 88px;
   height: 88px;
   margin-bottom: 6px;
+}
+
+.terms {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.terms a {
+  color: var(--text);
 }
 
 .pending {

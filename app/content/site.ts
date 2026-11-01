@@ -34,10 +34,12 @@ export interface SiteContent {
     lead: string
     button: string
     pending: string
+    terms: string
+    termsLink: string
     installTitle: string
     install: string[]
   }
-  footer: { madeBy: string; privacy: string }
+  footer: { madeBy: string; privacy: string; terms: string; contact: string }
 }
 
 export const site: Record<Locale, SiteContent> = {
@@ -169,13 +171,20 @@ export const site: Record<Locale, SiteContent> = {
       lead: 'Versie 0.1.0, voor Macs met Apple Silicon en Intel.',
       button: 'Download voor Mac',
       pending: 'De downloadlink volgt.',
+      terms: 'Gratis, met deze',
+      termsLink: 'voorwaarden',
       installTitle: 'De eerste keer openen',
       install: [
         "Sleep QuizNote naar Programma's.",
         'Open de app en begin met de rondleiding op het dashboard.'
       ]
     },
-    footer: { madeBy: 'QuizNote is gemaakt door Remco Hendriksen.', privacy: 'Privacy' }
+    footer: {
+      madeBy: 'QuizNote is gemaakt door Remco Hendriksen.',
+      privacy: 'Privacy',
+      terms: 'Voorwaarden',
+      contact: 'Contact'
+    }
   },
 
   en: {
@@ -306,12 +315,19 @@ export const site: Record<Locale, SiteContent> = {
       lead: 'Version 0.1.0, for Macs with Apple Silicon and Intel. The app is in Dutch.',
       button: 'Download for Mac',
       pending: 'The download link is coming.',
+      terms: 'Free, under these',
+      termsLink: 'terms',
       installTitle: 'Opening it the first time',
       install: [
         'Drag QuizNote to Applications.',
         'Open the app and start with the tour on the dashboard.'
       ]
     },
-    footer: { madeBy: 'QuizNote is made by Remco Hendriksen.', privacy: 'Privacy' }
+    footer: {
+      madeBy: 'QuizNote is made by Remco Hendriksen.',
+      privacy: 'Privacy',
+      terms: 'Terms',
+      contact: 'Contact'
+    }
   }
 }
