@@ -2,6 +2,7 @@
 const c = useSiteContent()
 const config = useRuntimeConfig()
 const localePath = useLocalePath()
+const { locale } = useI18n()
 
 useSeoMeta({
   title: () => c.value.meta.title,
@@ -196,6 +197,7 @@ const roomIcons = [
             v-if="config.public.downloadUrl"
             class="button primary"
             :href="config.public.downloadUrl"
+            @click="$track('download_clicked', { locale })"
           >
             {{ c.download.button }}
           </a>
