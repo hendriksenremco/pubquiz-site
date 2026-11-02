@@ -50,3 +50,35 @@ Verwijzers: direct 40, quiznote.app 4, quiznote-4c3e8.web.app 2. Geen zoekmachin
 - EN: "QuizNote · make and run your pub quiz on a Mac" / "Make your pub quiz with QuizNote and run it from one Mac: questions, music clips and answers on projector, TVs and speakers."
 
 **Volgende ideeën:** Google Search Console (Remco: domein verifiëren, sitemap indienen); og:locale en noindex op /200 en /404; "pubquiz" ook in de lopende tekst.
+
+---
+
+## 2026-11-02
+
+**PostHog** (project 328999). Overzicht met testaccounts uitgefilterd; pagina's en verwijzers zonder filter.
+
+| | 24 uur | 7 dagen | gisteren (7 d) |
+|---|---|---|---|
+| Bezoekers | 45 | 91 | 46 |
+| Pageviews | 61 | 113 | 52 |
+| Bouncerate | 62% | 62% | 61% |
+| Gem. sessieduur | 19 s | 36 s | 53 s |
+| Bezoekers via Google | 0 | 0 | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 34 · `/en` 29 · `/voorwaarden` 12 (nieuw) · `/privacy` 10 · `/en/voorwaarden` 7 · `/en/privacy` 7 · `/200` 6 · `/404` 2.
+Verwijzers (7 dagen): direct 74, quiznote.app 12, quiznote-4c3e8.web.app 4, **bing.com 1** (eerste bezoek via een zoekmachine). Geen Google.
+
+**Zoekresultaten:** quiznote.app staat nog bij geen van de 6 zoekopdrachten. Zelfde beeld als gisteren: bij "QuizNote" en "QuizNote app" staan andere producten (QuizNotes AI, devpost, Quiz Notes-nieuwsbrief); bij "pubquiz software" en "quiz night software mac" vooral Quizado, KwizzBit en lijstjessites ("best pub quiz software"); bij "pubquiz maken" artikelen (id.nl over PowerPoint, AhaSlides, Amnesty).
+
+**PageSpeed Insights:** opnieuw niet bereikbaar (URL vraagt om toestemming die in een nachtelijke run niemand geeft). Overgeslagen.
+
+**Technische check** (`pnpm generate`):
+- Titel, description, canonical, hreflang, og:image en `SoftwareApplication` op `/` en `/en`: in orde. Voorwaarden-pagina's (nieuw) hebben titel, description, canonical en hreflang en staan in de sitemap.
+- Nog open van gisteren: `og:locale` op Engels is `en` (beter `en_GB`); `/200` en `/404` geven status 200 zonder noindex (oplossing: `X-Robots-Tag: noindex` in `firebase.json`); privacy- en voorwaardenpagina's zonder og:title/og:image.
+- Lopende tekst: "pubquiz" kwam op `/` maar 2 keer voor (324 woorden), niet in de h1.
+
+**Verbetering:** de h1 bevat nu het zoekwoord.
+- NL: "De hele quizavond vanaf één laptop" → "De hele pubquiz vanaf één laptop".
+- EN: "Run the whole quiz night from one laptop" → "Run the whole pub quiz from one laptop".
+
+**Volgende ideeën:** noindex-header op `/200` en `/404` plus `og:locale` `en_GB`; Google Search Console (Remco); vermelding op lijstjes/vergelijkingssites voor backlinks (Remco).

@@ -60,7 +60,7 @@ export const site: Record<Locale, SiteContent> = {
     cta: { download: 'Download voor Mac', downloadShort: 'Download' },
     hero: {
       eyebrow: 'Voor quizmasters met een Mac',
-      title: 'De hele quizavond vanaf één laptop',
+      title: 'De hele pubquiz vanaf één laptop',
       lead: "Beamer, tv's en speakers vanuit één app. Je klikt je quiz één keer in elkaar en speelt hem af met een paar toetsen.",
       facts: ['Voor macOS', 'Werkt offline', 'Eén map per quiz'],
       laptop: {
@@ -204,7 +204,7 @@ export const site: Record<Locale, SiteContent> = {
     cta: { download: 'Download for Mac', downloadShort: 'Download' },
     hero: {
       eyebrow: 'For quizmasters with a Mac',
-      title: 'Run the whole quiz night from one laptop',
+      title: 'Run the whole pub quiz from one laptop',
       lead: 'Projector, TVs and speakers from one app. Build your quiz once and play it with a few keys.',
       facts: ['For macOS', 'Works offline', 'One folder per quiz'],
       laptop: {
