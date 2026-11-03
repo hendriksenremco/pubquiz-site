@@ -82,3 +82,30 @@ Verwijzers (7 dagen): direct 74, quiznote.app 12, quiznote-4c3e8.web.app 4, **bi
 - EN: "Run the whole quiz night from one laptop" → "Run the whole pub quiz from one laptop".
 
 **Volgende ideeën:** noindex-header op `/200` en `/404` plus `og:locale` `en_GB`; Google Search Console (Remco); vermelding op lijstjes/vergelijkingssites voor backlinks (Remco).
+
+---
+
+## 2026-11-03
+
+**PostHog** (project 328999). Overzicht met testaccounts uitgefilterd; pagina's en verwijzers zonder filter.
+
+| | 24 uur | 7 dagen | gisteren (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 21 | 112 | 45 / 91 |
+| Pageviews | 29 | 142 | 61 / 113 |
+| Bouncerate | 43% | 58% | 62% / 62% |
+| Gem. sessieduur | 127 s | 53 s | 19 s / 36 s |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 46 · `/en` 37 · `/voorwaarden` 13 · `/privacy` 11 · `/en/privacy` 8 · `/en/voorwaarden` 7 · `/200` 6 · `/404` 6.
+Verwijzers (7 dagen): direct 95, quiznote.app 12, quiznote-4c3e8.web.app 4, bing.com 1. Geen Google. Minder bezoekers in 24 uur dan gisteren, maar ze blijven langer.
+
+**Zoekresultaten:** quiznote.app staat nog bij geen van de 6 zoekopdrachten. "QuizNote"/"QuizNote app": QuizNotes AI, devpost, Quiz Notes-nieuwsbrief, studie-apps. "pubquiz app mac"/"pubquiz software"/"quiz night software mac": App Store-apps, Quizado, KwizzBit en lijstjessites (gitnux, wifitalents, zipdo, worldmetrics: "best pub quiz software"). "pubquiz maken": id.nl (PowerPoint), AhaSlides, Amnesty-handleiding.
+
+**PageSpeed Insights:** niet bereikbaar (toestemming voor de URL wordt in een nachtelijke run niet gegeven). Overgeslagen.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, og:image, `SoftwareApplication` en één h1 op `/` en `/en` in orde; robots.txt en sitemap in orde; screenshots 8–72 KB. Nog open: `og:locale` op Engels is `en` (beter `en_GB`); privacy- en voorwaardenpagina's zonder og:title/og:image.
+
+**Verbetering:** `X-Robots-Tag: noindex` voor `/200` en `/404` (en `.html`) in `firebase.json`. Die pagina's gaven status 200 en konden als lege pagina's in Google komen. Echte 404's (status 404) veranderen niet.
+
+**Volgende ideeën:** `og:locale` `en_GB`; Google Search Console (Remco: domein verifiëren, sitemap indienen) — zonder Search Console blijft de ranking gissen; vermelding op de lijstjessites voor "pub quiz software" (Remco).
