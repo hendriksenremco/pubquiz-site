@@ -61,6 +61,7 @@ const sizesAttr = computed(
 
 .shot img {
   width: 100%;
+  height: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--line-strong);
   background: var(--surface-1);
