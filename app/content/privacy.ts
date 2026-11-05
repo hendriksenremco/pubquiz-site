@@ -13,7 +13,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
   nl: {
     title: 'Privacyverklaring',
     description: 'Welke gegevens de site en de app van QuizNote gebruiken, en waarom.',
-    updated: 'Bijgewerkt op 31 oktober 2026',
+    updated: 'Bijgewerkt op 5 november 2026',
     sections: [
       {
         title: 'Wie we zijn',
@@ -24,7 +24,9 @@ export const privacy: Record<Locale, PrivacyContent> = {
       {
         title: 'De app',
         paragraphs: [
-          'QuizNote verzamelt niets over jou. De app werkt offline en je quizzen, video’s en muziek blijven op je eigen Mac. De app stuurt geen gebruiksgegevens of foutrapporten naar ons.',
+          'De app werkt offline en je quizzen, video’s en muziek blijven op je eigen Mac.',
+          'Vanaf versie 0.2.0 vraagt de app bij de eerste start of hij anoniem mag meten. Zeg je ja, dan stuurt hij naar PostHog, in hun Europese datacenter: dat de app start, dat een show begint, hoeveel rondes, schermen en uitgangen een quiz heeft en welke plug-ins aan staan, en foutmeldingen. Daarbij de versie van de app en van macOS, en of je Mac Apple Silicon of Intel heeft.',
+          'Nooit de inhoud van je quiz, namen van bestanden of je media, en je IP-adres slaan we niet op. Je bent een willekeurig nummer, niet te koppelen aan je naam. Zeg je nee of klik je de vraag weg, dan meet de app niets. Je zet het aan of uit bij Instellingen.',
           'Maak je een quiz met je eigen AI-assistent, dan praat die assistent alleen op je Mac met QuizNote. Wat je aan je AI vraagt, valt onder de voorwaarden van die AI-dienst.',
           'De plug-ins Licht en Afstandsbediening praten alleen met apparaten in je eigen netwerk.'
         ]
@@ -58,7 +60,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
   en: {
     title: 'Privacy statement',
     description: 'What data the QuizNote website and app use, and why.',
-    updated: 'Updated on 31 October 2026',
+    updated: 'Updated on 5 November 2026',
     sections: [
       {
         title: 'Who we are',
@@ -69,7 +71,9 @@ export const privacy: Record<Locale, PrivacyContent> = {
       {
         title: 'The app',
         paragraphs: [
-          'QuizNote collects nothing about you. The app works offline, and your quizzes, videos and music stay on your own Mac. The app sends no usage data or crash reports to us.',
+          'The app works offline, and your quizzes, videos and music stay on your own Mac.',
+          'From version 0.2.0 the app asks on first start whether it may measure anonymously. If you say yes, it sends to PostHog, in their European data centre: that the app starts, that a show begins, how many rounds, screens and outputs a quiz has and which plug-ins are on, and error reports. Along with the version of the app and of macOS, and whether your Mac has Apple Silicon or Intel.',
+          'Never the content of your quiz, file names or your media, and we don’t store your IP address. You are a random number, not linked to your name. If you say no or close the question, the app measures nothing. You can turn it on or off in Settings.',
           'If you create a quiz with your own AI assistant, that assistant only talks to QuizNote on your Mac. What you ask your AI is covered by the terms of that AI service.',
           'The light and remote control plug-ins only talk to devices on your own network.'
         ]
