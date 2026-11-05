@@ -2,6 +2,9 @@
 // later in een handleiding. Nederlands: "je", korte zinnen, gewone werkwoorden.
 // De app is (nog) alleen Nederlands, dus de Engelse teksten noemen geen knoppen bij naam.
 
+// De versie van de nieuwste release; app-release.yml zet hem na elke release.
+import release from './release.json'
+
 export type Locale = 'nl' | 'en'
 
 export interface Shot {
@@ -168,7 +171,7 @@ export const site: Record<Locale, SiteContent> = {
     download: {
       eyebrow: 'Download',
       title: 'QuizNote voor je Mac',
-      lead: 'Versie 0.1.0, voor Macs met Apple Silicon en Intel.',
+      lead: `Versie ${release.version}, voor Macs met Apple Silicon en Intel.`,
       button: 'Download voor Mac',
       pending: 'De downloadlink volgt.',
       terms: 'Gratis, met deze',
@@ -312,7 +315,7 @@ export const site: Record<Locale, SiteContent> = {
     download: {
       eyebrow: 'Download',
       title: 'QuizNote for your Mac',
-      lead: 'Version 0.1.0, for Macs with Apple Silicon and Intel. The app is in Dutch.',
+      lead: `Version ${release.version}, for Macs with Apple Silicon and Intel. The app is in Dutch.`,
       button: 'Download for Mac',
       pending: 'The download link is coming.',
       terms: 'Free, under these',

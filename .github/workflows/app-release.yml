@@ -1,0 +1,112 @@
+# Na een release van de app: de nieuwe screenshots en het versienummer op de site zetten en
+# live zetten. Start vanzelf als release.yml in hendriksenremco/pubquiz klaar is (repository_dispatch),
+# of met de hand (Actions → App-release → Run workflow, met de versie).
+# De teksten herschrijft de nachtelijke taak: hij ziet dat textsFor in release.json achterloopt.
+name: App-release
+
+on:
+  repository_dispatch:
+    types: [app-release]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Versie van de app, bijvoorbeeld 0.2.0'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: app-release
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+      - name: ImageMagick
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick
+
+      - name: Versie
+        id: version
+        env:
+          RAW: ${{ github.event.client_payload.version || inputs.version }}
+        run: |
+          VERSION="${RAW#v}"
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Geen geldige versie: $RAW"
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Screenshots ophalen en omzetten
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release download "v$VERSION" -R hendriksenremco/pubquiz -p site-screens.zip -D "$RUNNER_TEMP"
+          mkdir "$RUNNER_TEMP/screens"
+          unzip -q "$RUNNER_TEMP/site-screens.zip" -d "$RUNNER_TEMP/screens"
+          scripts/update-screens.sh "$RUNNER_TEMP/screens"
+
+      - name: Versie op de site
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          node -e '
+            const fs = require("fs")
+            const file = "app/content/release.json"
+            const release = JSON.parse(fs.readFileSync(file, "utf8"))
+            release.version = process.env.VERSION
+            fs.writeFileSync(file, JSON.stringify(release, null, 2) + "\n")
+          '
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm generate
+
+      # Rechtstreeks op master, niet via develop: daar kan werk staan dat nog niet live mag.
+      # Daarna gaat master terug naar develop.
+      - name: Vastleggen
+        id: commit
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/screens app/content/release.json
+          if git diff --cached --quiet; then
+            echo "Niets veranderd."
+          else
+            git commit -q -m "Update screenshots and version for app $VERSION"
+            git push -q origin master
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git fetch -q origin develop
+          git checkout -q -B develop origin/develop
+          if git merge -q --no-edit master && git push -q origin develop; then
+            echo "master staat ook op develop."
+          else
+            echo "::warning::master kon niet vanzelf naar develop; doe dat met de hand."
+          fi
+
+  # Een push met github.token start geen andere workflows, dus de deploy roepen we zelf aan.
+  deploy:
+    needs: update
+    uses: ./.github/workflows/deploy-site.yml
+    with:
+      ref: ${{ needs.update.outputs.sha }}
+    secrets: inherit

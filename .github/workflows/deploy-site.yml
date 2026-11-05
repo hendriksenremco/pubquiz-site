@@ -5,6 +5,12 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+  # Vanuit app-release.yml, met de commit die net op master is gezet.
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+        required: true
 
 concurrency:
   group: deploy-site
@@ -15,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.sha }}
       - uses: pnpm/action-setup@v4
         with:
           version: 8
