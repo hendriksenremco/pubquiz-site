@@ -1,14 +1,38 @@
 <script setup lang="ts">
 // Een screenshot van de app, of het beeld op de beamer, in een rustig kader.
-withDefaults(
+// Naast elk beeld in public/screens staat een kleinere versie (`-sm.webp`, half zo breed),
+// zodat telefoons niet het grote bestand hoeven te laden.
+const props = withDefaults(
   defineProps<{
     src: string
     alt: string
     kind?: 'window' | 'beamer'
     label?: string
     eager?: boolean
+    // Het belangrijkste beeld bovenaan de pagina: eerst laden.
+    priority?: boolean
+    sizes?: string
   }>(),
-  { kind: 'window', label: undefined, eager: false }
+  { kind: 'window', label: undefined, eager: false, priority: false, sizes: undefined }
+)
+
+const width = computed(() => (props.kind === 'beamer' ? 1200 : 1600))
+const height = computed(() => (props.kind === 'beamer' ? 635 : 1000))
+
+const srcset = computed(() => {
+  if (!props.src.endsWith('.webp')) return undefined
+  const small = props.src.replace(/\.webp$/, '-sm.webp')
+  return `${small} ${width.value / 2}w, ${props.src} ${width.value}w`
+})
+
+// Standaard: een beeld in een kolom naast de tekst (7 van de 12 delen van de pagina),
+// of een beamerbeeld dat half over het laptopbeeld valt.
+const sizesAttr = computed(
+  () =>
+    props.sizes ??
+    (props.kind === 'beamer'
+      ? '(max-width: 900px) 48vw, 460px'
+      : '(max-width: 900px) calc(100vw - 40px), 680px')
 )
 </script>
 
@@ -16,10 +40,13 @@ withDefaults(
   <figure class="shot" :class="kind">
     <img
       :src="src"
+      :srcset="srcset"
+      :sizes="srcset ? sizesAttr : undefined"
       :alt="alt"
-      :width="kind === 'beamer' ? 1200 : 1600"
-      :height="kind === 'beamer' ? 635 : 1000"
-      :loading="eager ? 'eager' : 'lazy'"
+      :width="width"
+      :height="height"
+      :loading="eager || priority ? 'eager' : 'lazy'"
+      :fetchpriority="priority ? 'high' : undefined"
       decoding="async"
     />
     <figcaption v-if="label">{{ label }}</figcaption>

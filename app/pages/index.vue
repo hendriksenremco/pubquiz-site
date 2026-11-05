@@ -60,7 +60,12 @@ const roomIcons = [
         </div>
       </div>
       <div class="hero-shots">
-        <AppShot :src="c.hero.laptop.src" :alt="c.hero.laptop.alt" eager />
+        <AppShot
+          :src="c.hero.laptop.src"
+          :alt="c.hero.laptop.alt"
+          priority
+          sizes="(max-width: 1200px) calc(100vw - 40px), 1160px"
+        />
         <AppShot
           class="hero-beamer"
           kind="beamer"

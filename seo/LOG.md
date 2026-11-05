@@ -109,3 +109,39 @@ Verwijzers (7 dagen): direct 95, quiznote.app 12, quiznote-4c3e8.web.app 4, bing
 **Verbetering:** `X-Robots-Tag: noindex` voor `/200` en `/404` (en `.html`) in `firebase.json`. Die pagina's gaven status 200 en konden als lege pagina's in Google komen. Echte 404's (status 404) veranderen niet.
 
 **Volgende ideeën:** `og:locale` `en_GB`; Google Search Console (Remco: domein verifiëren, sitemap indienen) — zonder Search Console blijft de ranking gissen; vermelding op de lijstjessites voor "pub quiz software" (Remco).
+
+---
+
+## 2026-11-05
+
+(Geen entry voor 4 november: die nacht is er niets gelogd. Vergelijking hieronder is met 3 november.)
+
+**PostHog** (project 328999). Overzicht met testaccounts uitgefilterd; pagina's en verwijzers zonder filter.
+
+| | 24 uur | 7 dagen | 3 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 6 | 120 | 21 / 112 |
+| Pageviews | 8 | 152 | 29 / 142 |
+| Bouncerate | 67% | 58% | 43% / 58% |
+| Gem. sessieduur | 8 s | 50 s | 127 s / 53 s |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 54 · `/en` 38 · `/voorwaarden` 13 · `/privacy` 11 · `/en/privacy` 8 · `/en/voorwaarden` 7 · `/200` 6 · `/404` 6.
+Verwijzers (7 dagen): direct 103, quiznote.app 12, quiznote-4c3e8.web.app 4, bing.com 1. Geen Google. De eerste drukte na de lancering ebt weg: nog maar 6 bezoekers in 24 uur.
+
+**Zoekresultaten:** quiznote.app staat bij geen van de 6 zoekopdrachten, ook niet bij een losse zoekopdracht op "quiznote.app". Zelfde concurrenten als eerder: QuizNotes AI, devpost/GitHub-projecten "quiznote", Quiz Notes-nieuwsbrief; bij "pubquiz software"/"quiz night software mac" Quizado, KwizzBit, QuizControl, Games Night en lijstjessites (gitnux, wifitalents, zipdo, worldmetrics); bij "pubquiz maken" id.nl, AhaSlides en de Amnesty-handleiding. De site lijkt nog niet geïndexeerd; zonder Search Console (issue #71) is dat niet na te gaan.
+
+**PageSpeed Insights:** niet bereikbaar (toestemming voor de URL wordt in een nachtelijke run niet gegeven). In plaats daarvan Lighthouse 12 lokaal gedraaid op de gebouwde site (mobiel, gesimuleerde throttling; zonder de cache-headers van Firebase):
+- vóór: performance 74, toegankelijkheid 100, best practices 100, SEO 100; LCP 4,2 s, TBT 440 ms, 695 KiB.
+- grootste punten: het LCP-beeld (laptop-screenshot bovenaan) had geen `fetchpriority`; telefoons laadden de 1600 px-screenshots ("Properly size images", ~300 KiB); ongebruikte JS (~200 KiB in de hoofdbundel, ~30 KiB PostHog-surveys).
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, og:url, og:image en `SoftwareApplication` op `/` en `/en` in orde; één h1 per pagina; alle afbeeldingen met alt; robots.txt en sitemap (6 URL's) in orde. Nog open: `og:locale` op Engels is `en` (beter `en_GB`); privacy- en voorwaardenpagina's zonder og:title/og:image; `SoftwareApplication` zonder `offers` (geen rich result mogelijk zolang de prijs niet vaststaat).
+
+Let op: de lockfile is van pnpm 8; met pnpm 10 faalt `pnpm install`. Gebruik `npx pnpm@8`.
+
+**Verbetering:** snellere screenshots op mobiel.
+- Naast elk beeld in `public/screens/` een versie half zo breed (`-sm.webp`, 800 px / beamer 600 px, 3–22 KB); `AppShot` zet ze in `srcset` met `sizes`.
+- Het laptop-screenshot bovenaan krijgt `fetchpriority="high"`.
+- Lighthouse daarna (2 runs): performance 89–91, LCP 3,2–3,3 s, 451 KiB (was 74, 4,2 s, 695 KiB).
+
+**Volgende ideeën:** Google Search Console (#71, Remco: domein verifiëren) blijft het belangrijkste; `og:locale` `en_GB`; PostHog-surveys niet laden (scheelt ~30 KiB JS, `disable_surveys`); vermelding op lijstjessites voor "pub quiz software" (Remco).
