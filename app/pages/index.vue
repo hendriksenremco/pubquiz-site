@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import release from '~/content/release.json'
 const c = useSiteContent()
 const config = useRuntimeConfig()
 const localePath = useLocalePath()
@@ -16,25 +17,47 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-// Gestructureerde gegevens voor Google: wat QuizNote is. Geen prijs: die is nog niet besloten.
-useHead(() => ({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'SoftwareApplication',
-        name: 'QuizNote',
-        applicationCategory: 'EntertainmentApplication',
-        operatingSystem: 'macOS',
-        description: c.value.meta.description,
-        url: config.public.siteUrl,
-        image: `${config.public.siteUrl}/og-image.png`,
-        author: { '@type': 'Person', name: 'Remco Hendriksen' }
-      })
-    }
-  ]
-}))
+// Gestructureerde gegevens voor Google: wat QuizNote is, en de naam van de site (WebSite),
+// zodat Google "QuizNote" als sitenaam toont. Geen prijs: die is nog niet besloten.
+useHead(() => {
+  const site = config.public.siteUrl
+  const pageUrl = locale.value === 'en' ? `${site}/en` : `${site}/`
+  const inLanguage = locale.value === 'en' ? 'en' : 'nl-NL'
+  return {
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'WebSite',
+              '@id': `${site}/#website`,
+              name: 'QuizNote',
+              alternateName: 'quiznote.app',
+              url: `${site}/`,
+              inLanguage: ['nl-NL', 'en']
+            },
+            {
+              '@type': 'SoftwareApplication',
+              '@id': `${site}/#app`,
+              name: 'QuizNote',
+              applicationCategory: 'EntertainmentApplication',
+              operatingSystem: 'macOS',
+              softwareVersion: release.version,
+              description: c.value.meta.description,
+              url: pageUrl,
+              inLanguage,
+              image: `${site}/og-image.png`,
+              ...(config.public.downloadUrl ? { downloadUrl: config.public.downloadUrl } : {}),
+              author: { '@type': 'Person', name: 'Remco Hendriksen' }
+            }
+          ]
+        })
+      }
+    ]
+  }
+})
 
 // Eenvoudige lijn-iconen voor "Eén laptop, de hele zaal": scherm, speaker, laptop.
 const roomIcons = [

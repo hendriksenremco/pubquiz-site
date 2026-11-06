@@ -145,3 +145,34 @@ Let op: de lockfile is van pnpm 8; met pnpm 10 faalt `pnpm install`. Gebruik `np
 - Lighthouse daarna (2 runs): performance 89–91, LCP 3,2–3,3 s, 451 KiB (was 74, 4,2 s, 695 KiB).
 
 **Volgende ideeën:** Google Search Console (#71, Remco: domein verifiëren) blijft het belangrijkste; `og:locale` `en_GB`; PostHog-surveys niet laden (scheelt ~30 KiB JS, `disable_surveys`); vermelding op lijstjessites voor "pub quiz software" (Remco).
+
+---
+
+## 2026-11-06
+
+**PostHog** (project 328999). Overzicht met testaccounts uitgefilterd; pagina's, verwijzers en landen zonder filter.
+
+| | 24 uur | 7 dagen | 5 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 36 | 156 | 6 / 120 |
+| Pageviews | 37 | 189 | 8 / 152 |
+| Bouncerate | 61% | 59% | 67% / 58% |
+| Gem. sessieduur | 4 s | 39 s | 8 s / 50 s |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 66 · `/en` 49 · `/voorwaarden` 17 · `/en/privacy` 14 · `/privacy` 13 · `/en/voorwaarden` 9 · `/200` 6 · `/404` 6.
+Verwijzers (7 dagen): direct 132, quiznote.app 17, quiznote-4c3e8.web.app 6, bing.com 1. Geen Google.
+Let op: van de 36 bezoekers in 24 uur komen er 32 uit de VS, met 1 pageview en gemiddeld 4 s. Dat lijken bots of link-previews, geen echte bezoekers; NL had er 4.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens. "QuizNote"/"QuizNote app": devpost, GitHub-projecten "quiznote", QuizNotes AI, Quiz Notes-nieuwsbrief, studie-apps. "pubquiz app mac": App Store-quizspellen, Quizado. "pubquiz maken": id.nl (PowerPoint), AhaSlides, Amnesty-handleiding. "pubquiz software"/"quiz night software mac": Quizado, KwizzBit, QuizControl, Games Night en lijstjessites (gitnux, wifitalents, zipdo, worldmetrics).
+
+**PageSpeed Insights:** niet bereikbaar (toestemming voor de URL wordt in een nachtelijke run niet gegeven). Overgeslagen; de Lighthouse-meting van 5 november blijft de laatste.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, og:image op `/` en `/en` in orde; één h1 per pagina; alle afbeeldingen met alt; robots.txt en sitemap (6 URL's) in orde. Nog open: `og:locale` op Engels is `en` (beter `en_GB`); privacy- en voorwaardenpagina's zonder og:title/og:image; canonical van de homepage is `https://quiznote.app` en in de sitemap `https://quiznote.app/` (Google ziet die als gelijk, geen probleem).
+
+**Verbetering:** gestructureerde gegevens uitgebreid (`app/pages/index.vue`).
+- Nieuw: `WebSite` met naam "QuizNote" en `alternateName` "quiznote.app". Google gebruikt dat voor de sitenaam in de zoekresultaten; nuttig omdat "QuizNote" een drukke naam is (QuizNotes AI, GitHub-projecten).
+- `SoftwareApplication` krijgt `softwareVersion` (uit `release.json`, gaat dus mee met een release), `downloadUrl`, `inLanguage` en de URL van de eigen taal (`/en` op Engels; was altijd `/`).
+- Gedaan op een branch vanaf `master`, omdat `develop` de nog niet goedgekeurde privacyverklaring bevat.
+
+**Volgende ideeën:** Google Search Console (#71, Remco) blijft het belangrijkste: zonder indexering helpt de rest weinig; `og:locale` `en_GB`; PostHog-surveys niet laden (`disable_surveys`, ~30 KiB JS); vermelding op lijstjessites voor "pub quiz software" (Remco).
