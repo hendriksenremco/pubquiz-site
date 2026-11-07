@@ -3,10 +3,20 @@ import type { PrivacyContent } from '~/content/privacy'
 
 // Een tekstpagina zoals de privacyverklaring en de voorwaarden.
 const props = defineProps<{ content: PrivacyContent }>()
+const config = useRuntimeConfig()
 
+// Ook hier Open Graph, zodat een gedeelde link een titel en de deelafbeelding krijgt.
 useSeoMeta({
   title: () => `${props.content.title} · QuizNote`,
-  description: () => props.content.description
+  description: () => props.content.description,
+  ogTitle: () => `${props.content.title} · QuizNote`,
+  ogDescription: () => props.content.description,
+  ogType: 'website',
+  ogSiteName: 'QuizNote',
+  ogImage: `${config.public.siteUrl}/og-image.png`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  twitterCard: 'summary_large_image'
 })
 </script>
 

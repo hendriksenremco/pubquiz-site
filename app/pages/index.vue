@@ -11,6 +11,7 @@ useSeoMeta({
   ogTitle: () => c.value.meta.title,
   ogDescription: () => c.value.meta.description,
   ogType: 'website',
+  ogSiteName: 'QuizNote',
   ogImage: `${config.public.siteUrl}/og-image.png`,
   ogImageWidth: 1200,
   ogImageHeight: 630,
