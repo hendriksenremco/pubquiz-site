@@ -176,3 +176,35 @@ Let op: van de 36 bezoekers in 24 uur komen er 32 uit de VS, met 1 pageview en g
 - Gedaan op een branch vanaf `master`, omdat `develop` de nog niet goedgekeurde privacyverklaring bevat.
 
 **Volgende ideeën:** Google Search Console (#71, Remco) blijft het belangrijkste: zonder indexering helpt de rest weinig; `og:locale` `en_GB`; PostHog-surveys niet laden (`disable_surveys`, ~30 KiB JS); vermelding op lijstjessites voor "pub quiz software" (Remco).
+
+---
+
+## 2026-11-07
+
+**PostHog** (project 328999). Overzicht met testaccounts uitgefilterd; pagina's, verwijzers en landen zonder filter.
+
+| | 24 uur | 7 dagen | 6 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 7 | 163 | 36 / 156 |
+| Pageviews | 7 | 196 | 37 / 189 |
+| Bouncerate | 86% | 60% | 61% / 59% |
+| Gem. sessieduur | 1 s | 38 s | 4 s / 39 s |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 67 · `/en` 49 · `/voorwaarden` 17 · `/en/privacy` 14 · `/privacy` 13 · `/404` 10 · `/en/voorwaarden` 9 · `/200` 8.
+Verwijzers (7 dagen): direct 139, quiznote.app 17, quiznote-4c3e8.web.app 6, bing.com 1. Geen Google.
+Alle 7 bezoekers van de afgelopen 24 uur komen uit de VS, met 1 pageview en ~1 s: vrijwel zeker bots of link-previews. Echte bezoekers uit NL: 0 in 24 uur.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens. "QuizNote"/"QuizNote app": GitHub-projecten "quiznote" (Evavic44, BrainyPad), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, studie-apps. "pubquiz app mac": App Store-quizspellen (Pub Quiz, Millionaire Pub Quiz), Quizado. "pubquiz maken": id.nl (PowerPoint), AhaSlides, Amnesty-handleiding, dagjeweg. "pubquiz software": Quizado ("best pub quiz software"), KwizzBit, AhaSlides, lijstjessites (gitnux, wifitalents, zipdo, worldmetrics). "quiz night software mac": Games Night, QuizControl, Quizado, SourceForge-pagina's.
+
+**PageSpeed Insights:** niet bereikbaar (toestemming voor de URL wordt in een nachtelijke run niet gegeven). Overgeslagen; de Lighthouse-meting van 5 november blijft de laatste.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, og:url, og:image en `WebSite`/`SoftwareApplication` op `/` en `/en` in orde; één h1 per pagina; alle afbeeldingen met alt; robots.txt en sitemap (6 URL's) in orde; screenshots samen 580 KB.
+
+**Verbetering:** Open Graph compleet op alle pagina's.
+- Privacy- en voorwaardenpagina's (NL en EN) krijgen og:title, og:description, og:image en een Twitter-kaart (`LegalPage.vue`); een gedeelde link toont nu titel en deelafbeelding.
+- `og:locale` op Engels is `en_GB` (was `en`, geen geldig formaat); hreflang blijft `en` voor alle Engelstaligen.
+- `og:site_name` "QuizNote" op alle pagina's.
+- Weer op een branch vanaf `master`, omdat `develop` de nog niet goedgekeurde privacyverklaring bevat.
+
+**Volgende ideeën:** Google Search Console (#71, Remco) blijft veruit het belangrijkste: na een week staat de site nog nergens en komt er niemand via Google; PostHog-surveys niet laden (`disable_surveys`, ~30 KiB JS); vermelding op lijstjessites voor "pub quiz software" en een link vanaf de GitHub-release naar quiznote.app (Remco).
