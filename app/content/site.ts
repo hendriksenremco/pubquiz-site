@@ -1,6 +1,6 @@
 // Alle teksten van de site, per taal. Kort en bondig: de site laat zien wat de app is, de uitleg komt
 // later in een handleiding. Nederlands: "je", korte zinnen, gewone werkwoorden.
-// De app is (nog) alleen Nederlands, dus de Engelse teksten noemen geen knoppen bij naam.
+// De app is er sinds 0.2.0 in het Nederlands en het Engels.
 
 // De versie van de nieuwste release; app-release.yml zet hem na elke release.
 import release from './release.json'
@@ -168,10 +168,12 @@ export const site: Record<Locale, SiteContent> = {
       keys: [
         { keys: ['Enter'], label: 'Volgende ronde' },
         { keys: ['E'], label: 'Einde ronde' },
+        { keys: ['R'], label: 'Ronde opnieuw' },
         { keys: ['←', '→'], label: 'Vorige, volgende' },
         { keys: ['1–9'], label: 'Fragment spelen' },
         { keys: ['Spatie'], label: 'Fragment stoppen' },
         { keys: ['A'], label: 'Reeks starten' },
+        { keys: ['T'], label: 'Aftellen' },
         { keys: ['B'], label: 'Beeld op zwart' },
         { keys: ['M'], label: 'Geluid uit' }
       ]
@@ -192,7 +194,7 @@ export const site: Record<Locale, SiteContent> = {
     download: {
       eyebrow: 'Download',
       title: 'QuizNote voor je Mac',
-      lead: `Versie ${release.version}, voor Macs met Apple Silicon en Intel.`,
+      lead: `Versie ${release.version}, voor Macs met Apple Silicon en Intel. In het Nederlands en het Engels.`,
       button: 'Download voor Mac',
       pending: 'De downloadlink volgt.',
       terms: 'Gratis, met deze',
@@ -313,10 +315,12 @@ export const site: Record<Locale, SiteContent> = {
       keys: [
         { keys: ['Enter'], label: 'Next round' },
         { keys: ['E'], label: 'End the round' },
+        { keys: ['R'], label: 'Restart round' },
         { keys: ['←', '→'], label: 'Back, forward' },
         { keys: ['1–9'], label: 'Play a clip' },
         { keys: ['Space'], label: 'Stop the clip' },
         { keys: ['A'], label: 'Start the sequence' },
+        { keys: ['T'], label: 'Countdown' },
         { keys: ['B'], label: 'Screens to black' },
         { keys: ['M'], label: 'Sound off' }
       ]
@@ -337,7 +341,7 @@ export const site: Record<Locale, SiteContent> = {
     download: {
       eyebrow: 'Download',
       title: 'QuizNote for your Mac',
-      lead: `Version ${release.version}, for Macs with Apple Silicon and Intel. The app is in Dutch.`,
+      lead: `Version ${release.version}, for Macs with Apple Silicon and Intel. In English and Dutch.`,
       button: 'Download for Mac',
       pending: 'The download link is coming.',
       terms: 'Free, under these',

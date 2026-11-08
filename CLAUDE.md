@@ -62,6 +62,7 @@ Dit is wat er nu echt in de app zit. De namen tussen aanhalingstekens zijn de wo
 **Tijdens de show**
 - De laptop is het bedieningsscherm: previews van elk scherm, de rondes, de fragmenten, de mixer en notities.
 - Sneltoetsen, en een presenter-clicker werkt ook. ← → gaan door de slides, in een muziekronde door de fragmenten en in een antwoordenronde door de antwoorden. Verder: Enter = volgende ronde, R = ronde opnieuw, E = einde ronde, 1–9 = fragment, spatie = stop fragment, A = reeks starten of pauzeren, B = beeld op zwart, M = geluid uit, L = loop pauzeren.
+- "Aftellen" (T, sinds 0.2.0): een aftelklok over de slide heen, met een zacht signaal aan het eind. De tijd stel je per quiz of per ronde in.
 - "Ronde opnieuw": de ronde vanaf het begin, met de fragmenten weer ongespeeld. Bijvoorbeeld om een muziekronde twee keer te laten horen.
 - Loopt de app vast of valt hij uit, dan kun je bij het opnieuw openen de show hervatten waar hij was.
 - "Show starten": schermen en speakers koppelen, een testtoon afspelen en vooraf zien of er bestanden ontbreken. De app onthoudt de koppeling voor de volgende keer.
@@ -102,9 +103,9 @@ Wees voorzichtig met AirPlay en met videogeluid via de speakers van een tv: alle
 
 ### Download en installatie
 
-- Versie 0.1.0. Er is een build voor Macs met Apple Silicon (`pnpm build:mac` in `../pubquiz` maakt `dist/QuizNote-0.1.0.dmg`); een build voor Intel-Macs kan ook.
+- Versie 0.2.0 (8 november 2026), op GitHub Releases, voor Macs met Apple Silicon en Intel, in het Nederlands en het Engels (de app volgt de taal van de Mac).
 - Bij de eerste start staat er een **rondleiding** op het dashboard: een korte quiz die laat zien wat de app kan. Goed om op de site te noemen ("start de app en volg de rondleiding").
-- De app is (nog) niet ondertekend door Apple. Bij de eerste keer openen blokkeert macOS hem; de gebruiker gaat dan naar Systeeminstellingen › Privacy en beveiliging en klikt op "Open toch". Zet dat duidelijk bij de download.
+- De release is gesigneerd en genotariseerd door Apple: geen "Open toch" meer nodig.
 - Waar de download komt te staan (GitHub Releases, eigen hosting) is nog niet besloten. Of de repo openbaar is, is ook niet bekend; vraag het.
 
 ## Uitstraling
@@ -137,7 +138,7 @@ De site hoort bij de app. Neem de beeldtaal over in plaats van iets nieuws te ve
 ## Techniek
 
 - **Nuxt 4** met `@nuxtjs/i18n`, gebouwd als statische site: `pnpm generate` zet alles in `.output/public`, klaar voor elke host. Verder: `pnpm dev`, `pnpm typecheck` (vue-tsc; TypeScript staat op 5.9, want vue-tsc kan nog niet met 7).
-- **Talen:** Nederlands op `/`, Engels op `/en` (`prefix_except_default`). De teksten staan per taal in `app/content/site.ts`, niet in losse i18n-bestanden. De app zelf is alleen Nederlands: de Engelse teksten noemen daarom geen knoppen bij naam, en de Engelse FAQ zegt dat de app Nederlands is.
+- **Talen:** Nederlands op `/`, Engels op `/en` (`prefix_except_default`). De teksten staan per taal in `app/content/site.ts`, niet in losse i18n-bestanden. De app is sinds 0.2.0 Nederlands en Engels; de Engelse teksten mogen de Engelse namen van knoppen gebruiken.
 - **Opbouw:** één pagina (`app/pages/index.vue`) met de secties, `SiteHeader` en `SiteFooter` in `app/layouts/default.vue`, screenshots via `AppShot`. Kleuren en letters staan als tokens in `app/assets/css/main.css`, overgenomen uit de app. De letter komt uit `@fontsource-variable/bricolage-grotesque` (zelf gehost, geen Google).
 - **Instellingen** (`nuxt.config.ts`, ook via env): `NUXT_PUBLIC_SITE_URL` (standaard `https://quiznote.app`, voor canonical, hreflang en de deelafbeelding) en `NUXT_PUBLIC_DOWNLOAD_URL`. Is de download-URL leeg, dan toont de site een melding in plaats van de downloadknop.
 - **Screenshots** staan als WebP in `public/screens/` (1600 px breed, beamerbeelden 1200 px), omgezet uit `../pubquiz/test-results/tour-*.png` met `magick … -resize 1600x -quality 82`. Naast elk beeld staat een versie half zo breed (`<naam>-sm.webp`, 800 px, beamerbeelden 600 px) voor telefoons; `AppShot` zet ze in `srcset`. Maak die opnieuw als je een screenshot vervangt.
