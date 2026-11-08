@@ -97,7 +97,6 @@ useHead(() => {
         <div class="feature-text">
           <h2 id="ai-title">{{ c.ai.title }}</h2>
           <p class="prompt">{{ c.ai.prompt }}</p>
-          <p>{{ c.ai.text }}</p>
         </div>
         <div class="feature-shots">
           <AppShot :src="c.ai.shot.src" :alt="c.ai.shot.alt" />
@@ -117,7 +116,6 @@ useHead(() => {
           />
           <figcaption>
             <h3>{{ round.title }}</h3>
-            <p>{{ round.text }}</p>
           </figcaption>
         </figure>
       </div>
@@ -149,7 +147,6 @@ useHead(() => {
           <dl class="forms">
             <div v-for="item in c.print.items" :key="item.title">
               <dt>{{ item.title }}</dt>
-              <dd>{{ item.text }}</dd>
             </div>
           </dl>
         </div>

@@ -85,7 +85,7 @@ export const site: Record<Locale, SiteContent> = {
     hero: {
       eyebrow: 'Voor quizmasters met een Mac',
       title: 'De hele pubquiz vanaf één laptop',
-      lead: 'Vragen, muziek en antwoorden vanuit één app. Je klikt je quiz één keer in elkaar en speelt hem af met een paar toetsen.',
+      lead: 'Vragen, muziek en antwoorden op de beamer, met een paar toetsen.',
       facts: ['Voor macOS', 'Werkt offline', 'Eén map per quiz'],
       laptop: {
         src: '/screens/muziek.webp',
@@ -232,7 +232,7 @@ export const site: Record<Locale, SiteContent> = {
     hero: {
       eyebrow: 'For quizmasters with a Mac',
       title: 'Run the whole pub quiz from one laptop',
-      lead: 'Questions, music and answers from one app. Build your quiz once and play it with a few keys.',
+      lead: 'Questions, music and answers on the projector, with a few keys.',
       facts: ['For macOS', 'Works offline', 'One folder per quiz'],
       laptop: {
         src: enShot('muziek'),
