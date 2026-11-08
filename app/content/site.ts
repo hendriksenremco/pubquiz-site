@@ -137,6 +137,10 @@ export const site: Record<Locale, SiteContent> = {
           shot: {
             src: '/screens/editor.webp',
             alt: 'De muziekronde in de editor: de titelslide en de fragmenten met hun lengte.'
+          },
+          beamer: {
+            src: '/screens/muziek-beamer.webp',
+            alt: 'Op de beamer: de titel van de muziekronde, met het nummer van het fragment.'
           }
         },
         {
@@ -145,6 +149,10 @@ export const site: Record<Locale, SiteContent> = {
           shot: {
             src: '/screens/vlaggen.webp',
             alt: 'Een afbeeldingenronde met vlaggen: op de beamer staat een genummerde vlag.'
+          },
+          beamer: {
+            src: '/screens/vlaggen-beamer.webp',
+            alt: 'Op de beamer: een genummerde vlag.'
           }
         },
         {
@@ -284,6 +292,10 @@ export const site: Record<Locale, SiteContent> = {
           shot: {
             src: enShot('editor'),
             alt: 'The music round in the editor: the title slide and the clips with their length.'
+          },
+          beamer: {
+            src: enShot('muziek-beamer'),
+            alt: 'On the projector: the title of the music round, with the clip number.'
           }
         },
         {
@@ -292,6 +304,10 @@ export const site: Record<Locale, SiteContent> = {
           shot: {
             src: enShot('vlaggen'),
             alt: 'A picture round with flags: the projector shows a numbered flag.'
+          },
+          beamer: {
+            src: enShot('vlaggen-beamer'),
+            alt: 'On the projector: a numbered flag.'
           }
         },
         {

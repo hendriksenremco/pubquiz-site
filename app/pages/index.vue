@@ -110,8 +110,9 @@ useHead(() => {
       <div class="round-grid">
         <figure v-for="round in c.rounds.items" :key="round.title" class="round">
           <AppShot
-            :src="round.shot.src"
-            :alt="round.shot.alt"
+            kind="beamer"
+            :src="(round.beamer ?? round.shot).src"
+            :alt="(round.beamer ?? round.shot).alt"
             sizes="(max-width: 900px) calc(100vw - 40px), 570px"
           />
           <figcaption>

@@ -21,6 +21,7 @@ map=(
   "vragen:vragen"
   "vragen-beamer:vragen-beamer"
   "vlaggen:vlaggen"
+  "vlaggen-beamer:vlaggen-beamer"
   "editor:editor"
   "antwoorden:antwoorden"
   "antwoorden-beamer:antwoorden-beamer"
