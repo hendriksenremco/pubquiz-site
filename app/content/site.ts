@@ -42,7 +42,7 @@ export interface SiteContent {
     beamer: Shot
     beamerLabel: string
   }
-  room: { title: string; items: { title: string; text: string }[] }
+  steps: { title: string; items: { title: string; text: string }[] }
   ai: { eyebrow: string; title: string; prompt: string; text: string; shot: Shot }
   rounds: {
     eyebrow: string
@@ -84,8 +84,8 @@ export const site: Record<Locale, SiteContent> = {
     cta: { download: 'Download voor Mac', downloadShort: 'Download' },
     hero: {
       eyebrow: 'Voor quizmasters met een Mac',
-      title: 'De hele pubquiz vanaf één laptop',
-      lead: 'Vragen, muziek en antwoorden op de beamer, met een paar toetsen.',
+      title: 'Jouw pubquiz. Groot in beeld.',
+      lead: 'Vragen, muziek en antwoorden met een paar toetsen.',
       facts: ['Voor macOS', 'Werkt offline', 'Eén map per quiz'],
       laptop: {
         src: '/screens/muziek.webp',
@@ -97,12 +97,12 @@ export const site: Record<Locale, SiteContent> = {
       },
       beamerLabel: 'Op de beamer'
     },
-    room: {
-      title: 'Eén laptop, de hele zaal',
+    steps: {
+      title: 'Klaar in drie stappen',
       items: [
-        { title: 'Beeld', text: 'Je quiz groot op de beamer of tv.' },
-        { title: 'Geluid', text: 'Muziek en fragmenten door de speakers.' },
-        { title: 'Jij', text: 'Alles in één overzicht, met een paar toetsen.' }
+        { title: 'Maak je quiz', text: 'Zelf, of met je AI.' },
+        { title: 'Sluit de beamer aan', text: 'Of een tv.' },
+        { title: 'Speel af', text: 'Met een paar toetsen.' }
       ]
     },
     ai: {
@@ -117,10 +117,10 @@ export const site: Record<Locale, SiteContent> = {
     },
     rounds: {
       eyebrow: 'Rondes',
-      title: 'Vragen, muziek, plaatjes en antwoorden',
+      title: 'Elke ronde.',
       items: [
         {
-          title: 'Vragen en slides',
+          title: 'Vragen',
           text: 'Een vraag, een afbeelding of alleen het nummer in beeld.',
           shot: {
             src: '/screens/vragen.webp',
@@ -132,7 +132,7 @@ export const site: Record<Locale, SiteContent> = {
           }
         },
         {
-          title: 'Muziekronde',
+          title: 'Muziek',
           text: 'Fragmenten op de toetsen 1 tot en met 9, of na elkaar als reeks.',
           shot: {
             src: '/screens/editor.webp',
@@ -144,7 +144,7 @@ export const site: Record<Locale, SiteContent> = {
           }
         },
         {
-          title: 'Afbeeldingenronde',
+          title: 'Plaatjes',
           text: "Een hele map foto's in één keer, genummerd in beeld.",
           shot: {
             src: '/screens/vlaggen.webp',
@@ -239,8 +239,8 @@ export const site: Record<Locale, SiteContent> = {
     cta: { download: 'Download for Mac', downloadShort: 'Download' },
     hero: {
       eyebrow: 'For quizmasters with a Mac',
-      title: 'Run the whole pub quiz from one laptop',
-      lead: 'Questions, music and answers on the projector, with a few keys.',
+      title: 'Your pub quiz. Big on screen.',
+      lead: 'Questions, music and answers with a few keys.',
       facts: ['For macOS', 'Works offline', 'One folder per quiz'],
       laptop: {
         src: enShot('muziek'),
@@ -252,12 +252,12 @@ export const site: Record<Locale, SiteContent> = {
       },
       beamerLabel: 'On the projector'
     },
-    room: {
-      title: 'One laptop, the whole room',
+    steps: {
+      title: 'Ready in three steps',
       items: [
-        { title: 'Picture', text: 'Your quiz big on the projector or TV.' },
-        { title: 'Sound', text: 'Music and clips through the speakers.' },
-        { title: 'You', text: 'Everything in one view, with a few keys.' }
+        { title: 'Make your quiz', text: 'Yourself, or with your AI.' },
+        { title: 'Connect the projector', text: 'Or a TV.' },
+        { title: 'Play', text: 'With a few keys.' }
       ]
     },
     ai: {
@@ -272,10 +272,10 @@ export const site: Record<Locale, SiteContent> = {
     },
     rounds: {
       eyebrow: 'Rounds',
-      title: 'Questions, music, pictures and answers',
+      title: 'Every round.',
       items: [
         {
-          title: 'Questions and slides',
+          title: 'Questions',
           text: 'A question, a picture or just the number on screen.',
           shot: {
             src: enShot('vragen'),
@@ -287,7 +287,7 @@ export const site: Record<Locale, SiteContent> = {
           }
         },
         {
-          title: 'Music round',
+          title: 'Music',
           text: 'Clips on the keys 1 to 9, or one after another.',
           shot: {
             src: enShot('editor'),
@@ -299,7 +299,7 @@ export const site: Record<Locale, SiteContent> = {
           }
         },
         {
-          title: 'Picture round',
+          title: 'Pictures',
           text: 'A whole folder of photos at once, numbered on screen.',
           shot: {
             src: enShot('vlaggen'),

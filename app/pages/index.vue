@@ -63,360 +63,370 @@ useHead(() => {
 
 <template>
   <div>
-    <!-- Openingsbeeld -->
-    <section class="hero wrap">
-      <div class="hero-text">
+    <!-- Openingsbeeld: een amber vlak met de laptop en de beamer -->
+    <section class="hero">
+      <div class="wrap hero-text">
         <h1>{{ c.hero.title }}</h1>
         <p class="lead">{{ c.hero.lead }}</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#download">{{ c.cta.download }}</a>
-          <p class="facts">{{ c.hero.facts.join(' · ') }}</p>
-        </div>
+        <a class="button dark" href="#download">{{ c.cta.download }}</a>
+        <p class="facts">{{ c.hero.facts.join(' · ') }}</p>
       </div>
-      <div class="hero-shots">
-        <AppShot
-          :src="c.hero.laptop.src"
-          :alt="c.hero.laptop.alt"
-          priority
-          sizes="(max-width: 1200px) calc(100vw - 40px), 1160px"
-        />
-        <AppShot
-          class="hero-beamer"
-          kind="beamer"
-          :src="c.hero.beamer.src"
-          :alt="c.hero.beamer.alt"
-          :label="c.hero.beamerLabel"
-          eager
-        />
+      <div class="wrap devices">
+        <div class="laptop">
+          <div class="screen">
+            <img
+              :src="c.hero.laptop.src"
+              :srcset="`${c.hero.laptop.src.replace('.webp', '-sm.webp')} 800w, ${c.hero.laptop.src} 1600w`"
+              sizes="(max-width: 900px) 90vw, 760px"
+              :alt="c.hero.laptop.alt"
+              width="1600"
+              height="1000"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="base" />
+        </div>
+        <div class="tv">
+          <div class="screen">
+            <img
+              :src="c.hero.beamer.src"
+              :srcset="`${c.hero.beamer.src.replace('.webp', '-sm.webp')} 600w, ${c.hero.beamer.src} 1200w`"
+              sizes="(max-width: 900px) 40vw, 380px"
+              :alt="c.hero.beamer.alt"
+              width="1200"
+              height="635"
+            />
+          </div>
+          <div class="foot" />
+        </div>
       </div>
     </section>
 
-    <!-- Met je AI -->
-    <section id="ai" class="ai wrap" aria-labelledby="ai-title">
-      <div class="feature">
-        <div class="feature-text">
-          <h2 id="ai-title">{{ c.ai.title }}</h2>
-          <p class="prompt">{{ c.ai.prompt }}</p>
-        </div>
-        <div class="feature-shots">
-          <AppShot :src="c.ai.shot.src" :alt="c.ai.shot.alt" />
-        </div>
-      </div>
+    <!-- Drie stappen -->
+    <section id="steps" class="wrap steps" aria-labelledby="steps-title">
+      <h2 id="steps-title">{{ c.steps.title }}</h2>
+      <ol class="step-grid">
+        <li v-for="(step, i) in c.steps.items" :key="step.title" class="step">
+          <span class="n">{{ i + 1 }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+        </li>
+      </ol>
     </section>
 
-    <!-- Rondes -->
-    <section id="rounds" class="rounds wrap" aria-labelledby="rounds-title">
+    <!-- Rondes: wat de zaal ziet -->
+    <section id="rounds" class="wrap rounds" aria-labelledby="rounds-title">
       <h2 id="rounds-title">{{ c.rounds.title }}</h2>
-      <div class="round-grid">
-        <figure v-for="round in c.rounds.items" :key="round.title" class="round">
-          <AppShot
-            kind="beamer"
+      <div class="bento">
+        <figure
+          v-for="(round, i) in c.rounds.items"
+          :key="round.title"
+          class="tile"
+          :class="`t${i}`"
+        >
+          <img
             :src="(round.beamer ?? round.shot).src"
             :alt="(round.beamer ?? round.shot).alt"
-            sizes="(max-width: 900px) calc(100vw - 40px), 570px"
+            width="1200"
+            height="635"
+            loading="lazy"
           />
-          <figcaption>
-            <h3>{{ round.title }}</h3>
-          </figcaption>
+          <figcaption>{{ round.title }}</figcaption>
+        </figure>
+        <figure id="print" class="tile t4 print">
+          <img
+            :src="c.print.shot.src"
+            :alt="c.print.shot.alt"
+            width="1600"
+            height="1000"
+            loading="lazy"
+          />
+          <figcaption>{{ c.print.title }}</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- Tijdens de show -->
-    <section id="show" class="show" aria-labelledby="show-title">
-      <div class="wrap show-inner">
-        <div class="show-text">
-          <h2 id="show-title">{{ c.show.title }}</h2>
-          <p class="lead">{{ c.show.lead }}</p>
+    <!-- Met je AI -->
+    <section id="ai" class="wrap" aria-labelledby="ai-title">
+      <div class="band">
+        <div class="band-text">
+          <h2 id="ai-title">{{ c.ai.title }}</h2>
+          <p class="prompt">{{ c.ai.prompt }}</p>
         </div>
-        <dl class="keys">
-          <div v-for="k in c.show.keys" :key="k.label" class="key-row">
-            <dt>
-              <kbd v-for="key in k.keys" :key="key" class="key">{{ key }}</kbd>
-            </dt>
-            <dd>{{ k.label }}</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-    <!-- Afdrukken -->
-    <section id="print" class="print wrap" aria-labelledby="print-title">
-      <div class="feature">
-        <div class="feature-text">
-          <h2 id="print-title">{{ c.print.title }}</h2>
-          <dl class="forms">
-            <div v-for="item in c.print.items" :key="item.title">
-              <dt>{{ item.title }}</dt>
-            </div>
-          </dl>
-        </div>
-        <div class="feature-shots">
-          <AppShot :src="c.print.shot.src" :alt="c.print.shot.alt" />
-        </div>
+        <AppShot :src="c.ai.shot.src" :alt="c.ai.shot.alt" />
       </div>
     </section>
 
     <!-- Download -->
-    <section id="download" class="download wrap" aria-labelledby="download-title">
-      <div class="download-panel">
-        <div class="download-main">
-          <h2 id="download-title">{{ c.download.title }}</h2>
-          <p class="lead">{{ c.download.lead }}</p>
-          <a
-            v-if="config.public.downloadUrl"
-            class="button primary"
-            :href="config.public.downloadUrl"
-            @click="$track('download_clicked', { locale })"
-          >
-            {{ c.download.button }}
-          </a>
-          <p v-else class="pending">{{ c.download.pending }}</p>
-          <p class="terms">
-            {{ c.download.terms }}
-            <NuxtLink :to="localePath('/voorwaarden')">{{ c.download.termsLink }}</NuxtLink>.
-          </p>
-        </div>
-        <div class="install">
-          <h3>{{ c.download.installTitle }}</h3>
-          <ol>
-            <li v-for="line in c.download.install" :key="line">{{ line }}</li>
-          </ol>
-        </div>
-      </div>
+    <section id="download" class="wrap download" aria-labelledby="download-title">
+      <h2 id="download-title">{{ c.download.title }}</h2>
+      <p class="lead">{{ c.download.lead }}</p>
+      <a
+        v-if="config.public.downloadUrl"
+        class="button primary"
+        :href="config.public.downloadUrl"
+        @click="$track('download_clicked', { locale })"
+      >
+        {{ c.download.button }}
+      </a>
+      <p v-else class="pending">{{ c.download.pending }}</p>
+      <p class="terms">
+        {{ c.download.terms }}
+        <NuxtLink :to="localePath('/voorwaarden')">{{ c.download.termsLink }}</NuxtLink>.
+        {{ c.download.install[c.download.install.length - 1] }}
+      </p>
     </section>
   </div>
 </template>
 
 <style scoped>
 section {
-  padding-block: clamp(56px, 9vw, 112px) 0;
+  padding-top: clamp(80px, 11vw, 140px);
+}
+
+h2 {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
 }
 
 /* Openingsbeeld */
 .hero {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(40px, 6vw, 72px);
-  padding-top: clamp(48px, 8vw, 96px);
+  padding-top: clamp(56px, 8vw, 96px);
+  background: var(--accent);
+  color: var(--accent-ink);
+  /* Het onderste deel van de apparaten valt over de rand, op de nachtblauwe pagina. */
+  background-image: linear-gradient(var(--accent) 78%, var(--night) 78%);
 }
 
 .hero-text {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 50rem;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 20px;
-  margin-top: 6px;
+.hero h1 {
+  max-width: 14ch;
+  font-size: clamp(3rem, 8.5vw, 6.2rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.hero .lead {
+  color: var(--accent-ink);
+  opacity: 0.8;
+}
+
+.button.dark {
+  background: var(--accent-ink);
+  color: var(--accent);
 }
 
 .facts {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  opacity: 0.7;
 }
 
-.hero-shots {
-  position: relative;
-  padding-bottom: clamp(40px, 8vw, 90px);
-}
-
-.hero-beamer {
-  position: absolute;
-  right: clamp(-8px, -1vw, 0px);
-  bottom: 0;
-  width: clamp(180px, 38%, 460px);
-}
-
-/* Met je AI: de vraag aan de AI als tekstballon */
-.feature-text > .prompt {
-  align-self: flex-start;
-  color: var(--text);
-  margin: 6px 0;
-  padding: 16px 20px;
-  border-radius: 20px 20px 20px 6px;
-  background: var(--surface-3);
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 650;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-}
-
-/* Rondes en afdrukken: tekst naast een screenshot */
-.rounds {
+.devices {
   display: flex;
-  flex-direction: column;
-  gap: clamp(28px, 4vw, 44px);
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(14px, 3vw, 32px);
+  margin-top: clamp(40px, 6vw, 64px);
 }
 
-.round-grid {
+.laptop {
+  width: min(66%, 760px);
+}
+
+.laptop .screen {
+  border: clamp(5px, 0.9vw, 10px) solid #232b3e;
+  border-bottom-width: clamp(7px, 1vw, 12px);
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.laptop .base {
+  height: clamp(8px, 1.3vw, 16px);
+  margin: 0 -5%;
+  border-radius: 0 0 14px 14px;
+  background: #2c3550;
+}
+
+.tv {
+  width: min(32%, 380px);
+}
+
+.tv .screen {
+  border: clamp(4px, 0.6vw, 7px) solid #05070c;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.tv .foot {
+  width: 22%;
+  height: clamp(12px, 2vw, 26px);
+  margin: 0 auto;
+  background: #2c3550;
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+}
+
+.devices img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Drie stappen */
+.steps h2,
+.rounds h2,
+.download h2 {
+  text-align: center;
+}
+
+.step-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(36px, 5vw, 56px) clamp(20px, 3vw, 32px);
-}
-
-.round {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  margin: 0;
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.round figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.step {
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: var(--surface-2);
 }
 
-.round h3 {
-  font-size: 1.25rem;
+.step .n {
+  font-family: var(--display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.step h3 {
+  margin-top: 12px;
+  font-size: 1.4rem;
   font-weight: 750;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
-.round p {
+.step p {
+  margin-top: 4px;
   color: var(--muted);
 }
 
-.feature {
+/* Rondes: tegels met wat de zaal ziet */
+.bento {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-auto-rows: clamp(150px, 20vw, 250px);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.tile {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: #000;
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tile figcaption {
+  position: absolute;
+  left: 18px;
+  bottom: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--night);
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 750;
+}
+
+.t2 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.t0 {
+  grid-column: 2 / span 2;
+}
+
+.t1 {
+  grid-column: 2;
+}
+
+.t3 {
+  grid-column: 3;
+}
+
+.t4 {
+  grid-column: 1 / span 3;
+  grid-row: span 2;
+}
+
+.print img {
+  object-position: top;
+}
+
+/* Met je AI */
+.band {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: clamp(28px, 5vw, 64px);
+  gap: clamp(28px, 4vw, 48px);
   align-items: center;
+  padding: clamp(28px, 4.5vw, 56px);
+  border-radius: 28px;
+  background: var(--surface-3);
 }
 
-.feature-text {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.band h2 {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
 }
 
-.feature-text > p:not(.prompt) {
-  color: var(--muted);
+.prompt {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: 20px 20px 20px 6px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--display);
   font-size: 1.15rem;
-}
-
-.feature-text h3 {
-  font-size: clamp(1.5rem, 2.6vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-}
-
-.feature-shots {
-  position: relative;
-}
-
-/* Tijdens de show */
-.show {
-  margin-top: clamp(56px, 9vw, 112px);
-  padding-block: clamp(56px, 8vw, 96px);
-  background: var(--surface-1);
-}
-
-.show-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(32px, 6vw, 80px);
-  align-items: center;
-}
-
-.show-text {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.keys {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 32px;
-  margin: 0;
-}
-
-.key-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.key-row dt {
-  display: flex;
-  gap: 6px;
-  flex: none;
-  min-width: 5.5rem;
-}
-
-.key-row dd {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.key {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.2em;
-  padding: 4px 10px;
-  border-radius: 8px;
-  background: var(--surface-4);
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.35);
-  color: var(--text);
-  font-weight: 650;
-  font-size: 0.92rem;
-  white-space: nowrap;
-}
-
-/* Afdrukken */
-.print {
-  padding-bottom: 0;
-}
-
-.forms {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 8px 0 0;
-}
-
-.forms dt {
   font-weight: 700;
-}
-
-.forms dd {
-  margin: 0;
-  color: var(--muted);
+  line-height: 1.35;
 }
 
 /* Download */
 .download {
-  padding-bottom: clamp(56px, 8vw, 96px);
-}
-
-.download-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 64px);
-}
-
-.download-main {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: clamp(80px, 11vw, 140px);
+  text-align: center;
 }
 
 .terms {
-  margin-top: 14px;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .terms a {
@@ -427,46 +437,28 @@ section {
   padding: 12px 16px;
   border-radius: var(--radius-lg);
   background: var(--accent-soft);
-  color: var(--text);
 }
 
-.install {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.install ol {
-  margin: 0;
-  padding-left: 1.4em;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  color: var(--muted);
-}
-
-.install li::marker {
-  color: var(--accent);
-  font-family: var(--display);
-  font-weight: 800;
-}
-
-@media (max-width: 900px) {
-  .round-grid,
-  .show-inner,
-  .download-panel,
-  .feature {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .keys {
+@media (max-width: 760px) {
+  .step-grid,
+  .band {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .hero-beamer {
-    width: 48%;
+  .bento {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .t0,
+  .t1,
+  .t2,
+  .t3 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .t4 {
+    grid-column: 1 / span 2;
   }
 }
 </style>
