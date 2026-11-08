@@ -208,3 +208,29 @@ Alle 7 bezoekers van de afgelopen 24 uur komen uit de VS, met 1 pageview en ~1 s
 - Weer op een branch vanaf `master`, omdat `develop` de nog niet goedgekeurde privacyverklaring bevat.
 
 **Volgende ideeën:** Google Search Console (#71, Remco) blijft veruit het belangrijkste: na een week staat de site nog nergens en komt er niemand via Google; PostHog-surveys niet laden (`disable_surveys`, ~30 KiB JS); vermelding op lijstjessites voor "pub quiz software" en een link vanaf de GitHub-release naar quiznote.app (Remco).
+
+---
+
+## 2026-11-08
+
+**PostHog** (project 328999). Deze keer met SQL op `$pageview` voor host quiznote (zonder testaccountfilter, dus niet exact vergelijkbaar met de overzichtscijfers van eerdere dagen).
+
+| | 24 uur | 7 dagen | 7 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 11 | 128 | 7 / 163 |
+| Pageviews | 11 | 155 | 7 / 196 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 54 · `/en` 37 · `/voorwaarden` 17 · `/en/voorwaarden` 11 · `/404` 8 · `/privacy` 8 · `/en/privacy` 8 · `/200` 6.
+Weer alleen losse pageviews van 1 pagina, geen bezoekers uit NL: vrijwel zeker bots of link-previews. De weekcijfers zakken nu de lanceringsdagen uit het venster vallen.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens. "QuizNote"/"QuizNote app": GitHub-projecten (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, studie-apps. "pubquiz app mac": App Store-quizspellen, Quizado. "pubquiz maken": id.nl (PowerPoint), AhaSlides, Amnesty-handleiding, dagjeweg. "pubquiz software": Quizado, KwizzBit, AhaSlides, lijstjessites (gitnux, wifitalents, zipdo, worldmetrics). "quiz night software mac": Games Night, QuizControl, Quizado, SourceForge.
+
+**PageSpeed Insights:** niet bereikbaar (toestemming voor de URL wordt in een nachtelijke run niet gegeven). Overgeslagen.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph en gestructureerde gegevens op `/` en `/en` in orde; één h1; alle afbeeldingen met alt (het downloadicoon heeft bewust `alt=""`); robots.txt en sitemap (6 URL's) in orde; `/200` en `/404` krijgen `X-Robots-Tag: noindex`; screenshots 580 KB, JS 792 KB (los geladen chunks).
+
+**Verbetering:** PostHog laadt geen enquêtes meer op de site (`disable_surveys: true` in `app/plugins/posthog.client.ts`). Scheelt een extra script van ~30 KiB per bezoek; er wordt niets anders gemeten dan voorheen. Op een branch vanaf `master`, omdat `develop` de nog niet goedgekeurde privacyverklaring bevat.
+
+**Volgende ideeën:** Google Search Console (#71, Remco) blijft veruit het belangrijkste: na anderhalve week staat de site nog nergens. Verder: een link vanaf de GitHub-release en vermeldingen op lijstjessites voor "pub quiz software" (Remco).
