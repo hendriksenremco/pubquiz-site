@@ -73,6 +73,10 @@ else
   echo "Ontbreekt: ai-music-round.png" >&2
   missing=1
 fi
+if [ -f "$src/ai-music-round.en.png" ]; then
+  convert_png "$src/ai-music-round.en.png" "$out/en/ai-quiz.webp"
+  english+=("ai-quiz")
+fi
 
 # Welke Engelse beelden er zijn; site.ts valt voor de rest terug op het Nederlandse beeld.
 printf '{\n  "en": [%s]\n}\n' "$(printf '"%s", ' "${english[@]+"${english[@]}"}" | sed 's/, $//')" \
