@@ -59,13 +59,6 @@ useHead(() => {
     ]
   }
 })
-
-// Eenvoudige lijn-iconen voor "Eén laptop, de hele zaal": scherm, speaker, laptop.
-const roomIcons = [
-  'M4 5h16v11H4zM9 20h6M12 16v4',
-  'M7 3h10v18H7zM12 7h.01M12 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
-  'M5 6h14v9H5zM3 18h18'
-]
 </script>
 
 <template>
@@ -73,14 +66,11 @@ const roomIcons = [
     <!-- Openingsbeeld -->
     <section class="hero wrap">
       <div class="hero-text">
-        <p class="eyebrow">{{ c.hero.eyebrow }}</p>
         <h1>{{ c.hero.title }}</h1>
         <p class="lead">{{ c.hero.lead }}</p>
         <div class="hero-actions">
           <a class="button primary" href="#download">{{ c.cta.download }}</a>
-          <ul class="facts">
-            <li v-for="f in c.hero.facts" :key="f" class="chip">{{ f }}</li>
-          </ul>
+          <p class="facts">{{ c.hero.facts.join(' · ') }}</p>
         </div>
       </div>
       <div class="hero-shots">
@@ -101,34 +91,10 @@ const roomIcons = [
       </div>
     </section>
 
-    <!-- Eén laptop, de hele zaal -->
-    <section class="room wrap" aria-labelledby="room-title">
-      <h2 id="room-title">{{ c.room.title }}</h2>
-      <div class="room-grid">
-        <article v-for="(item, i) in c.room.items" :key="item.title" class="card">
-          <svg
-            class="icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path :d="roomIcons[i]" />
-          </svg>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.text }}</p>
-        </article>
-      </div>
-    </section>
-
     <!-- Met je AI -->
     <section id="ai" class="ai wrap" aria-labelledby="ai-title">
       <div class="feature">
         <div class="feature-text">
-          <p class="eyebrow">{{ c.ai.eyebrow }}</p>
           <h2 id="ai-title">{{ c.ai.title }}</h2>
           <p class="prompt">{{ c.ai.prompt }}</p>
           <p>{{ c.ai.text }}</p>
@@ -141,39 +107,26 @@ const roomIcons = [
 
     <!-- Rondes -->
     <section id="rounds" class="rounds wrap" aria-labelledby="rounds-title">
-      <div class="section-head">
-        <p class="eyebrow">{{ c.rounds.eyebrow }}</p>
-        <h2 id="rounds-title">{{ c.rounds.title }}</h2>
-      </div>
-      <article
-        v-for="(round, i) in c.rounds.items"
-        :key="round.title"
-        class="feature"
-        :class="{ flip: i % 2 === 1 }"
-      >
-        <div class="feature-text">
-          <h3>{{ round.title }}</h3>
-          <p>{{ round.text }}</p>
-        </div>
-        <div class="feature-shots">
-          <AppShot :src="round.shot.src" :alt="round.shot.alt" />
+      <h2 id="rounds-title">{{ c.rounds.title }}</h2>
+      <div class="round-grid">
+        <figure v-for="round in c.rounds.items" :key="round.title" class="round">
           <AppShot
-            v-if="round.beamer"
-            class="feature-beamer"
-            kind="beamer"
-            :src="round.beamer.src"
-            :alt="round.beamer.alt"
-            :label="c.hero.beamerLabel"
+            :src="round.shot.src"
+            :alt="round.shot.alt"
+            sizes="(max-width: 900px) calc(100vw - 40px), 570px"
           />
-        </div>
-      </article>
+          <figcaption>
+            <h3>{{ round.title }}</h3>
+            <p>{{ round.text }}</p>
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- Tijdens de show -->
     <section id="show" class="show" aria-labelledby="show-title">
       <div class="wrap show-inner">
         <div class="show-text">
-          <p class="eyebrow">{{ c.show.eyebrow }}</p>
           <h2 id="show-title">{{ c.show.title }}</h2>
           <p class="lead">{{ c.show.lead }}</p>
         </div>
@@ -192,7 +145,6 @@ const roomIcons = [
     <section id="print" class="print wrap" aria-labelledby="print-title">
       <div class="feature">
         <div class="feature-text">
-          <p class="eyebrow">{{ c.print.eyebrow }}</p>
           <h2 id="print-title">{{ c.print.title }}</h2>
           <dl class="forms">
             <div v-for="item in c.print.items" :key="item.title">
@@ -211,15 +163,6 @@ const roomIcons = [
     <section id="download" class="download wrap" aria-labelledby="download-title">
       <div class="download-panel">
         <div class="download-main">
-          <img
-            class="download-icon"
-            src="/brand/quiznote-icoon-vlak.svg"
-            alt=""
-            width="96"
-            height="96"
-            loading="lazy"
-          />
-          <p class="eyebrow">{{ c.download.eyebrow }}</p>
           <h2 id="download-title">{{ c.download.title }}</h2>
           <p class="lead">{{ c.download.lead }}</p>
           <a
@@ -252,12 +195,6 @@ section {
   padding-block: clamp(56px, 9vw, 112px) 0;
 }
 
-.section-head {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
 /* Openingsbeeld */
 .hero {
   display: flex;
@@ -282,12 +219,9 @@ section {
 }
 
 .facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0;
   margin: 0;
-  list-style: none;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .hero-shots {
@@ -295,54 +229,11 @@ section {
   padding-bottom: clamp(40px, 8vw, 90px);
 }
 
-.hero-shots::before {
-  /* Het licht van de zaal achter het beeld, zoals de gloed achter beelden in de app. */
-  content: '';
-  position: absolute;
-  inset: 10% 5% 0;
-  background: radial-gradient(closest-side, rgba(255, 165, 61, 0.16), transparent);
-  filter: blur(40px);
-  z-index: -1;
-}
-
 .hero-beamer {
   position: absolute;
   right: clamp(-8px, -1vw, 0px);
   bottom: 0;
   width: clamp(180px, 38%, 460px);
-}
-
-/* Eén laptop, de hele zaal */
-.room {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.room-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 26px;
-  border-radius: var(--radius-xl);
-  background: var(--surface-1);
-}
-
-.card p {
-  color: var(--muted);
-}
-
-.icon {
-  width: 34px;
-  height: 34px;
-  color: var(--accent);
-  margin-bottom: 6px;
 }
 
 /* Met je AI: de vraag aan de AI als tekstballon */
@@ -364,7 +255,36 @@ section {
 .rounds {
   display: flex;
   flex-direction: column;
-  gap: clamp(48px, 7vw, 96px);
+  gap: clamp(28px, 4vw, 44px);
+}
+
+.round-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 56px) clamp(20px, 3vw, 32px);
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+
+.round figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.round h3 {
+  font-size: 1.25rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+}
+
+.round p {
+  color: var(--muted);
 }
 
 .feature {
@@ -374,17 +294,13 @@ section {
   align-items: center;
 }
 
-.feature.flip .feature-text {
-  order: 2;
-}
-
 .feature-text {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.feature-text > p:not(.eyebrow, .prompt) {
+.feature-text > p:not(.prompt) {
   color: var(--muted);
   font-size: 1.15rem;
 }
@@ -397,23 +313,6 @@ section {
 
 .feature-shots {
   position: relative;
-}
-
-.feature-shots:has(.feature-beamer) {
-  padding-bottom: clamp(32px, 6vw, 64px);
-}
-
-/* Het beamerbeeld staat aan de kant van de tekst, zodat het niet over de rand van de pagina valt. */
-.feature-beamer {
-  position: absolute;
-  left: clamp(-24px, -2vw, 0px);
-  bottom: 0;
-  width: 42%;
-}
-
-.flip .feature-beamer {
-  left: auto;
-  right: clamp(-24px, -2vw, 0px);
 }
 
 /* Tijdens de show */
@@ -439,7 +338,7 @@ section {
 .keys {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 14px 32px;
   margin: 0;
 }
 
@@ -447,15 +346,13 @@ section {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 16px;
-  border-radius: var(--radius-lg);
-  background: var(--surface-2);
 }
 
 .key-row dt {
   display: flex;
   gap: 6px;
   flex: none;
+  min-width: 5.5rem;
 }
 
 .key-row dd {
@@ -509,9 +406,6 @@ section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(28px, 5vw, 64px);
-  padding: clamp(28px, 5vw, 56px);
-  border-radius: 28px;
-  background: var(--surface-2);
 }
 
 .download-main {
@@ -519,12 +413,6 @@ section {
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
-}
-
-.download-icon {
-  width: 88px;
-  height: 88px;
-  margin-bottom: 6px;
 }
 
 .terms {
@@ -566,15 +454,11 @@ section {
 }
 
 @media (max-width: 900px) {
-  .room-grid,
+  .round-grid,
   .show-inner,
   .download-panel,
   .feature {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .feature.flip .feature-text {
-    order: 0;
   }
 }
 
