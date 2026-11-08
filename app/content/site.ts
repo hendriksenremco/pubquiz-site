@@ -49,7 +49,7 @@ export const site: Record<Locale, SiteContent> = {
   nl: {
     meta: {
       title: 'QuizNote · pubquiz maken en presenteren op je Mac',
-      description: "Maak je pubquiz met QuizNote en speel hem af vanaf één Mac: vragen, muziekfragmenten en antwoorden op beamer, tv's en speakers."
+      description: "Maak je pubquiz met QuizNote en speel hem af vanaf één Mac: vragen, muziek en antwoorden groot in beeld."
     },
     skip: 'Naar de inhoud',
     nav: {
@@ -64,7 +64,7 @@ export const site: Record<Locale, SiteContent> = {
     hero: {
       eyebrow: 'Voor quizmasters met een Mac',
       title: 'De hele pubquiz vanaf één laptop',
-      lead: "Beamer, tv's en speakers vanuit één app. Je klikt je quiz één keer in elkaar en speelt hem af met een paar toetsen.",
+      lead: "Vragen, muziek en antwoorden vanuit één app. Je klikt je quiz één keer in elkaar en speelt hem af met een paar toetsen.",
       facts: ['Voor macOS', 'Werkt offline', 'Eén map per quiz'],
       laptop: {
         src: '/screens/muziek.webp',
@@ -79,8 +79,8 @@ export const site: Record<Locale, SiteContent> = {
     room: {
       title: 'Eén laptop, de hele zaal',
       items: [
-        { title: 'Schermen', text: 'Elke beamer en tv een eigen beeld.' },
-        { title: 'Geluid', text: 'Muziek voor de zaal, fragmenten op een eigen speaker.' },
+        { title: 'Beeld', text: 'Je quiz groot op de beamer of tv.' },
+        { title: 'Geluid', text: 'Muziek en fragmenten door de speakers.' },
         { title: 'Jij', text: 'Alles in één overzicht, met een paar toetsen.' }
       ]
     },
@@ -193,7 +193,7 @@ export const site: Record<Locale, SiteContent> = {
   en: {
     meta: {
       title: 'QuizNote · make and run your pub quiz on a Mac',
-      description: 'Make your pub quiz with QuizNote and run it from one Mac: questions, music clips and answers on projector, TVs and speakers.'
+      description: 'Make your pub quiz with QuizNote and run it from one Mac: questions, music and answers big on screen.'
     },
     skip: 'Skip to content',
     nav: {
@@ -208,7 +208,7 @@ export const site: Record<Locale, SiteContent> = {
     hero: {
       eyebrow: 'For quizmasters with a Mac',
       title: 'Run the whole pub quiz from one laptop',
-      lead: 'Projector, TVs and speakers from one app. Build your quiz once and play it with a few keys.',
+      lead: 'Questions, music and answers from one app. Build your quiz once and play it with a few keys.',
       facts: ['For macOS', 'Works offline', 'One folder per quiz'],
       laptop: {
         src: '/screens/muziek.webp',
@@ -223,8 +223,8 @@ export const site: Record<Locale, SiteContent> = {
     room: {
       title: 'One laptop, the whole room',
       items: [
-        { title: 'Screens', text: 'Every projector and TV its own picture.' },
-        { title: 'Sound', text: 'Music for the room, clips on their own speaker.' },
+        { title: 'Picture', text: 'Your quiz big on the projector or TV.' },
+        { title: 'Sound', text: 'Music and clips through the speakers.' },
         { title: 'You', text: 'Everything in one view, with a few keys.' }
       ]
     },
