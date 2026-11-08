@@ -14,7 +14,9 @@ export default defineNuxtPlugin(() => {
         persistence: 'memory',
         person_profiles: 'identified_only',
         capture_pageview: 'history_change',
-        disable_session_recording: true
+        disable_session_recording: true,
+        // Geen enquêtes op de site: scheelt een extra script van ~30 KiB.
+        disable_surveys: true
       })
       client = posthog
     })
