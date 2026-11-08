@@ -4,8 +4,17 @@
 
 // De versie van de nieuwste release; app-release.yml zet hem na elke release.
 import release from './release.json'
+// Welke screenshots er ook in het Engels zijn (public/screens/en); scripts/update-screens.sh zet dit.
+import screens from './screens.json'
 
 export type Locale = 'nl' | 'en'
+
+/** Het Engelse screenshot als dat er is, anders het Nederlandse. */
+function enShot(name: string): string {
+  return (screens.en as string[]).includes(name)
+    ? `/screens/en/${name}.webp`
+    : `/screens/${name}.webp`
+}
 
 export interface Shot {
   src: string
@@ -15,7 +24,14 @@ export interface Shot {
 export interface SiteContent {
   meta: { title: string; description: string }
   skip: string
-  nav: { ai: string; rounds: string; show: string; print: string; download: string; language: string }
+  nav: {
+    ai: string
+    rounds: string
+    show: string
+    print: string
+    download: string
+    language: string
+  }
   cta: { download: string; downloadShort: string }
   hero: {
     eyebrow: string
@@ -28,7 +44,11 @@ export interface SiteContent {
   }
   room: { title: string; items: { title: string; text: string }[] }
   ai: { eyebrow: string; title: string; prompt: string; text: string; shot: Shot }
-  rounds: { eyebrow: string; title: string; items: { title: string; text: string; shot: Shot; beamer?: Shot }[] }
+  rounds: {
+    eyebrow: string
+    title: string
+    items: { title: string; text: string; shot: Shot; beamer?: Shot }[]
+  }
   show: { eyebrow: string; title: string; lead: string; keys: { keys: string[]; label: string }[] }
   print: { eyebrow: string; title: string; shot: Shot; items: { title: string; text: string }[] }
   download: {
@@ -49,7 +69,8 @@ export const site: Record<Locale, SiteContent> = {
   nl: {
     meta: {
       title: 'QuizNote · pubquiz maken en presenteren op je Mac',
-      description: "Maak je pubquiz met QuizNote en speel hem af vanaf één Mac: vragen, muziek en antwoorden groot in beeld."
+      description:
+        'Maak je pubquiz met QuizNote en speel hem af vanaf één Mac: vragen, muziek en antwoorden groot in beeld.'
     },
     skip: 'Naar de inhoud',
     nav: {
@@ -64,11 +85,11 @@ export const site: Record<Locale, SiteContent> = {
     hero: {
       eyebrow: 'Voor quizmasters met een Mac',
       title: 'De hele pubquiz vanaf één laptop',
-      lead: "Vragen, muziek en antwoorden vanuit één app. Je klikt je quiz één keer in elkaar en speelt hem af met een paar toetsen.",
+      lead: 'Vragen, muziek en antwoorden vanuit één app. Je klikt je quiz één keer in elkaar en speelt hem af met een paar toetsen.',
       facts: ['Voor macOS', 'Werkt offline', 'Eén map per quiz'],
       laptop: {
         src: '/screens/muziek.webp',
-        alt: 'QuizNote tijdens de show: de muziekronde loopt, met previews van de beamer en de tv, de fragmenten en de mixer.'
+        alt: 'QuizNote tijdens de show: de muziekronde loopt, met het beeld op de beamer en de fragmenten.'
       },
       beamer: {
         src: '/screens/muziek-beamer.webp',
@@ -103,7 +124,7 @@ export const site: Record<Locale, SiteContent> = {
           text: 'Een vraag, een afbeelding of alleen het nummer in beeld.',
           shot: {
             src: '/screens/vragen.webp',
-            alt: 'Een vragenronde tijdens de show: vraag 2 staat op de beamer en de tv, de slides staan eronder.'
+            alt: 'Een vragenronde tijdens de show: vraag 2 staat op de beamer, de slides staan eronder.'
           },
           beamer: {
             src: '/screens/vragen-beamer.webp',
@@ -115,7 +136,7 @@ export const site: Record<Locale, SiteContent> = {
           text: 'Fragmenten op de toetsen 1 tot en met 9, of na elkaar als reeks.',
           shot: {
             src: '/screens/editor.webp',
-            alt: 'De muziekronde in de editor: de titelslide, de schermen en de fragmenten met hun lengte.'
+            alt: 'De muziekronde in de editor: de titelslide en de fragmenten met hun lengte.'
           }
         },
         {
@@ -123,7 +144,7 @@ export const site: Record<Locale, SiteContent> = {
           text: "Een hele map foto's in één keer, genummerd in beeld.",
           shot: {
             src: '/screens/vlaggen.webp',
-            alt: 'Een afbeeldingenronde met vlaggen: op de beamer en de tv staat dezelfde genummerde vlag.'
+            alt: 'Een afbeeldingenronde met vlaggen: op de beamer staat een genummerde vlag.'
           }
         },
         {
@@ -193,7 +214,8 @@ export const site: Record<Locale, SiteContent> = {
   en: {
     meta: {
       title: 'QuizNote · make and run your pub quiz on a Mac',
-      description: 'Make your pub quiz with QuizNote and run it from one Mac: questions, music and answers big on screen.'
+      description:
+        'Make your pub quiz with QuizNote and run it from one Mac: questions, music and answers big on screen.'
     },
     skip: 'Skip to content',
     nav: {
@@ -211,11 +233,11 @@ export const site: Record<Locale, SiteContent> = {
       lead: 'Questions, music and answers from one app. Build your quiz once and play it with a few keys.',
       facts: ['For macOS', 'Works offline', 'One folder per quiz'],
       laptop: {
-        src: '/screens/muziek.webp',
-        alt: 'QuizNote during the show: the music round is on, with previews of the projector and the TV, the clips and the mixer.'
+        src: enShot('muziek'),
+        alt: 'QuizNote during the show: the music round is on, with the picture on the projector and the clips.'
       },
       beamer: {
-        src: '/screens/muziek-beamer.webp',
+        src: enShot('muziek-beamer'),
         alt: 'On the projector: the title slide of round 2, music, with the number of the first clip.'
       },
       beamerLabel: 'On the projector'
@@ -234,7 +256,7 @@ export const site: Record<Locale, SiteContent> = {
       prompt: 'Make a pub quiz about Italy, with a music round and a flags round.',
       text: 'The quiz then appears in QuizNote, with questions and answers. Works with Claude Desktop and other AI apps that support MCP. Songs and photos come from your own folders.',
       shot: {
-        src: '/screens/ai-quiz.webp',
+        src: enShot('ai-quiz'),
         alt: 'A quiz about Italy made by an AI, in the QuizNote editor: five rounds, including music and flags.'
       }
     },
@@ -246,11 +268,11 @@ export const site: Record<Locale, SiteContent> = {
           title: 'Questions and slides',
           text: 'A question, a picture or just the number on screen.',
           shot: {
-            src: '/screens/vragen.webp',
-            alt: 'A question round during the show: question 2 is on the projector and the TV, the slides are below.'
+            src: enShot('vragen'),
+            alt: 'A question round during the show: question 2 is on the projector, the slides are below.'
           },
           beamer: {
-            src: '/screens/vragen-beamer.webp',
+            src: enShot('vragen-beamer'),
             alt: 'On the projector: question 2, which colour do you get when you mix blue and yellow?'
           }
         },
@@ -258,27 +280,27 @@ export const site: Record<Locale, SiteContent> = {
           title: 'Music round',
           text: 'Clips on the keys 1 to 9, or one after another.',
           shot: {
-            src: '/screens/editor.webp',
-            alt: 'The music round in the editor: the title slide, the screens and the clips with their length.'
+            src: enShot('editor'),
+            alt: 'The music round in the editor: the title slide and the clips with their length.'
           }
         },
         {
           title: 'Picture round',
           text: 'A whole folder of photos at once, numbered on screen.',
           shot: {
-            src: '/screens/vlaggen.webp',
-            alt: 'A picture round with flags: the projector and the TV show the same numbered flag.'
+            src: enShot('vlaggen'),
+            alt: 'A picture round with flags: the projector shows a numbered flag.'
           }
         },
         {
           title: 'Answers',
           text: 'First the question, then the answer, big on screen.',
           shot: {
-            src: '/screens/antwoorden.webp',
+            src: enShot('antwoorden'),
             alt: 'The answer round during the show, with the question and the answer for each item.'
           },
           beamer: {
-            src: '/screens/antwoorden-beamer.webp',
+            src: enShot('antwoorden-beamer'),
             alt: 'On the projector: the answer to question 2, green.'
           }
         }
@@ -303,7 +325,7 @@ export const site: Record<Locale, SiteContent> = {
       eyebrow: 'Printing',
       title: 'On paper too',
       shot: {
-        src: '/screens/afdrukken.webp',
+        src: enShot('afdrukken'),
         alt: 'The print screen: choose the rounds and make an answer sheet, a marking sheet or question cards.'
       },
       items: [
