@@ -11,6 +11,7 @@ Stand op 31 oktober 2026:
 - **Hosting:** Firebase Hosting, project `quiznote-4c3e8`. De site staat live op https://quiznote.app.
   - Deployen gaat automatisch: elke push naar `master` zet de site live (`.github/workflows/deploy-site.yml`).
   - Claude mag op `develop` werken en pushen, en `develop` naar `master` mergen als er iets live moet.
+  - **Claude beslist zelf** wanneer de site live gaat en wanneer een nieuwe versie van de app uitkomt (8 november 2026: "Ik wil dat je dit zelf allemaal managed"). Vraag het niet meer; meld wel wat er live is gegaan. Uitzondering: de privacyverklaring gaat eerst langs Remco.
   - `pnpm deploy:site` vanaf de Mac kan nog steeds, als noodweg.
 - **quiznote.nl:** staat nog op de parkeerpagina van TransIP.
 - **Mail:** Google Workspace, ingericht voor quiznote.app. DMARC moet nog strenger; zie `HERINNERINGEN.md`.
