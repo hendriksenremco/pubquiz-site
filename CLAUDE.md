@@ -23,6 +23,7 @@ Stand op 31 oktober 2026:
 
 - **Kort antwoorden:** antwoord Remco in hooguit een paar regels: wat er gedaan is en wat hij moet doen. Geen opsommingen van alle stappen (8 november: hij moest dit te vaak herhalen).
 - **Taal:** Remco schrijft meestal Nederlands; antwoord in zijn taal. Schrijf de site-teksten in het Nederlands, met "je", korte zinnen, gewone werkwoorden en hoofdletters alleen aan het begin van een zin.
+- **Koppen zonder punt:** een kop of titel eindigt nooit op een punt (8 november).
 - **Kort en bondig:** de site laat zien wat de app is, met zo min mogelijk tekst: per onderdeel één korte zin, en laat de screenshots het werk doen. Uitgebreide uitleg komt later in een handleiding (25 oktober: "het mag qua teksten een stuk minder en bondiger").
 - **Simpel houden:** zet geavanceerde functies, zoals meerdere schermen en meerdere speakers of audio-uitgangen, niet nadrukkelijk op de site; dat kan mensen verwarren (8 november). Spreek van "de beamer of tv" en "de speakers", niet van "elk scherm een eigen beeld" of "fragmenten op een eigen speaker".
 - **Commit:** na elke afgeronde wijziging een eigen commit, met een Engelse commit-message. Werk op `develop`; `master` is de standaardbranch. Remco gebruikt altijd `master` en `develop`, nooit `main`. Pushen naar `develop` mag altijd; zie Hosting voor `master`.

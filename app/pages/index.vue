@@ -117,6 +117,7 @@ useHead(() => {
     <!-- Rondes: wat de zaal ziet -->
     <section id="rounds" class="wrap rounds" aria-labelledby="rounds-title">
       <h2 id="rounds-title">{{ c.rounds.title }}</h2>
+      <p class="lead section-lead">{{ c.rounds.lead }}</p>
       <div class="bento">
         <figure
           v-for="(round, i) in c.rounds.items"
@@ -284,6 +285,13 @@ h2 {
 }
 
 /* Drie stappen */
+.section-lead {
+  max-width: 36rem;
+  margin: 14px auto 0;
+  text-align: center;
+  color: var(--muted);
+}
+
 .steps h2,
 .rounds h2,
 .download h2 {

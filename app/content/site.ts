@@ -47,6 +47,7 @@ export interface SiteContent {
   rounds: {
     eyebrow: string
     title: string
+    lead: string
     items: { title: string; text: string; shot: Shot; beamer?: Shot }[]
   }
   show: { eyebrow: string; title: string; lead: string; keys: { keys: string[]; label: string }[] }
@@ -84,7 +85,7 @@ export const site: Record<Locale, SiteContent> = {
     cta: { download: 'Download voor Mac', downloadShort: 'Download' },
     hero: {
       eyebrow: 'Voor quizmasters met een Mac',
-      title: 'Jouw pubquiz. Groot in beeld.',
+      title: 'Jouw pubquiz, groot in beeld',
       lead: 'Vragen, muziek en antwoorden met een paar toetsen.',
       facts: ['Voor macOS', 'Werkt offline', 'Eén map per quiz'],
       laptop: {
@@ -117,7 +118,8 @@ export const site: Record<Locale, SiteContent> = {
     },
     rounds: {
       eyebrow: 'Rondes',
-      title: 'Elke ronde.',
+      title: 'Alle soorten rondes',
+      lead: 'Vragen, muziekfragmenten, plaatjes en antwoorden. Zo ziet de zaal het op de beamer.',
       items: [
         {
           title: 'Vragen',
@@ -239,7 +241,7 @@ export const site: Record<Locale, SiteContent> = {
     cta: { download: 'Download for Mac', downloadShort: 'Download' },
     hero: {
       eyebrow: 'For quizmasters with a Mac',
-      title: 'Your pub quiz. Big on screen.',
+      title: 'Your pub quiz, big on screen',
       lead: 'Questions, music and answers with a few keys.',
       facts: ['For macOS', 'Works offline', 'One folder per quiz'],
       laptop: {
@@ -272,7 +274,8 @@ export const site: Record<Locale, SiteContent> = {
     },
     rounds: {
       eyebrow: 'Rounds',
-      title: 'Every round.',
+      title: 'Every kind of round',
+      lead: 'Questions, music clips, pictures and answers. This is what the room sees on the projector.',
       items: [
         {
           title: 'Questions',
