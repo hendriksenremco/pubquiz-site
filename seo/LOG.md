@@ -234,3 +234,32 @@ Weer alleen losse pageviews van 1 pagina, geen bezoekers uit NL: vrijwel zeker b
 **Verbetering:** PostHog laadt geen enquêtes meer op de site (`disable_surveys: true` in `app/plugins/posthog.client.ts`). Scheelt een extra script van ~30 KiB per bezoek; er wordt niets anders gemeten dan voorheen. Op een branch vanaf `master`, omdat `develop` de nog niet goedgekeurde privacyverklaring bevat.
 
 **Volgende ideeën:** Google Search Console (#71, Remco) blijft veruit het belangrijkste: na anderhalve week staat de site nog nergens. Verder: een link vanaf de GitHub-release en vermeldingen op lijstjessites voor "pub quiz software" (Remco).
+
+---
+
+## 2026-11-20
+
+Eerste meting sinds 8 november (de taak heeft tussendoor niet gedraaid of niet gelogd).
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 8 november).
+
+| | 24 uur | 7 dagen | 8 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 3 | 21 | 11 / 128 |
+| Pageviews | 3 | 21 | 11 / 155 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 20 · `/en` 1. Geen bezoeken meer aan privacy/voorwaarden/404: het verkeer van de lancering is helemaal weg; wat overblijft is losse pageviews (bots, link-previews).
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens. "QuizNote"/"QuizNote app": GitHub-projecten (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen (Millionaire Pub Quiz, Pub Quiz), SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT- en Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, lijstjessites (zipdo, wifitalents, gitnux, worldmetrics), KwizzBit, Quizado. "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe, SourceForge.
+
+**PageSpeed Insights:** niet geprobeerd (in eerdere nachten nooit bereikbaar). Overgeslagen.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph (ook og:url/og:locale) en `WebSite`/`SoftwareApplication`/`Person` op `/` en `/en` in orde; één h1 ("Jouw pubquiz, groot in beeld"); alle afbeeldingen met alt; robots.txt en sitemap (6 URL's) in orde; screenshots ~1,1 MB op schijf maar per bezoek alleen de gebruikte; JS 760 KB. Klein punt: de pagina's noemen hreflang `nl` én `nl-NL`, de sitemap alleen `nl-NL`. Kleine opmerking: `pnpm-lock.yaml` is lockfile 6.0, dus lokaal `pnpm@8` gebruiken (de CI doet dat al).
+
+**Verbetering:** IndexNow. De site meldt zich na elke deploy zelf bij Bing en de andere IndexNow-zoekmachines (Yandex, Seznam, Naver; DuckDuckGo en Ecosia gebruiken Bing).
+- Sleutelbestand in `public/` (`<sleutel>.txt`), `scripts/indexnow.sh` stuurt de URL's uit de sitemap, als laatste stap in `deploy-site.yml` (ook na een app-release). Faalt nooit hard.
+- Google doet niet mee; daarvoor blijft Search Console (#71, Remco) nodig.
+
+**Volgende ideeën:** Search Console (#71, Remco) blijft het belangrijkste: drie weken live en nog niet in Google. Bing Webmaster Tools kan de verificatie van Search Console overnemen zodra die er is. Sitemap: hreflang `nl` toevoegen zodat hij gelijk loopt met de pagina's.

@@ -39,3 +39,5 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_QUIZNOTE_4C3E8 }}
           projectId: quiznote-4c3e8
           channelId: live
+      # Bing en andere zoekmachines laten weten dat er een nieuwe versie staat.
+      - run: scripts/indexnow.sh
