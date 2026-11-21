@@ -263,3 +263,29 @@ Pagina's (7 dagen, bezoekers): `/` 20 · `/en` 1. Geen bezoeken meer aan privacy
 - Google doet niet mee; daarvoor blijft Search Console (#71, Remco) nodig.
 
 **Volgende ideeën:** Search Console (#71, Remco) blijft het belangrijkste: drie weken live en nog niet in Google. Bing Webmaster Tools kan de verificatie van Search Console overnemen zodra die er is. Sitemap: hreflang `nl` toevoegen zodat hij gelijk loopt met de pagina's.
+
+---
+
+## 2026-11-21
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 20 november).
+
+| | 24 uur | 7 dagen | 20 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 61 | 79 | 3 / 21 |
+| Pageviews | 62 | 80 | 3 / 21 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 1 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 30 · `/en` 14 · `/privacy`, `/en/privacy`, `/voorwaarden`, `/en/voorwaarden`, `/404`, `/200` elk 6.
+De sprong is geen echt verkeer: vrijwel alles is "direct" uit de VS, steeds precies 6 keer elke pagina (ook `/200` en `/404`), plus doorklikken vanaf `quiznote-4c3e8.web.app`. Dat lijkt op crawlers met JavaScript, waarschijnlijk na de eerste IndexNow-melding van gisteren. Eén bezoek uit NL.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen (Ken's Pub Quiz, Millionaire Pub Quiz), SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT- en Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites (zipdo, wifitalents, gitnux, worldmetrics). "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe, SourceForge.
+
+**PageSpeed Insights:** niet geprobeerd (in eerdere nachten nooit bereikbaar). Overgeslagen.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph en gestructureerde gegevens op `/` en `/en` ongewijzigd in orde; robots.txt in orde; JS 760 KB. Opgemerkt: `quiznote-4c3e8.web.app` (het standaardadres van Firebase) stuurt bezoekers niet door naar quiznote.app; de canonical wijst wel naar quiznote.app, dus dubbele inhoud is geen probleem voor Google.
+
+**Verbetering:** sitemap gelijkgetrokken met de pagina's: elke URL noemt nu hreflang `nl`, `nl-NL`, `en` én `x-default` (privacy en voorwaarden hadden geen `nl` en geen `x-default`). Tegenstrijdige signalen tussen sitemap en pagina kunnen ertoe leiden dat Google de hreflang negeert.
+
+**Volgende ideeën:** Search Console (#71, Remco) blijft het belangrijkste. Verder: `quiznote-4c3e8.web.app` doorsturen naar quiznote.app (Firebase-instelling), en de pagina's één Nederlandse hreflang laten noemen in plaats van `nl` én `nl-NL`.

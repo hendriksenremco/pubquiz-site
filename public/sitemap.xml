@@ -4,34 +4,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://quiznote.app/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://quiznote.app/"/>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/"/>
   </url>
   <url>
     <loc>https://quiznote.app/en</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://quiznote.app/"/>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/"/>
   </url>
   <url>
     <loc>https://quiznote.app/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://quiznote.app/privacy"/>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/privacy"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/privacy"/>
   </url>
   <url>
     <loc>https://quiznote.app/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://quiznote.app/privacy"/>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/privacy"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/privacy"/>
   </url>
   <url>
     <loc>https://quiznote.app/voorwaarden</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://quiznote.app/voorwaarden"/>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/voorwaarden"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/voorwaarden"/>
   </url>
   <url>
     <loc>https://quiznote.app/en/voorwaarden</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://quiznote.app/voorwaarden"/>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://quiznote.app/voorwaarden"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://quiznote.app/en/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quiznote.app/voorwaarden"/>
   </url>
 </urlset>
