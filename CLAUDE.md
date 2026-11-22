@@ -14,7 +14,7 @@ Stand op 31 oktober 2026:
   - **Claude beslist zelf** wanneer de site live gaat en wanneer een nieuwe versie van de app uitkomt (8 november 2026: "Ik wil dat je dit zelf allemaal managed"). Vraag het niet meer; meld wel wat er live is gegaan. Uitzondering: de privacyverklaring gaat eerst langs Remco.
   - `pnpm deploy:site` vanaf de Mac kan nog steeds, als noodweg.
 - **quiznote.nl:** staat nog op de parkeerpagina van TransIP.
-- **Mail:** Google Workspace, ingericht voor quiznote.app. DMARC moet nog strenger; zie `HERINNERINGEN.md`.
+- **Mail:** Google Workspace, ingericht voor quiznote.app. DMARC staat sinds 22 november 2026 op `p=quarantine` (TransIP, TXT-record `_dmarc`).
 - **Nog niet ingericht:** PostHog (EU), voor analytics van de site en de app.
 - **Download:** waar die komt te staan is nog open. Het advies is GitHub Releases.
 - **Wat er nog moet gebeuren voor de release** staat in `../pubquiz/TODO.md`.
