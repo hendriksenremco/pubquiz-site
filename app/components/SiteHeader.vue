@@ -4,9 +4,10 @@ const localePath = useLocalePath()
 
 // Geen menu achter een knop: op een smal scherm staat de navigatie als tweede rij onder de balk.
 const links = computed(() => [
-  { href: '#rounds', label: c.value.nav.rounds },
-  { href: '#ai', label: c.value.nav.ai },
-  { href: '#download', label: c.value.nav.download }
+  { href: localePath('/') + '#rounds', label: c.value.nav.rounds },
+  { href: localePath('/') + '#ai', label: c.value.nav.ai },
+  ...(c.value.nav.library ? [{ href: '/bibliotheek', label: c.value.nav.library }] : []),
+  { href: localePath('/') + '#download', label: c.value.nav.download }
 ])
 </script>
 
@@ -14,15 +15,10 @@ const links = computed(() => [
   <header class="site-header">
     <div class="wrap bar">
       <NuxtLink :to="localePath('/')" class="brand">
-        <img
-          src="/brand/quiznote-lockup-donker.svg"
-          alt="QuizNote"
-          width="1175"
-          height="324"
-        />
+        <img src="/brand/quiznote-lockup-donker.svg" alt="QuizNote" width="1175" height="324" />
       </NuxtLink>
       <nav class="links" aria-label="QuizNote">
-        <a v-for="l in links" :key="l.href" :href="localePath('/') + l.href">{{ l.label }}</a>
+        <NuxtLink v-for="l in links" :key="l.href" :to="l.href">{{ l.label }}</NuxtLink>
       </nav>
       <div class="actions">
         <LangSwitch />

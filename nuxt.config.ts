@@ -1,5 +1,13 @@
+// De pagina's van de bibliotheek (alleen metadata; scripts/bibliotheek.mjs maakt dit bestand).
+import library from './app/content/bibliotheek.json'
+
 // De site wordt statisch gebouwd (`pnpm generate`), zodat hij op elke host kan; die keuze komt later.
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://quiznote.app'
+
+const libraryRoutes = [
+  '/bibliotheek',
+  ...library.themes.flatMap((t) => t.rounds.map((r) => `/bibliotheek/${t.slug}/${r.slug}`))
+]
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-10-01',
@@ -26,7 +34,8 @@ export default defineNuxtConfig({
     public: {
       siteUrl,
       // Altijd de nieuwste release op GitHub (gesigneerd en genotariseerd). Leeg = de site toont een melding in plaats van de knop.
-      downloadUrl: 'https://github.com/hendriksenremco/pubquiz/releases/latest/download/QuizNote.dmg',
+      downloadUrl:
+        'https://github.com/hendriksenremco/pubquiz/releases/latest/download/QuizNote.dmg',
       // PostHog (EU). De sleutel is niet geheim: hij komt toch in de JavaScript van de site.
       // Leeg (NUXT_PUBLIC_POSTHOG_KEY='') = geen analytics.
       posthogKey: 'phc_rGB9TQNdexJ5szAgvnfGbFJkH5CDxNWHA8H3JLoUrYfL',
@@ -46,6 +55,6 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    prerender: { routes: ['/', '/en'], crawlLinks: true }
+    prerender: { routes: ['/', '/en', ...libraryRoutes], crawlLinks: true }
   }
 })

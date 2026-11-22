@@ -31,6 +31,8 @@ export interface SiteContent {
     print: string
     download: string
     language: string
+    /** De bibliotheek met rondes; alleen in talen waarin er rondes zijn (nu Nederlands). */
+    library?: string
   }
   cta: { download: string; downloadShort: string }
   hero: {
@@ -80,7 +82,8 @@ export const site: Record<Locale, SiteContent> = {
       show: 'Tijdens de show',
       print: 'Afdrukken',
       download: 'Download',
-      language: 'Taal'
+      language: 'Taal',
+      library: 'Bibliotheek'
     },
     cta: { download: 'Download voor Mac', downloadShort: 'Download' },
     hero: {

@@ -1,0 +1,144 @@
+{
+  "themes": [
+    {
+      "slug": "aardrijkskunde",
+      "name": "Aardrijkskunde",
+      "description": "Landen, steden en de kaart van de wereld.",
+      "rounds": [
+        {
+          "slug": "hoofdsteden-van-europa",
+          "title": "Hoofdsteden van Europa",
+          "difficulty": "makkelijk",
+          "description": "Tien landen in Europa: weet jij welke stad de hoofdstad is? Van bekend tot net iets lastiger.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "geschiedenis",
+      "name": "Geschiedenis",
+      "description": "Jaartallen, keizers en momenten die de wereld veranderden.",
+      "rounds": [
+        {
+          "slug": "wereldgeschiedenis",
+          "title": "Wereldgeschiedenis",
+          "difficulty": "gemiddeld",
+          "description": "Van het oude Rome tot de val van het IJzeren Gordijn: tien vragen over jaartallen, leiders en gebeurtenissen.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "sport",
+      "name": "Sport",
+      "description": "Van het voetbalveld tot de Olympische Spelen.",
+      "rounds": [
+        {
+          "slug": "sport-algemeen",
+          "title": "Sport algemeen",
+          "difficulty": "makkelijk",
+          "description": "Tien vragen over regels, records en grote toernooien. Voor iedereen die weleens naar sport kijkt.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "film-en-tv",
+      "name": "Film en tv",
+      "description": "Klassiekers van het witte doek en series van de bank.",
+      "rounds": [
+        {
+          "slug": "filmklassiekers-en-series",
+          "title": "Filmklassiekers en series",
+          "difficulty": "gemiddeld",
+          "description": "Bekende films en series van de afgelopen vijftig jaar. Tien vragen voor wie graag op de bank zit.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "muziekkennis",
+      "name": "Muziekkennis",
+      "description": "Bands, zangers en het Songfestival, zonder fragmenten.",
+      "rounds": [
+        {
+          "slug": "popmuziek",
+          "title": "Popmuziek",
+          "difficulty": "gemiddeld",
+          "description": "Tien vragen over popsterren, bands en het Songfestival. Zonder fragmenten: alleen kennis telt.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "eten-en-drinken",
+      "name": "Eten en drinken",
+      "description": "Gerechten, ingrediënten en keukens van over de hele wereld.",
+      "rounds": [
+        {
+          "slug": "keukens-van-de-wereld",
+          "title": "Keukens van de wereld",
+          "difficulty": "makkelijk",
+          "description": "Tien vragen over gerechten en ingrediënten uit verschillende landen. Leuk vlak voor of na het eten.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "natuur",
+      "name": "Natuur",
+      "description": "Dieren, planten en wat er buiten allemaal leeft.",
+      "rounds": [
+        {
+          "slug": "dieren",
+          "title": "Dieren",
+          "difficulty": "makkelijk",
+          "description": "Tien vragen over dieren op het land, in de lucht en in de zee. Ook leuk voor een quiz met kinderen.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "jaren-80",
+      "name": "Jaren 80",
+      "description": "Spelletjes, films en nieuws uit het decennium van de cassettebandjes.",
+      "rounds": [
+        {
+          "slug": "de-jaren-80",
+          "title": "De jaren 80",
+          "difficulty": "gemiddeld",
+          "description": "Tien vragen over spelletjes, films, muziek en nieuws uit de jaren tachtig. Voor wie toen jong was, of het van horen zeggen kent.",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "nederland",
+      "name": "Nederland",
+      "description": "Ons eigen land: provincies, kunst en water.",
+      "rounds": [
+        {
+          "slug": "nederland",
+          "title": "Nederland",
+          "difficulty": "makkelijk",
+          "description": "Tien vragen over ons eigen land: politiek, kunst, water en de Waddeneilanden. Hoe goed ken jij Nederland?",
+          "questionCount": 10
+        }
+      ]
+    },
+    {
+      "slug": "kerst",
+      "name": "Kerst",
+      "description": "Liedjes, films en tradities voor een kerstquiz.",
+      "rounds": [
+        {
+          "slug": "kerst",
+          "title": "Kerst",
+          "difficulty": "makkelijk",
+          "description": "Tien vragen over kerstliedjes, kerstfilms en tradities uit binnen- en buitenland. Voor de laatste quiz van het jaar.",
+          "questionCount": 10
+        }
+      ]
+    }
+  ]
+}

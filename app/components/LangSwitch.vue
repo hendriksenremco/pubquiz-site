@@ -2,6 +2,11 @@
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const c = useSiteContent()
+const localePath = useLocalePath()
+
+// Een pagina die er niet in elke taal is (zoals de bibliotheek), wijst naar de voorpagina van die taal.
+const target = (code: string) =>
+  switchLocalePath(code as typeof locale.value) || localePath('/', code as typeof locale.value)
 </script>
 
 <template>
@@ -9,7 +14,7 @@ const c = useSiteContent()
     <NuxtLink
       v-for="l in locales"
       :key="l.code"
-      :to="switchLocalePath(l.code)"
+      :to="target(l.code)"
       :lang="l.language"
       :hreflang="l.language"
       :title="l.name"

@@ -1,0 +1,47 @@
+{
+  "title": "Popmuziek",
+  "difficulty": "gemiddeld",
+  "description": "Tien vragen over popsterren, bands en het Songfestival. Zonder fragmenten: alleen kennis telt.",
+  "questions": [
+    {
+      "question": "Uit welke Engelse stad kwamen The Beatles?",
+      "answer": "Liverpool"
+    },
+    {
+      "question": "Welke zanger wordt de 'King of Pop' genoemd?",
+      "answer": "Michael Jackson"
+    },
+    {
+      "question": "Met welk nummer won ABBA in 1974 het Eurovisiesongfestival?",
+      "answer": "Waterloo"
+    },
+    {
+      "question": "Wie won in 2019 het Eurovisiesongfestival voor Nederland?",
+      "answer": "Duncan Laurence"
+    },
+    {
+      "question": "Wie was de zanger van de band Queen?",
+      "answer": "Freddie Mercury"
+    },
+    {
+      "question": "Welke Britse zangeres bracht de albums 19, 21, 25 en 30 uit?",
+      "answer": "Adele"
+    },
+    {
+      "question": "Hoeveel snaren heeft een gewone akoestische gitaar?",
+      "answer": "Zes"
+    },
+    {
+      "question": "Van welke band is het nummer 'Smells Like Teen Spirit'?",
+      "answer": "Nirvana"
+    },
+    {
+      "question": "Onder welke artiestennaam is rapper Marshall Mathers bekend?",
+      "answer": "Eminem"
+    },
+    {
+      "question": "Welke zangeres trok met 'The Eras Tour' de hele wereld over?",
+      "answer": "Taylor Swift"
+    }
+  ]
+}

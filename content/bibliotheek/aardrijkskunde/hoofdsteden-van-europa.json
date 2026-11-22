@@ -1,0 +1,47 @@
+{
+  "title": "Hoofdsteden van Europa",
+  "difficulty": "makkelijk",
+  "description": "Tien landen in Europa: weet jij welke stad de hoofdstad is? Van bekend tot net iets lastiger.",
+  "questions": [
+    {
+      "question": "Wat is de hoofdstad van Portugal?",
+      "answer": "Lissabon"
+    },
+    {
+      "question": "Wat is de hoofdstad van Noorwegen?",
+      "answer": "Oslo"
+    },
+    {
+      "question": "Wat is de hoofdstad van Polen?",
+      "answer": "Warschau"
+    },
+    {
+      "question": "Wat is de hoofdstad van Hongarije?",
+      "answer": "Boedapest"
+    },
+    {
+      "question": "Wat is de hoofdstad van Ierland?",
+      "answer": "Dublin"
+    },
+    {
+      "question": "Wat is de hoofdstad van Oostenrijk?",
+      "answer": "Wenen"
+    },
+    {
+      "question": "Wat is de hoofdstad van Griekenland?",
+      "answer": "Athene"
+    },
+    {
+      "question": "Wat is de hoofdstad van Slovenië?",
+      "answer": "Ljubljana"
+    },
+    {
+      "question": "Wat is de hoofdstad van Finland?",
+      "answer": "Helsinki"
+    },
+    {
+      "question": "Wat is de hoofdstad van Roemenië?",
+      "answer": "Boekarest"
+    }
+  ]
+}

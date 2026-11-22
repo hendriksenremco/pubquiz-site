@@ -1,0 +1,47 @@
+{
+  "title": "Nederland",
+  "difficulty": "makkelijk",
+  "description": "Tien vragen over ons eigen land: politiek, kunst, water en de Waddeneilanden. Hoe goed ken jij Nederland?",
+  "questions": [
+    {
+      "question": "Wat is de hoofdstad van Nederland?",
+      "answer": "Amsterdam"
+    },
+    {
+      "question": "In welke stad vergadert de Tweede Kamer?",
+      "answer": "Den Haag"
+    },
+    {
+      "question": "Hoeveel provincies heeft Nederland?",
+      "answer": "Twaalf"
+    },
+    {
+      "question": "Hoe heet het hoogste punt van Europees Nederland?",
+      "answer": "De Vaalserberg"
+    },
+    {
+      "question": "Welke schilder maakte De Nachtwacht?",
+      "answer": "Rembrandt van Rijn"
+    },
+    {
+      "question": "Op welke datum is Koningsdag, als die niet op een zondag valt?",
+      "answer": "27 april"
+    },
+    {
+      "question": "Hoe heet de dijk tussen de Waddenzee en het IJsselmeer?",
+      "answer": "De Afsluitdijk"
+    },
+    {
+      "question": "Welke Nederlandse stad heeft de grootste haven van Europa?",
+      "answer": "Rotterdam"
+    },
+    {
+      "question": "Wat is het grootste Waddeneiland?",
+      "answer": "Texel"
+    },
+    {
+      "question": "Welke Nederlandse schilder sneed in 1888 een stuk van zijn eigen oor af?",
+      "answer": "Vincent van Gogh"
+    }
+  ]
+}

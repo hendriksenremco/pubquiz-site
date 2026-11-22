@@ -16,6 +16,14 @@
       {
         "source": "/@(200|404)*",
         "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+      },
+      {
+        "source": "**/*.quiznoteronde",
+        "headers": [
+          { "key": "X-Robots-Tag", "value": "noindex" },
+          { "key": "Content-Type", "value": "application/zip" },
+          { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
       }
     ]
   }

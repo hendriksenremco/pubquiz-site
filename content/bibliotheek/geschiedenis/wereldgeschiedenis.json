@@ -1,0 +1,47 @@
+{
+  "title": "Wereldgeschiedenis",
+  "difficulty": "gemiddeld",
+  "description": "Van het oude Rome tot de val van het IJzeren Gordijn: tien vragen over jaartallen, leiders en gebeurtenissen.",
+  "questions": [
+    {
+      "question": "In welk jaar viel de Berlijnse Muur?",
+      "answer": "1989"
+    },
+    {
+      "question": "Wie was de eerste president van de Verenigde Staten?",
+      "answer": "George Washington"
+    },
+    {
+      "question": "In welk jaar zetten de eerste mensen voet op de maan?",
+      "answer": "1969"
+    },
+    {
+      "question": "Welke Franse keizer verloor in 1815 de Slag bij Waterloo?",
+      "answer": "Napoleon Bonaparte"
+    },
+    {
+      "question": "In welk jaar begon de Eerste Wereldoorlog?",
+      "answer": "1914"
+    },
+    {
+      "question": "Welk passagiersschip zonk in 1912 na een aanvaring met een ijsberg?",
+      "answer": "De Titanic"
+    },
+    {
+      "question": "Van welke Egyptische farao werd in 1922 het graf vrijwel ongeschonden gevonden?",
+      "answer": "Toetanchamon"
+    },
+    {
+      "question": "In welke Amerikaanse stad werd president John F. Kennedy in 1963 vermoord?",
+      "answer": "Dallas"
+    },
+    {
+      "question": "Welke Romeinse veldheer werd in 44 voor Christus op de Iden van maart vermoord?",
+      "answer": "Julius Caesar"
+    },
+    {
+      "question": "In welk jaar kwam Columbus met zijn eerste reis aan in Amerika?",
+      "answer": "1492"
+    }
+  ]
+}

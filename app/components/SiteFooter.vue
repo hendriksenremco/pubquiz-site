@@ -15,6 +15,7 @@ const localePath = useLocalePath()
       />
       <p>{{ c.footer.madeBy }}</p>
       <nav class="links">
+        <NuxtLink v-if="c.nav.library" to="/bibliotheek">{{ c.nav.library }}</NuxtLink>
         <a href="mailto:remco@quiznote.app">{{ c.footer.contact }}</a>
         <NuxtLink :to="localePath('/voorwaarden')">{{ c.footer.terms }}</NuxtLink>
         <NuxtLink :to="localePath('/privacy')">{{ c.footer.privacy }}</NuxtLink>
