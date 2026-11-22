@@ -1,0 +1,47 @@
+{
+  "title": "Sport algemeen",
+  "difficulty": "makkelijk",
+  "description": "Tien vragen over regels, records en grote toernooien. Voor iedereen die weleens naar sport kijkt.",
+  "questions": [
+    {
+      "question": "Hoeveel spelers van één team staan er tegelijk op het veld bij voetbal?",
+      "answer": "11"
+    },
+    {
+      "question": "Om de hoeveel jaar worden de Olympische Zomerspelen gehouden?",
+      "answer": "Om de vier jaar"
+    },
+    {
+      "question": "Hoe heet het grandslamtoernooi in tennis dat op gras wordt gespeeld?",
+      "answer": "Wimbledon"
+    },
+    {
+      "question": "In welke sport heet één slag onder par een 'birdie'?",
+      "answer": "Golf"
+    },
+    {
+      "question": "Hoeveel ringen staan er op de Olympische vlag?",
+      "answer": "Vijf"
+    },
+    {
+      "question": "Welke kleur trui draagt de leider van het algemeen klassement in de Tour de France?",
+      "answer": "Geel"
+    },
+    {
+      "question": "Hoe lang is een marathon?",
+      "answer": "42,195 kilometer"
+    },
+    {
+      "question": "In welke stad worden de Olympische Zomerspelen van 2028 gehouden?",
+      "answer": "Los Angeles"
+    },
+    {
+      "question": "Hoeveel punten is een touchdown waard in American football?",
+      "answer": "6"
+    },
+    {
+      "question": "Welke Nederlandse coureur werd in 2021 voor het eerst wereldkampioen Formule 1?",
+      "answer": "Max Verstappen"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Kerst",
+  "difficulty": "makkelijk",
+  "description": "Tien vragen over kerstliedjes, kerstfilms en tradities uit binnen- en buitenland. Voor de laatste quiz van het jaar.",
+  "questions": [
+    {
+      "question": "Hoe heet het rendier van de Kerstman met de rode neus?",
+      "answer": "Rudolph"
+    },
+    {
+      "question": "In welk land is de traditie van de versierde kerstboom ontstaan?",
+      "answer": "Duitsland"
+    },
+    {
+      "question": "Op welke datum valt Tweede Kerstdag?",
+      "answer": "26 december"
+    },
+    {
+      "question": "Hoe heet de gierige hoofdpersoon in 'A Christmas Carol' van Charles Dickens?",
+      "answer": "Ebenezer Scrooge"
+    },
+    {
+      "question": "Onder welke plant mag je met kerst iemand kussen?",
+      "answer": "De maretak (mistletoe)"
+    },
+    {
+      "question": "In welk land werd het lied 'Stille Nacht' geschreven?",
+      "answer": "Oostenrijk"
+    },
+    {
+      "question": "Wie zingt 'All I Want for Christmas Is You'?",
+      "answer": "Mariah Carey"
+    },
+    {
+      "question": "Hoe heet de film uit 1990 waarin de achtjarige Kevin met kerst alleen thuis is?",
+      "answer": "Home Alone"
+    },
+    {
+      "question": "In welk land eten veel mensen met kerst bij KFC?",
+      "answer": "Japan"
+    },
+    {
+      "question": "Hoe heet de traditionele Engelse kerstpudding?",
+      "answer": "Christmas pudding"
+    }
+  ]
+}

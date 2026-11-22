@@ -1,0 +1,47 @@
+{
+  "title": "Keukens van de wereld",
+  "difficulty": "makkelijk",
+  "description": "Tien vragen over gerechten en ingrediënten uit verschillende landen. Leuk vlak voor of na het eten.",
+  "questions": [
+    {
+      "question": "Uit welk land komt de pizza margherita?",
+      "answer": "Italië"
+    },
+    {
+      "question": "Wat is het belangrijkste ingrediënt van guacamole?",
+      "answer": "Avocado"
+    },
+    {
+      "question": "Uit welk land komt sushi?",
+      "answer": "Japan"
+    },
+    {
+      "question": "Welke kaas hoort op een Griekse salade?",
+      "answer": "Feta"
+    },
+    {
+      "question": "Hoe heet de koude Spaanse soep van tomaat en komkommer?",
+      "answer": "Gazpacho"
+    },
+    {
+      "question": "Welk land produceert de meeste koffie ter wereld?",
+      "answer": "Brazilië"
+    },
+    {
+      "question": "Van welk graan wordt risotto gemaakt?",
+      "answer": "Rijst"
+    },
+    {
+      "question": "Welke dure specerij bestaat uit de stampers van een krokus?",
+      "answer": "Saffraan"
+    },
+    {
+      "question": "Uit welk land komt de cocktail mojito?",
+      "answer": "Cuba"
+    },
+    {
+      "question": "Wat is het belangrijkste ingrediënt van hummus?",
+      "answer": "Kikkererwten"
+    }
+  ]
+}

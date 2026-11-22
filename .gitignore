@@ -22,3 +22,6 @@ node_modules
 # Python
 __pycache__/
 node-compile-cache/
+
+# De rondebestanden van de bibliotheek; scripts/bibliotheek.mjs maakt ze.
+public/bibliotheek/

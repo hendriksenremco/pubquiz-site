@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "aardrijkskunde",
+    "name": "Aardrijkskunde",
+    "description": "Landen, steden en de kaart van de wereld."
+  },
+  {
+    "slug": "geschiedenis",
+    "name": "Geschiedenis",
+    "description": "Jaartallen, keizers en momenten die de wereld veranderden."
+  },
+  {
+    "slug": "sport",
+    "name": "Sport",
+    "description": "Van het voetbalveld tot de Olympische Spelen."
+  },
+  {
+    "slug": "film-en-tv",
+    "name": "Film en tv",
+    "description": "Klassiekers van het witte doek en series van de bank."
+  },
+  {
+    "slug": "muziekkennis",
+    "name": "Muziekkennis",
+    "description": "Bands, zangers en het Songfestival, zonder fragmenten."
+  },
+  {
+    "slug": "eten-en-drinken",
+    "name": "Eten en drinken",
+    "description": "Gerechten, ingrediënten en keukens van over de hele wereld."
+  },
+  {
+    "slug": "natuur",
+    "name": "Natuur",
+    "description": "Dieren, planten en wat er buiten allemaal leeft."
+  },
+  {
+    "slug": "jaren-80",
+    "name": "Jaren 80",
+    "description": "Spelletjes, films en nieuws uit het decennium van de cassettebandjes."
+  },
+  {
+    "slug": "nederland",
+    "name": "Nederland",
+    "description": "Ons eigen land: provincies, kunst en water."
+  },
+  {
+    "slug": "kerst",
+    "name": "Kerst",
+    "description": "Liedjes, films en tradities voor een kerstquiz."
+  }
+]

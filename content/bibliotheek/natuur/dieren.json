@@ -1,0 +1,47 @@
+{
+  "title": "Dieren",
+  "difficulty": "makkelijk",
+  "description": "Tien vragen over dieren op het land, in de lucht en in de zee. Ook leuk voor een quiz met kinderen.",
+  "questions": [
+    {
+      "question": "Wat is het grootste dier dat ooit op aarde heeft geleefd?",
+      "answer": "De blauwe vinvis"
+    },
+    {
+      "question": "Hoeveel poten heeft een spin?",
+      "answer": "Acht"
+    },
+    {
+      "question": "Wat is het snelste landdier?",
+      "answer": "Het jachtluipaard"
+    },
+    {
+      "question": "Welk dier staat in het logo van het Wereld Natuur Fonds?",
+      "answer": "De reuzenpanda"
+    },
+    {
+      "question": "Hoe heet een jonge kangoeroe?",
+      "answer": "Een joey"
+    },
+    {
+      "question": "Welke vogel kan achteruit vliegen?",
+      "answer": "De kolibrie"
+    },
+    {
+      "question": "Hoeveel harten heeft een octopus?",
+      "answer": "Drie"
+    },
+    {
+      "question": "Van welke bladeren leeft een koala bijna alleen?",
+      "answer": "Eucalyptus"
+    },
+    {
+      "question": "Welk zoogdier kan echt vliegen?",
+      "answer": "De vleermuis"
+    },
+    {
+      "question": "Wat is het grootste dier dat nu op het land leeft?",
+      "answer": "De Afrikaanse olifant"
+    }
+  ]
+}

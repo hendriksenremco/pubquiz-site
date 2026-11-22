@@ -1,0 +1,47 @@
+{
+  "title": "Filmklassiekers en series",
+  "difficulty": "gemiddeld",
+  "description": "Bekende films en series van de afgelopen vijftig jaar. Tien vragen voor wie graag op de bank zit.",
+  "questions": [
+    {
+      "question": "Welke regisseur maakte Jaws, E.T. en Jurassic Park?",
+      "answer": "Steven Spielberg"
+    },
+    {
+      "question": "In welke film uit 1984 zegt een robot uit de toekomst 'I'll be back'?",
+      "answer": "The Terminator"
+    },
+    {
+      "question": "Hoe heet de toverschool in de Nederlandse vertaling van Harry Potter?",
+      "answer": "Zweinstein"
+    },
+    {
+      "question": "Welk filmmonster is een reusachtige gorilla die de Empire State Building beklimt?",
+      "answer": "King Kong"
+    },
+    {
+      "question": "In welke Disneyfilm uit 1994 is het leeuwenwelpje Simba de hoofdpersoon?",
+      "answer": "The Lion King (De Leeuwenkoning)"
+    },
+    {
+      "question": "Welke acteur speelde Jack in de film Titanic uit 1997?",
+      "answer": "Leonardo DiCaprio"
+    },
+    {
+      "question": "Hoe heet de vader van Luke Skywalker voordat hij Darth Vader werd?",
+      "answer": "Anakin Skywalker"
+    },
+    {
+      "question": "Hoe heet het koffiehuis waar de vrienden in de serie Friends altijd zitten?",
+      "answer": "Central Perk"
+    },
+    {
+      "question": "In welke serie maakt scheikundeleraar Walter White drugs?",
+      "answer": "Breaking Bad"
+    },
+    {
+      "question": "Welke Britse geheim agent heeft het nummer 007?",
+      "answer": "James Bond"
+    }
+  ]
+}
