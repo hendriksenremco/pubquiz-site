@@ -1,0 +1,17 @@
+{
+  "name": "quiznote-functions",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "description": "Licentieserver van QuizNote Pro (issue #384 in de app-repo): Stripe Checkout en licentiecodes.",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "firebase-functions": "^7.4.0",
+    "stripe": "^23.2.0"
+  }
+}
