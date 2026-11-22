@@ -13,7 +13,7 @@ Houd deze lijst gelijk; voeg alleen toe, met een reden.
 5. pubquiz software
 6. quiz night software mac
 
-Let op: de zoektool van de nachtelijke taak is een webzoekmachine (VS), geen echte Google-ranking. Een echte meting komt pas met Google Search Console (moet Remco instellen).
+Let op: de zoektool van de nachtelijke taak is een webzoekmachine (VS), geen echte Google-ranking. Een echte meting staat in Google Search Console (property `https://quiznote.app/`, geverifieerd, sitemap ingediend op 31 oktober 2026). De nachtelijke taak kan daar niet bij; Claude leest de cijfers in de desktopapp via Claude in Chrome.
 
 ---
 
@@ -314,3 +314,9 @@ Pagina's (7 dagen, bezoekers): `/` 31 · `/en` 14 · `/privacy`, `/en/privacy`, 
 **Verbetering:** `SoftwareApplication` heeft nu `screenshot`: de laptop en de beamer uit het openingsbeeld, met hun alt-tekst als bijschrift, per taal (Engels uit `screens/en/`). Zo weet Google hoe de app eruitziet en kan hij de beelden aan QuizNote koppelen in Google Afbeeldingen.
 
 **Volgende ideeën:** Search Console (#71, Remco) blijft veruit het belangrijkste: ruim drie weken live en nog steeds niet in Google. Geen `offers` in de gegevens zolang de prijs niet besloten is (daardoor geen rich result voor software; dat is bewust).
+
+**Search Console** (22 november, met de hand via Claude in Chrome; cijfers 31 okt – 20 nov):
+- Prestaties: 0 klikken, 8 vertoningen, gemiddelde positie 6,4, allemaal op de zoekopdracht "quiznote". Google kent de site dus wel; de webzoektool hierboven ziet dat niet.
+- Indexering: 5 pagina's geïndexeerd, 1 "Gevonden – momenteel niet geïndexeerd". `/` is geïndexeerd; `/en` was onbekend bij Google, indexering aangevraagd.
+- Sitemap `/sitemap.xml`: Succesvol, laatst gelezen 20 november, 6 pagina's gevonden.
+- Issue #71 is hiermee klaar.
