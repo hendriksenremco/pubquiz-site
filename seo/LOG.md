@@ -289,3 +289,28 @@ De sprong is geen echt verkeer: vrijwel alles is "direct" uit de VS, steeds prec
 **Verbetering:** sitemap gelijkgetrokken met de pagina's: elke URL noemt nu hreflang `nl`, `nl-NL`, `en` én `x-default` (privacy en voorwaarden hadden geen `nl` en geen `x-default`). Tegenstrijdige signalen tussen sitemap en pagina kunnen ertoe leiden dat Google de hreflang negeert.
 
 **Volgende ideeën:** Search Console (#71, Remco) blijft het belangrijkste. Verder: `quiznote-4c3e8.web.app` doorsturen naar quiznote.app (Firebase-instelling), en de pagina's één Nederlandse hreflang laten noemen in plaats van `nl` én `nl-NL`.
+
+---
+
+## 2026-11-22
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 21 november).
+
+| | 24 uur | 7 dagen | 21 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 2 | 80 | 61 / 79 |
+| Pageviews | 2 | 81 | 62 / 80 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 1 |
+
+Pagina's (7 dagen, bezoekers): `/` 31 · `/en` 14 · `/privacy`, `/en/privacy`, `/voorwaarden`, `/en/voorwaarden`, `/404`, `/200` elk 6. Laatste 24 uur alleen `/` (2). De piek van gisteren (crawlers na IndexNow) is voorbij; de 7-dagencijfers zijn vooral die piek.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen (Ken's Pub Quiz, Millionaire Pub Quiz), SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT- en Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites (zipdo, wifitalents, gitnux, worldmetrics). "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe, SourceForge.
+
+**PageSpeed Insights:** geprobeerd via WebFetch, geweigerd (toestemming voor de URL niet gegeven in een onbewaakte run). Overgeslagen.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph en gestructureerde gegevens op `/` en `/en` in orde; één h1; alle afbeeldingen met alt; robots.txt en sitemap in orde; JS 760 KB, screenshots 1,1 MB op schijf.
+
+**Verbetering:** `SoftwareApplication` heeft nu `screenshot`: de laptop en de beamer uit het openingsbeeld, met hun alt-tekst als bijschrift, per taal (Engels uit `screens/en/`). Zo weet Google hoe de app eruitziet en kan hij de beelden aan QuizNote koppelen in Google Afbeeldingen.
+
+**Volgende ideeën:** Search Console (#71, Remco) blijft veruit het belangrijkste: ruim drie weken live en nog steeds niet in Google. Geen `offers` in de gegevens zolang de prijs niet besloten is (daardoor geen rich result voor software; dat is bewust).

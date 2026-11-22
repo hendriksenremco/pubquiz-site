@@ -50,6 +50,12 @@ useHead(() => {
               url: pageUrl,
               inLanguage,
               image: `${site}/og-image.png`,
+              // Screenshots van de app (laptop en beamer), zodat Google weet hoe hij eruitziet
+              screenshot: [c.value.hero.laptop, c.value.hero.beamer].map((shot) => ({
+                '@type': 'ImageObject',
+                url: `${site}${shot.src}`,
+                caption: shot.alt
+              })),
               ...(config.public.downloadUrl ? { downloadUrl: config.public.downloadUrl } : {}),
               author: { '@type': 'Person', name: 'Remco Hendriksen' }
             }
