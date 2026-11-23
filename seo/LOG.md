@@ -320,3 +320,29 @@ Pagina's (7 dagen, bezoekers): `/` 31 · `/en` 14 · `/privacy`, `/en/privacy`, 
 - Indexering: 5 pagina's geïndexeerd, 1 "Gevonden – momenteel niet geïndexeerd". `/` is geïndexeerd; `/en` was onbekend bij Google, indexering aangevraagd.
 - Sitemap `/sitemap.xml`: Succesvol, laatst gelezen 20 november, 6 pagina's gevonden.
 - Issue #71 is hiermee klaar.
+
+---
+
+## 2026-11-23
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 22 november).
+
+| | 24 uur | 7 dagen | 22 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 66 | 141 | 2 / 80 |
+| Pageviews | 67 | 143 | 2 / 81 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 3 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 61 · `/en` 22 · `/privacy`, `/en/privacy`, `/voorwaarden`, `/en/voorwaarden`, `/404`, `/200` elk 10.
+Weer een piek van crawlers: 51 van de 66 "direct" uit de VS, plus doorklikken binnen de site en 3 via bing.com (eerste verwijzingen van Bing). Echt verkeer: 3 bezoekers uit NL, 1 uit CH.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens in de webzoektool. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen, SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT/Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites. "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe. (Search Console liet op 22 november wel zien dat Google de site toont op "quiznote", positie ~6.)
+
+**PageSpeed Insights:** niet geprobeerd (WebFetch wordt in een onbewaakte run geweigerd). Overgeslagen.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph en gestructureerde gegevens (WebSite, SoftwareApplication met screenshots, Person) op `/` en `/en` in orde; één h1; alle afbeeldingen met alt; robots.txt in orde; JS 760 KB, screenshots 1,1 MB. Sitemap had geen `<lastmod>`.
+
+**Verbetering:** de sitemap krijgt bij elke deploy per pagina een `<lastmod>`, uit de laatste git-commit op de bestanden van die pagina (`scripts/sitemap-lastmod.sh`, stap in `deploy-site.yml`). Google gebruikt lastmod om te kiezen wat hij opnieuw ophaalt, mits de datum klopt; daarom uit git en niet met de hand. Helpt vooral `/en`, dat nog niet geïndexeerd is.
+
+**Volgende ideeën:** in Search Console nagaan of `/en` na de aanvraag van 22 november geïndexeerd is. Eén Nederlandse hreflang (`nl` of `nl-NL`) in pagina's en sitemap. `quiznote-4c3e8.web.app` doorsturen naar quiznote.app.

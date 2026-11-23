@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Met de hand bijgehouden: de site heeft drie pagina's. Komt er een pagina bij, zet hem er dan ook hier bij. -->
+<!-- Geen <lastmod> hier: scripts/sitemap-lastmod.sh zet die bij het deployen, uit git. -->
 <!-- scripts/indexnow.sh meldt deze URL's na elke deploy bij IndexNow. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
