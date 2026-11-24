@@ -6,20 +6,32 @@ export default defineNuxtPlugin(() => {
   const { posthogKey, posthogHost } = useRuntimeConfig().public
   let client: PostHog | null = null
 
-  // Pas laden na het opstarten van de pagina, zodat het de site niet vertraagt.
+  // Pas laden als de pagina klaar is en de browser even niets te doen heeft, zodat het
+  // script (~100 KiB) niet concurreert met de eerste weergave (LCP) en de interactie (TBT).
+  function whenIdle(run: () => void) {
+    const idle = () =>
+      'requestIdleCallback' in window
+        ? window.requestIdleCallback(run, { timeout: 3000 })
+        : setTimeout(run, 1000)
+    if (document.readyState === 'complete') idle()
+    else window.addEventListener('load', idle, { once: true })
+  }
+
   if (posthogKey) {
-    import('posthog-js').then(({ default: posthog }) => {
-      posthog.init(posthogKey, {
-        api_host: posthogHost,
-        persistence: 'memory',
-        person_profiles: 'identified_only',
-        capture_pageview: 'history_change',
-        disable_session_recording: true,
-        // Geen enquêtes op de site: scheelt een extra script van ~30 KiB.
-        disable_surveys: true
+    whenIdle(() =>
+      import('posthog-js').then(({ default: posthog }) => {
+        posthog.init(posthogKey, {
+          api_host: posthogHost,
+          persistence: 'memory',
+          person_profiles: 'identified_only',
+          capture_pageview: 'history_change',
+          disable_session_recording: true,
+          // Geen enquêtes op de site: scheelt een extra script van ~30 KiB.
+          disable_surveys: true
+        })
+        client = posthog
       })
-      client = posthog
-    })
+    )
   }
 
   // Een eigen event, zoals een klik op de downloadknop. Met sendBeacon komt hij ook aan

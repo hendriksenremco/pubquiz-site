@@ -346,3 +346,28 @@ Weer een piek van crawlers: 51 van de 66 "direct" uit de VS, plus doorklikken bi
 **Verbetering:** de sitemap krijgt bij elke deploy per pagina een `<lastmod>`, uit de laatste git-commit op de bestanden van die pagina (`scripts/sitemap-lastmod.sh`, stap in `deploy-site.yml`). Google gebruikt lastmod om te kiezen wat hij opnieuw ophaalt, mits de datum klopt; daarom uit git en niet met de hand. Helpt vooral `/en`, dat nog niet geïndexeerd is.
 
 **Volgende ideeën:** in Search Console nagaan of `/en` na de aanvraag van 22 november geïndexeerd is. Eén Nederlandse hreflang (`nl` of `nl-NL`) in pagina's en sitemap. `quiznote-4c3e8.web.app` doorsturen naar quiznote.app.
+
+---
+
+## 2026-11-24
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 23 november).
+
+| | 24 uur | 7 dagen | 23 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 2 | 142 | 66 / 141 |
+| Pageviews | 2 | 144 | 67 / 143 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 3 |
+
+Pagina's (7 dagen, bezoekers): `/` 62 · `/en` 22 · `/privacy`, `/en/privacy`, `/voorwaarden`, `/en/voorwaarden`, `/404`, `/200` elk 10. Laatste 24 uur: 2 keer `/`, direct uit de VS en CA. De crawlerpiek van gisteren is weer voorbij; er is nog geen echt verkeer.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens in de webzoektool. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen, SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT/Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites. "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe.
+
+**PageSpeed Insights:** niet via WebFetch (wordt in een onbewaakte run geweigerd). In plaats daarvan Lighthouse 12.2.1 lokaal op de gebouwde site (mobiel, gesimuleerde 4G, met compressie via `serve`, 3 runs): prestaties 0,87–0,91, FCP 1,9–2,0 s, LCP 3,2–3,4 s, TBT 80–190 ms, 415 KiB. Toegankelijkheid, best practices en SEO 1,0. Grootste post: posthog-js (~310 KiB, ~100 KiB gzip) werd meteen bij het opstarten geladen.
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, og:locale/og:url, twitter:card en gestructureerde gegevens (WebSite, SoftwareApplication met screenshots, Person) op `/` en `/en` in orde; één h1; alle afbeeldingen met alt, hero met `fetchpriority="high"`; robots.txt en sitemap in orde; `/200` en `/404` hebben `X-Robots-Tag: noindex`. Zichtbare tekst op `/` is ~170 woorden: dun voor generieke zoekopdrachten, maar zo gewild (kort en bondig).
+
+**Verbetering:** PostHog laadt nu pas na het `load`-event, als de browser niets te doen heeft (`requestIdleCallback`, uiterlijk na 3 s). Zo concurreert het script niet meer met de eerste weergave. Lighthouse daarna: prestaties 0,89–0,95, LCP 2,6–3,4 s (mediaan 2,7 s, was 3,2 s), FCP 1,7–2,0 s. Pageviews worden nog steeds gemeten (PostHog stuurt de eerste pageview bij init); alleen wie binnen een seconde weer weg is, telt mogelijk niet mee.
+
+**Volgende ideeën:** in Search Console nagaan of `/en` geïndexeerd is (Remco of een sessie met Chrome). Eén Nederlandse hreflang (`nl` of `nl-NL`). Inhoud voor "pubquiz maken"/"pubquiz software" zou een eigen pagina vragen (handleiding of rondebibliotheek, #100); dat is een structuurwijziging en wacht op Remco.
