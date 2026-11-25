@@ -37,7 +37,23 @@ useHead(() => {
               name: 'QuizNote',
               alternateName: 'quiznote.app',
               url: `${site}/`,
-              inLanguage: ['nl-NL', 'en']
+              inLanguage: ['nl-NL', 'en'],
+              publisher: { '@id': `${site}/#organization` }
+            },
+            {
+              // Het merk QuizNote, met logo en de broncode op GitHub, zodat Google de naam aan deze site koppelt
+              '@type': 'Organization',
+              '@id': `${site}/#organization`,
+              name: 'QuizNote',
+              url: `${site}/`,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${site}/apple-touch-icon.png`,
+                width: 180,
+                height: 180
+              },
+              founder: { '@type': 'Person', name: 'Remco Hendriksen' },
+              sameAs: ['https://github.com/hendriksenremco/pubquiz']
             },
             {
               '@type': 'SoftwareApplication',
@@ -57,7 +73,8 @@ useHead(() => {
                 caption: shot.alt
               })),
               ...(config.public.downloadUrl ? { downloadUrl: config.public.downloadUrl } : {}),
-              author: { '@type': 'Person', name: 'Remco Hendriksen' }
+              author: { '@type': 'Person', name: 'Remco Hendriksen' },
+              publisher: { '@id': `${site}/#organization` }
             }
           ]
         })

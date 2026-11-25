@@ -371,3 +371,28 @@ Pagina's (7 dagen, bezoekers): `/` 62 · `/en` 22 · `/privacy`, `/en/privacy`, 
 **Verbetering:** PostHog laadt nu pas na het `load`-event, als de browser niets te doen heeft (`requestIdleCallback`, uiterlijk na 3 s). Zo concurreert het script niet meer met de eerste weergave. Lighthouse daarna: prestaties 0,89–0,95, LCP 2,6–3,4 s (mediaan 2,7 s, was 3,2 s), FCP 1,7–2,0 s. Pageviews worden nog steeds gemeten (PostHog stuurt de eerste pageview bij init); alleen wie binnen een seconde weer weg is, telt mogelijk niet mee.
 
 **Volgende ideeën:** in Search Console nagaan of `/en` geïndexeerd is (Remco of een sessie met Chrome). Eén Nederlandse hreflang (`nl` of `nl-NL`). Inhoud voor "pubquiz maken"/"pubquiz software" zou een eigen pagina vragen (handleiding of rondebibliotheek, #100); dat is een structuurwijziging en wacht op Remco.
+
+---
+
+## 2026-11-25
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 24 november).
+
+| | 24 uur | 7 dagen | 24 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 23 | 161 | 2 / 142 |
+| Pageviews | 23 | 163 | 2 / 144 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 63 · `/en` 27 · `/privacy` 13 · `/en/voorwaarden` 13 · `/200` 13 · `/404` 12 · `/en/privacy` 12 · `/voorwaarden` 10. De 23 van de laatste 24 uur verspreiden zich weer over alle pagina's, ook `/200` en `/404`: opnieuw een crawler, geen echt verkeer.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens in de webzoektool. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen, SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT/Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites. "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe.
+
+**PageSpeed Insights:** overgeslagen (WebFetch wordt in een onbewaakte run geweigerd; gisteren lokaal met Lighthouse gemeten, sindsdien niets aan de prestaties veranderd).
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph, h1/h2/h3, alt-teksten, robots.txt en sitemap in orde. Hreflang geeft zowel `nl` als `nl-NL` op dezelfde URL: overbodig maar geldig. De lockfile is van pnpm 8; lokaal installeren lukt alleen met `npx pnpm@8 install`.
+
+**Verbetering:** gestructureerde gegevens krijgen een `Organization` "QuizNote" met logo (het icoon, 180 px), oprichter en `sameAs` naar de repo op GitHub; WebSite en SoftwareApplication verwijzen ernaar als `publisher`. Op "QuizNote" staan nu vooral andere projecten met dezelfde naam; dit helpt Google het merk aan quiznote.app te koppelen (en het logo te tonen).
+
+**Volgende ideeën:** Search Console nagaan voor `/en` en voor vertoningen op "quiznote". Eén Nederlandse hreflang. Een eigen pagina voor "pubquiz maken" wacht op Remco (#100).
