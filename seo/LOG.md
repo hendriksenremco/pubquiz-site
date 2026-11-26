@@ -396,3 +396,28 @@ Pagina's (7 dagen, bezoekers): `/` 63 · `/en` 27 · `/privacy` 13 · `/en/voorw
 **Verbetering:** gestructureerde gegevens krijgen een `Organization` "QuizNote" met logo (het icoon, 180 px), oprichter en `sameAs` naar de repo op GitHub; WebSite en SoftwareApplication verwijzen ernaar als `publisher`. Op "QuizNote" staan nu vooral andere projecten met dezelfde naam; dit helpt Google het merk aan quiznote.app te koppelen (en het logo te tonen).
 
 **Volgende ideeën:** Search Console nagaan voor `/en` en voor vertoningen op "quiznote". Eén Nederlandse hreflang. Een eigen pagina voor "pubquiz maken" wacht op Remco (#100).
+
+---
+
+## 2026-11-26
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 25 november).
+
+| | 24 uur | 7 dagen | 25 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 10 | 167 | 23 / 161 |
+| Pageviews | 10 | 169 | 23 / 163 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 67 · `/en` 27 · `/200` 15 · `/privacy` 13 · `/en/voorwaarden` 13 · `/404` 12 · `/en/privacy` 12 · `/voorwaarden` 10. Laatste 24 uur: 8 keer `/`, 2 keer `/200`; nog geen verkeer uit Nederland of via Google.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens in de webzoektool. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen, SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT/Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites (zipdo, gitnux, wifitalents). "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe.
+
+**PageSpeed Insights:** overgeslagen (WebFetch wordt in een onbewaakte run geweigerd; prestaties sinds 24 november niet veranderd).
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph, h1/h2/h3, alt-teksten, interne links, robots.txt en sitemap in orde. SoftwareApplication had geen `offers`, terwijl de site bij de download "Gratis" zegt; het commentaar in `index.vue` ("geen prijs, nog niet besloten") was verouderd.
+
+**Verbetering:** SoftwareApplication krijgt `offers` (prijs 0, EUR). Google vraagt om offers bij software-apps; zonder beoordelingen komt er nog geen rich result, maar de gegevens zijn nu volledig en kloppen met de pagina.
+
+**Volgende ideeën:** Search Console nagaan voor `/en` en vertoningen op "quiznote". Een eigen pagina voor "pubquiz maken" wacht op Remco (#100). Vermeldingen op lijstjessites ("best pub quiz software") en in de Mac-hoek van SourceForge/AlternativeTo zouden links en zichtbaarheid geven; dat is iets voor Remco.

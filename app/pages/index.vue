@@ -19,7 +19,7 @@ useSeoMeta({
 })
 
 // Gestructureerde gegevens voor Google: wat QuizNote is, en de naam van de site (WebSite),
-// zodat Google "QuizNote" als sitenaam toont. Geen prijs: die is nog niet besloten.
+// zodat Google "QuizNote" als sitenaam toont. De app is gratis (zie de voorwaarden), dus prijs 0.
 useHead(() => {
   const site = config.public.siteUrl
   const pageUrl = locale.value === 'en' ? `${site}/en` : `${site}/`
@@ -72,6 +72,8 @@ useHead(() => {
                 url: `${site}${shot.src}`,
                 caption: shot.alt
               })),
+              // Gratis, zoals bij de download staat; Google vraagt om offers bij software
+              offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
               ...(config.public.downloadUrl ? { downloadUrl: config.public.downloadUrl } : {}),
               author: { '@type': 'Person', name: 'Remco Hendriksen' },
               publisher: { '@id': `${site}/#organization` }
