@@ -45,6 +45,14 @@ export default defineNuxtConfig({
     ]
   },
 
+  hooks: {
+    // Nuxt zet voor elke dynamische import een prefetch in de HTML. Dan haalt de browser posthog-js
+    // (~100 KB gzip) en de foutpagina's meteen op, terwijl de plug-in PostHog juist pas laadt als de pagina klaar is.
+    'build:manifest'(manifest) {
+      for (const chunk of Object.values(manifest)) chunk.prefetch = false
+    }
+  },
+
   nitro: {
     prerender: { routes: ['/', '/en'], crawlLinks: true }
   }

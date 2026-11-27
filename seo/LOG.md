@@ -421,3 +421,28 @@ Pagina's (7 dagen, bezoekers): `/` 67 · `/en` 27 · `/200` 15 · `/privacy` 13 
 **Verbetering:** SoftwareApplication krijgt `offers` (prijs 0, EUR). Google vraagt om offers bij software-apps; zonder beoordelingen komt er nog geen rich result, maar de gegevens zijn nu volledig en kloppen met de pagina.
 
 **Volgende ideeën:** Search Console nagaan voor `/en` en vertoningen op "quiznote". Een eigen pagina voor "pubquiz maken" wacht op Remco (#100). Vermeldingen op lijstjessites ("best pub quiz software") en in de Mac-hoek van SourceForge/AlternativeTo zouden links en zichtbaarheid geven; dat is iets voor Remco.
+
+---
+
+## 2026-11-27
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 26 november).
+
+| | 24 uur | 7 dagen | 26 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 29 | 193 | 10 / 167 |
+| Pageviews | 29 | 195 | 10 / 169 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 73 · `/en` 32 · `/200` 16 · `/voorwaarden` 16 · `/en/privacy` 16 · `/privacy` 15 · `/en/voorwaarden` 15 · `/404` 12. De 29 van de laatste 24 uur verspreiden zich weer over alle pagina's (ook `/voorwaarden` 6 en `/200`): vooral crawlers, nog geen verkeer uit Nederland of via Google.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens in de webzoektool. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen, SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT/Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites (zipdo, gitnux, wifitalents, worldmetrics), Kwizzbit. "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe.
+
+**PageSpeed Insights:** niet via WebFetch; in plaats daarvan Lighthouse 12.2.1 lokaal (mobiel, gesimuleerd, `serve` met compressie, 3 runs per versie).
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph (ook og:url/og:locale), twitter:card, gestructureerde gegevens (WebSite, Organization, SoftwareApplication met offers en screenshots), één h1, alt-teksten, robots.txt en sitemap in orde op alle zes pagina's. Twee punten in de laadvolgorde: (1) Nuxt zette een `rel="prefetch"` voor posthog-js (~310 KB, ~100 KB gzip) en de foutpagina's in de HTML, waardoor de browser PostHog toch meteen ophaalde, ondanks het uitstel van 24 november; (2) de letter van de koppen (Bricolage, 41 KB) werd pas opgehaald nadat de CSS en alle scripts binnen waren.
+
+**Verbetering:** geen prefetch meer voor dynamische chunks (hook `build:manifest`), en een `preload` voor de Latijnse Bricolage-letter (met vaste `key`, anders zette unhead er in de browser een tweede tag met volledige URL bij en werd de letter twee keer geladen). Lighthouse mobiel op `/`: prestaties 0,91–0,95 → 0,94–0,97, LCP mediaan 2,76 s → 2,33 s, FCP ~1,75 s gelijk. `/en`: 0,95, LCP 2,33 s. PostHog laadt nog steeds na het load-event.
+
+**Volgende ideeën:** Search Console nagaan voor `/en` en vertoningen op "quiznote". Eén Nederlandse hreflang. De lazy beamerbeelden verderop hebben geen `srcset` (telefoons laden 1200 px). Eigen pagina voor "pubquiz maken" wacht op Remco (#100).
