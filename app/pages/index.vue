@@ -5,6 +5,15 @@ const config = useRuntimeConfig()
 const localePath = useLocalePath()
 const { locale } = useI18n()
 
+// De tegels bij Rondes: naast elk beeld staat een versie half zo breed (`-sm.webp`).
+// De beelden vullen hun tegel (object-fit: cover), dus de hoge tegel (t2) heeft een breder beeld nodig.
+function tileSrcset(src: string, width: number) {
+  if (!src.endsWith('.webp')) return undefined
+  return `${src.replace(/\.webp$/, '-sm.webp')} ${width / 2}w, ${src} ${width}w`
+}
+const TILE_SIZES = '(max-width: 760px) 300px, (max-width: 1250px) 50vw, 600px'
+const TILE_SIZES_TALL = '(max-width: 760px) 300px, (max-width: 1250px) 80vw, 1000px'
+
 useSeoMeta({
   title: () => c.value.meta.title,
   description: () => c.value.meta.description,
@@ -152,20 +161,26 @@ useHead(() => {
         >
           <img
             :src="(round.beamer ?? round.shot).src"
+            :srcset="tileSrcset((round.beamer ?? round.shot).src, round.beamer ? 1200 : 1600)"
+            :sizes="i === 2 ? TILE_SIZES_TALL : TILE_SIZES"
             :alt="(round.beamer ?? round.shot).alt"
-            width="1200"
-            height="635"
+            :width="round.beamer ? 1200 : 1600"
+            :height="round.beamer ? 635 : 1000"
             loading="lazy"
+            decoding="async"
           />
           <figcaption>{{ round.title }}</figcaption>
         </figure>
         <figure id="print" class="tile t4 print">
           <img
             :src="c.print.shot.src"
+            :srcset="tileSrcset(c.print.shot.src, 1600)"
+            sizes="(max-width: 1250px) calc(100vw - 48px), 1160px"
             :alt="c.print.shot.alt"
             width="1600"
             height="1000"
             loading="lazy"
+            decoding="async"
           />
           <figcaption>{{ c.print.title }}</figcaption>
         </figure>

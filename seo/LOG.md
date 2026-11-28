@@ -446,3 +446,28 @@ Pagina's (7 dagen, bezoekers): `/` 73 · `/en` 32 · `/200` 16 · `/voorwaarden`
 **Verbetering:** geen prefetch meer voor dynamische chunks (hook `build:manifest`), en een `preload` voor de Latijnse Bricolage-letter (met vaste `key`, anders zette unhead er in de browser een tweede tag met volledige URL bij en werd de letter twee keer geladen). Lighthouse mobiel op `/`: prestaties 0,91–0,95 → 0,94–0,97, LCP mediaan 2,76 s → 2,33 s, FCP ~1,75 s gelijk. `/en`: 0,95, LCP 2,33 s. PostHog laadt nog steeds na het load-event.
 
 **Volgende ideeën:** Search Console nagaan voor `/en` en vertoningen op "quiznote". Eén Nederlandse hreflang. De lazy beamerbeelden verderop hebben geen `srcset` (telefoons laden 1200 px). Eigen pagina voor "pubquiz maken" wacht op Remco (#100).
+
+---
+
+## 2026-11-28
+
+**PostHog** (project 328999, SQL op `$pageview` voor host quiznote, zoals op 27 november).
+
+| | 24 uur | 7 dagen | 27 nov (24 u / 7 d) |
+|---|---|---|---|
+| Bezoekers | 25 | 157 | 29 / 193 |
+| Pageviews | 25 | 158 | 29 / 195 |
+| Bezoekers via Google | 0 | 0 | 0 / 0 |
+| Bezoekers uit NL (24 u) | 0 | | 0 |
+
+Pagina's (7 dagen, bezoekers): `/` 69 · `/en` 23 · `/voorwaarden` 12 · `/en/privacy` 12 · `/privacy` 11 · `/en/voorwaarden` 11 · `/404` 10 · `/200` 10. Laatste 24 uur: `/` 9, `/en` 4, `/404` 4, de rest 2 per pagina: weer vooral crawlers. Het 7-dagengetal zakt omdat de crawlerpiek van 21 november uit het venster valt.
+
+**Zoekresultaten** (zelfde 6 zoekopdrachten): quiznote.app staat nog nergens in de webzoektool. "QuizNote"/"QuizNote app": GitHub (BrainyPad, Evavic44), devpost, QuizNotes AI, Quiz Notes-nieuwsbrief, Obsidian-plug-in. "pubquiz app mac": App Store-quizspellen, SourceForge. "pubquiz maken": id.nl (PowerPoint), AhaSlides, PMT/Amnesty-handleidingen, Canva. "pubquiz software": GitHub, Pub Quiz GO, Quizado, lijstjessites (zipdo, wifitalents, gitnux, worldmetrics), Kwizzbit. "quiz night software mac": Games Night, QuizControl, Quizado, Quiz Scribe.
+
+**PageSpeed Insights:** overgeslagen (geen WebFetch in deze run). Wel gemeten welke screenshots er geladen worden (headless Chromium, hele pagina gescrold).
+
+**Technische check** (`pnpm generate`): titel, description, canonical, hreflang, Open Graph, gestructureerde gegevens, één h1, alt-teksten, robots.txt en sitemap in orde. De tegels bij Rondes en Afdrukken hadden geen `srcset`: telefoons laadden de beamerbeelden van 1200 px en Afdrukken van 1600 px.
+
+**Verbetering:** `srcset`/`sizes` voor de vijf tegels (de `-sm.webp`-versies bestonden al, ook in het Engels), met per tegel een `sizes` die rekening houdt met `object-fit: cover` (de hoge tegel krijgt een breder beeld). Telefoon (390 px, 2×, en Lighthouse-maat 412 px, 1,75×): alle screenshots samen 71 KB, alleen nog `-sm`-bestanden (tegels waren ~55 KB, nu ~25 KB). Desktop (1440 px, 2×) ongewijzigd: 161 KB, volle beelden. Op 3×-telefoons blijven de volle beelden komen, voor scherpte.
+
+**Volgende ideeën:** Search Console nagaan voor `/en` en vertoningen op "quiznote". Eén Nederlandse hreflang. Vermeldingen op lijstjessites en AlternativeTo (iets voor Remco). Eigen pagina voor "pubquiz maken" wacht op Remco (#100).
